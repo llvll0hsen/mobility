@@ -87,8 +87,14 @@ def time_dist(records):
                                 source_time_dist[source].update(range(topen,tclose))
     for source, time_dist in source_time_dist.iteritems():
         fig,ax = plt.subplots()
-        ax.hist(list(time_dist.elements()),10,normed=True, alpha=0.75)
-        plt.savefig('time_dist_{0}.pdf'.format(source),bbox_inches='tight')
+        ax.hist(list(time_dist.elements()),15,normed=True, alpha=0.75)
+        ax.set_title(source)
+        ax.tick_params(direction='out')
+        ax.spines["top"].set_visible(False)  
+        ax.spines["right"].set_visible(False) 
+        ax.get_xaxis().tick_bottom()  
+        ax.get_yaxis().tick_left()
+        plt.savefig(os.path.join(output_path_plots,'time_dist_{0}.pdf'.format(source)),bbox_inches='tight')
         plt.close()
 
 def with_hours(records):
@@ -108,7 +114,7 @@ def with_hours(records):
                     temp = time_records[0][0]
                     topen = datetime.strptime(temp['open'], "%H:%M").timetz().hour
                     tclose = datetime.strptime(temp['close'], "%H:%M").timetz().hour
-                    source_time_dist[source].update(range(topen,tclose))
+#                    source_time_dist[source].update(range(topen,tclose))
                     source_valid[source]+=1
     
     temp = sorted(source_valid.items(), key = itemgetter(1))
@@ -120,7 +126,8 @@ def with_hours(records):
     ax.bar(x,counts, align="center")
     ax.set_xticks(x)
     ax.set_xticklabels(sources,rotation=45)
-    plt.savefig('openings_ratio.pdf',bbox_inches='tight')
+    plt.savefig(os.path.join(output_path_plots,'openings_ratio.pdf'),bbox_inches='tight')
+
     plt.close()
     print 'number/ratio of records with hours: ',count_valid,count_valid/float(n)
 
@@ -188,7 +195,7 @@ def with_price_tag(records):
         print stars
         print count
         count = np.array(count,dtype='float')
-        data[i,:] = count/sum(count)
+        data[i,:] = count#/sum(count)
         i+=1
      
     ax.bar(x,data[:,0], align="center",color='green', label='*')
@@ -204,7 +211,7 @@ def with_price_tag(records):
     ax.get_yaxis().tick_left()
     ax.legend(loc='upper center',ncol=4,frameon=True,bbox_to_anchor=(0.5, 1.2),fontsize=25)#fancybox=True)
  
-    plt.savefig('price_tags_cat_ratio.pdf',bbox_inches='tight')
+    plt.savefig(os.path.join(output_path_plots,'price_tags_cat.pdf'),bbox_inches='tight')
     plt.close()
 
 def source_cat_count(records):
@@ -233,16 +240,17 @@ def source_cat_count(records):
         ax.spines["right"].set_visible(False) 
         ax.get_xaxis().tick_bottom()  
         ax.get_yaxis().tick_left()
-        plt.savefig('{0}.pdf'.format(provider),bbox_inches='tight')
+        fpath = os.path.join(output_path_plots,'{0}_cat_dist.pdf'.format(provider))
+        plt.savefig(fpath,bbox_inches='tight')
         plt.close()
         
 if __name__ == '__main__':
     f = open('geosegmentation_venues_170904.json','rb')
     records = json.load(f)
-    source_cat_count(records)
-#    with_price_tag(records)
-    #with_ratings(records)
-    #create_lat_lon_file(records)
+#    source_cat_count(records)
+    with_price_tag(records)
+#    with_ratings(records)
+#    create_lat_lon_file(records)
 #    with_hours(records)
 #    time_dist(records)
 #    tag_clouds(records)
