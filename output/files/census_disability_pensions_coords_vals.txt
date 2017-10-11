@@ -1,0 +1,74 @@
+neighborhood,val
+el Raval;810
+el Barri Gòtic;195
+la Barceloneta;169
+Sant Pere, Santa Caterina i la Ribera;213
+el Fort Pienc;72
+la Sagrada Família;198
+la Dreta de l'Eixample;158
+l'Antiga Esquerra de l'Eixample;122
+la Nova Esquerra de l'Eixample;197
+Sant Antoni;160
+el Poble Sec;300
+la Marina del Prat Vermell;29
+la Marina de Port;248
+la Font de la Guatlla;156
+Hostafrancs;177
+la Bordeta;70
+Sants - Badal;114
+Sants;204
+les Corts;115
+la Maternitat i Sant Ramon;53
+Pedralbes;22
+Vallvidrera, el Tibidabo i les Planes;18
+Sarrià;71
+les Tres Torres;9
+Sant Gervasi - la Bonanova;57
+Sant Gervasi - Galvany;62
+el Putxet i el Farró;58
+Vallcarca i els Penitents;48
+el Coll;29
+la Salut;128
+la Vila de Gràcia;260
+el Camp d'en Grassot i Gràcia Nova;196
+el Baix Guinardó;73
+Can Baró;59
+el Guinardó;132
+la Font d'en Fargues;40
+el Carmel;219
+la Teixonera;53
+Sant Genís dels Agudells;36
+Montbau;35
+la Vall d'Hebron;24
+la Clota;8
+Horta;134
+Vilapicina i la Torre Llobeta;100
+Porta;154
+el Turó de la Peira;78
+Can Peguera;60
+la Guineueta;84
+Canyelles;55
+les Roquetes;155
+Verdun;104
+la Prosperitat;134
+la Trinitat Nova;103
+Torre Baró;69
+Ciutat Meridiana;81
+Vallbona;25
+la Trinitat Vella;89
+Baró de Viver;46
+el Bon Pastor;119
+Sant Andreu;190
+la Sagrera;98
+el Congrés i els Indians;60
+Navas;72
+el Camp de l'Arpa del Clot;197
+el Clot;91
+el Parc i la Llacuna del Poblenou;122
+la Vila Olímpica del Poblenou;12
+el Poblenou;147
+Diagonal Mar i el Front Marítim del Poblenou;49
+el Besòs i el Maresme;208
+Provençals del Poblenou;93
+Sant Martí de Provençals;154
+la Verneda i la Pau;160

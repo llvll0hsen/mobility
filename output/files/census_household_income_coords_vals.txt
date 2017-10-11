@@ -1,0 +1,74 @@
+neighborhood,val
+el Raval;47.617
+el Barri Gòtic;15.269
+la Barceloneta;15.036
+Sant Pere, Santa Caterina i la Ribera;22.305
+el Fort Pienc;31.645
+la Sagrada Família;51.347
+la Dreta de l'Eixample;43.344
+l'Antiga Esquerra de l'Eixample;41.696
+la Nova Esquerra de l'Eixample;57.711
+Sant Antoni;38.248
+el Poble Sec;40.217
+la Marina del Prat Vermell;1.145
+la Marina de Port;30.374
+la Font de la Guatlla;10.355
+Hostafrancs;15.812
+la Bordeta;18.43
+Sants - Badal;24.085
+Sants;40.889
+les Corts;46.086
+la Maternitat i Sant Ramon;23.845
+Pedralbes;11.763
+Vallvidrera, el Tibidabo i les Planes;4.635
+Sarrià;24.614
+les Tres Torres;16.624
+Sant Gervasi - la Bonanova;25.511
+Sant Gervasi - Galvany;46.968
+el Putxet i el Farró;29.149
+Vallcarca i els Penitents;15.508
+el Coll;7.324
+la Salut;13.213
+la Vila de Gràcia;50.584
+el Camp d'en Grassot i Gràcia Nova;34.047
+el Baix Guinardó;25.476
+Can Baró;8.938
+el Guinardó;36.073
+la Font d'en Fargues;9.443
+el Carmel;31.498
+la Teixonera;11.322
+Sant Genís dels Agudells;6.693
+Montbau;5.07
+la Vall d'Hebron;5.613
+la Clota;568.0
+Horta;26.624
+Vilapicina i la Torre Llobeta;25.499
+Porta;24.536
+el Turó de la Peira;15.42
+Can Peguera;2.267
+la Guineueta;15.074
+Canyelles;6.946
+les Roquetes;15.523
+Verdun;12.258
+la Prosperitat;26.184
+la Trinitat Nova;7.362
+Torre Baró;2.828
+Ciutat Meridiana;10.156
+Vallbona;1.351
+la Trinitat Vella;10.21
+Baró de Viver;2.482
+el Bon Pastor;12.655
+Sant Andreu;56.682
+la Sagrera;29.02
+el Congrés i els Indians;14.148
+Navas;22.11
+el Camp de l'Arpa del Clot;38.202
+el Clot;27.013
+el Parc i la Llacuna del Poblenou;14.764
+la Vila Olímpica del Poblenou;9.261
+el Poblenou;33.579
+Diagonal Mar i el Front Marítim del Poblenou;13.352
+el Besòs i el Maresme;23.026
+Provençals del Poblenou;20.244
+Sant Martí de Provençals;26.005
+la Verneda i la Pau;28.678

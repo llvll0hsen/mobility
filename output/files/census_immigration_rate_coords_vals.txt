@@ -1,0 +1,73 @@
+neighborhood,val
+el Raval;105.6
+el Barri Gòtic;140.8
+la Barceloneta;103.1
+Sant Pere, Santa Caterina i la Ribera;106.6
+el Fort Pienc;63.0
+la Sagrada Família;61.5
+la Dreta de l'Eixample;67.4
+l'Antiga Esquerra de l'Eixample;69.6
+la Nova Esquerra de l'Eixample;60.5
+Sant Antoni;56.2
+el Poble Sec;68.1
+la Marina del Prat Vermell;30.6
+la Marina de Port;42.8
+la Font de la Guatlla;58.2
+Hostafrancs;64.4
+la Bordeta;47.9
+Sants - Badal;57.1
+Sants;56.9
+les Corts;44.6
+la Maternitat i Sant Ramon;50.7
+Pedralbes;62.0
+Vallvidrera, el Tibidabo i les Planes;32.4
+Sarrià;45.6
+les Tres Torres;37.2
+Sant Gervasi - la Bonanova;43.8
+Sant Gervasi - Galvany;48.2
+el Putxet i el Farró;43.3
+Vallcarca i els Penitents;43.6
+el Coll;44.9
+la Salut;46.4
+la Vila de Gràcia;60.4
+el Camp d'en Grassot i Gràcia Nova;44.0
+el Baix Guinardó;41.5
+Can Baró;41.7
+el Guinardó;45.0
+la Font d'en Fargues;21.5
+el Carmel;36.8
+la Teixonera;47.5
+Sant Genís dels Agudells;51.6
+Montbau;45.7
+la Vall d'Hebron;37.1
+la Clota;39.5
+Horta;36.5
+Vilapicina i la Torre Llobeta;37.5
+Porta;47.6
+el Turó de la Peira;46.7
+Can Peguera;30.1
+la Guineueta;30.8
+Canyelles;18.6
+les Roquetes;55.3
+Verdun;47.0
+la Prosperitat;42.0
+la Trinitat Nova;47.5
+Torre Baró;44.8
+Ciutat Meridiana;62.3
+Vallbona;48.1
+la Trinitat Vella;54.3
+Baró de Viver;33.5
+el Bon Pastor;38.4
+Sant Andreu;30.9
+la Sagrera;40.9
+el Congrés i els Indians;39.2
+Navas;41.3
+el Camp de l'Arpa del Clot;49.7
+el Clot;43.1
+el Parc i la Llacuna del Poblenou;57.7
+la Vila Olímpica del Poblenou;41.9
+el Poblenou;48.2
+Diagonal Mar i el Front Marítim del Poblenou;49.9
+el Besòs i el Maresme;69.2
+Provençals del Poblenou;39.5
+Sant Martí de Provençals;39.9

@@ -1,0 +1,1258 @@
+
+lon,lat,district,topen,tclose
+2.08098,41.46831,None,9,11
+2.08495,41.46586,None,9,17
+2.08190917969,41.4694863825,None,9,17
+2.08740234375,41.4591953795,None,10,17
+2.1681099,41.4598808,('nou barris', 'ciutat meridiana'),8,22
+2.1220484655,41.3805342859,('les corts', 'la maternitat i sant ramon'),8,19
+2.1784,41.4663887,None,10,14
+2.17835,41.46065,('nou barris', 'ciutat meridiana'),9,13
+2.17835,41.46065,('nou barris', 'ciutat meridiana'),9,13
+2.17975,41.45532,('nou barris', 'torre bar\xc3\xb3'),9,21
+2.21732,41.45491,None,14,22
+2.22316,41.45496,None,16,19
+2.22254856812,41.4565742755,None,10,22
+2.18004454009,41.4527035765,('nou barris', 'torre bar\xc3\xb3'),10,0
+2.17619,41.45379,('nou barris', 'torre bar\xc3\xb3'),8,22
+2.18956,41.45335,('sant andreu', 'la trinitat vella'),7,10
+2.19118,41.45163,('sant andreu', 'la trinitat vella'),9,21
+2.19118,41.45163,('sant andreu', 'la trinitat vella'),9,21
+2.1892249,41.45262,('sant andreu', 'la trinitat vella'),10,20
+2.1892249,41.45262,('sant andreu', 'la trinitat vella'),9,13
+2.18624,41.4495099,('nou barris', 'la trinitat nova'),8,20
+2.18624,41.4495099,('nou barris', 'la trinitat nova'),8,20
+2.18573829,41.45146705,('nou barris', 'la trinitat nova'),9,14
+2.1859099,41.45068,('nou barris', 'la trinitat nova'),7,15
+2.1855711937,41.4507201556,('nou barris', 'la trinitat nova'),8,13
+2.19368,41.4491,('sant andreu', 'la trinitat vella'),10,21
+2.19071,41.44923,('sant andreu', 'la trinitat vella'),16,20
+2.19071,41.44923,('sant andreu', 'la trinitat vella'),16,20
+2.19048,41.4496918,('sant andreu', 'la trinitat vella'),9,19
+2.19034,41.44971,('sant andreu', 'la trinitat vella'),5,20
+2.19213,41.45008,('sant andreu', 'la trinitat vella'),9,14
+2.187517,41.388111,('ciutat vella', 'sant pere, santa caterina i la ribera'),9,23
+2.2166633606,41.4307579962,None,8,21
+2.20598,41.4525999,None,9,22
+2.20909,41.45114,None,9,19
+2.2133,41.44896,None,9,13
+2.21883,41.45109,None,9,22
+2.20065593333,41.3885725509,('sant mart\xc3\xad', 'la vila ol\xc3\xadmpica del poblenou'),7,0
+2.20065593333,41.3885725509,('sant mart\xc3\xad', 'la vila ol\xc3\xadmpica del poblenou'),7,1
+2.22117,41.45153,None,11,22
+2.17103,41.44573,('nou barris', 'les roquetes'),9,22
+2.17103,41.44573,('nou barris', 'les roquetes'),9,0
+2.167096138,41.4443348628,('nou barris', 'canyelles'),8,21
+2.17708,41.44577,('nou barris', 'les roquetes'),13,23
+2.17691,41.44726,('nou barris', 'les roquetes'),11,16
+2.17691,41.44726,('nou barris', 'les roquetes'),11,16
+2.17504733856,41.446139218,('nou barris', 'les roquetes'),16,22
+2.17670917511,41.4461845715,('nou barris', 'les roquetes'),12,0
+2.17670917511,41.4461845715,('nou barris', 'les roquetes'),12,17
+2.17671185732,41.4467837049,('nou barris', 'les roquetes'),10,14
+2.17404,41.4442,('nou barris', 'les roquetes'),18,21
+2.1718099,41.44506,('nou barris', 'les roquetes'),10,14
+2.1718099,41.44506,('nou barris', 'les roquetes'),10,14
+2.17727,41.44517,('nou barris', 'verdun'),10,14
+2.17727,41.44517,('nou barris', 'verdun'),10,14
+2.1804,41.44873,('nou barris', 'la trinitat nova'),16,20
+2.1822499,41.44868,('nou barris', 'la trinitat nova'),9,19
+2.1822499,41.44868,('nou barris', 'la trinitat nova'),9,20
+2.17695,41.44691,('nou barris', 'les roquetes'),9,14
+2.18296,41.44569,('nou barris', 'la prosperitat'),9,14
+2.17906951904,41.4453642724,('nou barris', 'verdun'),10,15
+2.17837,41.44401,('nou barris', 'verdun'),10,14
+2.17837,41.44401,('nou barris', 'verdun'),10,14
+2.1842699,41.4479485,('nou barris', 'la trinitat nova'),8,14
+2.1842699,41.4479485,('nou barris', 'la trinitat nova'),8,14
+2.18629,41.44798,('nou barris', 'la trinitat nova'),8,17
+2.18391,41.44553,('nou barris', 'la prosperitat'),8,14
+2.18232,41.4451899,('nou barris', 'la prosperitat'),10,19
+2.18232,41.4451899,('nou barris', 'la prosperitat'),10,20
+2.17331,41.44695,('nou barris', 'les roquetes'),9,19
+2.1786,41.44555,('nou barris', 'verdun'),8,13
+2.17749,41.44428,('nou barris', 'verdun'),8,14
+2.17658,41.4451899,('nou barris', 'les roquetes'),9,13
+2.1782977,41.4445932,('nou barris', 'verdun'),9,18
+2.1782977,41.4445932,('nou barris', 'verdun'),9,14
+2.18993029133,41.4485527487,('sant andreu', 'la trinitat vella'),6,1
+2.18993029133,41.4485527487,('sant andreu', 'la trinitat vella'),6,0
+2.18928,41.44499,('sant andreu', 'sant andreu'),10,18
+2.18928,41.44499,('sant andreu', 'sant andreu'),9,14
+2.19049572945,41.4489349103,('sant andreu', 'la trinitat vella'),10,17
+2.1881137,41.4442801,('sant andreu', 'sant andreu'),9,18
+2.1859676,41.4440188,('nou barris', 'la prosperitat'),8,20
+2.1859676,41.4440188,('nou barris', 'la prosperitat'),8,20
+2.1937551,41.4477,('sant andreu', 'la trinitat vella'),7,9
+2.20275,41.44656,('sant andreu', 'el bon pastor'),12,16
+2.20275,41.44656,('sant andreu', 'el bon pastor'),12,16
+2.2019599,41.444813355,('sant andreu', 'el bon pastor'),9,19
+2.2019599,41.444813355,('sant andreu', 'el bon pastor'),9,19
+2.2029358,41.4466857,('sant andreu', 'el bon pastor'),8,13
+2.2029358,41.4466857,('sant andreu', 'el bon pastor'),8,13
+2.1998828,41.4483899,('sant andreu', 'bar\xc3\xb3 de viver'),9,19
+2.1998828,41.4483899,('sant andreu', 'bar\xc3\xb3 de viver'),9,14
+2.20004,41.44634,('sant andreu', 'bar\xc3\xb3 de viver'),9,19
+2.20004,41.44634,('sant andreu', 'bar\xc3\xb3 de viver'),9,19
+2.21357929296,41.4495515713,None,9,15
+2.209903,41.444536,None,15,21
+2.21273,41.44733,None,8,23
+2.22017282303,41.451961439,None,7,23
+2.12642469,41.39318447,('sarri\xc3\xa0-sant gervasi', 'sarri\xc3\xa0'),12,16
+2.109375,41.4427263777,None,9,18
+2.15578,41.39872,('gr\xc3\xa0cia', 'la vila de gr\xc3\xa0cia'),9,18
+2.14555555556,41.4402777778,('horta-guinard\xc3\xb3', 'horta'),11,13
+2.17477798462,41.4038411876,('eixample', 'la sagrada fam\xc3\xadlia'),9,20
+2.17477798462,41.4038411876,('eixample', 'la sagrada fam\xc3\xadlia'),9,20
+2.16153850125,41.4415131487,('horta-guinard\xc3\xb3', 'horta'),9,23
+2.16156067,41.44153094,('horta-guinard\xc3\xb3', 'horta'),10,14
+2.16362,41.4398399,('nou barris', 'la guineueta'),10,23
+2.16362,41.4398399,('nou barris', 'la guineueta'),10,23
+2.16655,41.4403099,('nou barris', 'la guineueta'),10,22
+2.17019,41.44317,('nou barris', 'canyelles'),10,22
+2.16935,41.44385,('nou barris', 'canyelles'),10,17
+2.17656,41.44177,('nou barris', 'verdun'),10,20
+2.17719,41.44098,('nou barris', 'la prosperitat'),8,2
+2.17719,41.44098,('nou barris', 'la prosperitat'),9,1
+2.17719,41.44098,('nou barris', 'la prosperitat'),8,2
+2.17489,41.44276,('nou barris', 'verdun'),10,23
+2.17971,41.44286,('nou barris', 'la prosperitat'),12,23
+2.17742264271,41.4405629022,('nou barris', 'la prosperitat'),13,0
+2.1747899,41.44079,('nou barris', 'verdun'),9,23
+2.17684,41.44123,('nou barris', 'verdun'),9,20
+2.17502132682,41.4428149664,('nou barris', 'verdun'),9,13
+2.1746,41.44298,('nou barris', 'verdun'),9,14
+2.17735,41.44183,('nou barris', 'verdun'),9,13
+2.17776,41.44213,('nou barris', 'verdun'),10,20
+2.17631,41.44197,('nou barris', 'verdun'),17,20
+2.17551,41.44422,('nou barris', 'verdun'),9,14
+2.18285,41.4418,('nou barris', 'la prosperitat'),9,19
+2.17929,41.4427499,('nou barris', 'la prosperitat'),11,23
+2.17456,41.44218,('nou barris', 'verdun'),10,23
+2.17456,41.44218,('nou barris', 'verdun'),10,23
+2.17804,41.443,('nou barris', 'verdun'),10,13
+2.18439,41.44292,('nou barris', 'la prosperitat'),11,20
+2.1789299,41.44302,('nou barris', 'la prosperitat'),9,13
+2.17308,41.44607,('nou barris', 'les roquetes'),9,14
+2.1828101,41.4399681,('nou barris', 'la prosperitat'),18,22
+2.1828101,41.4399681,('nou barris', 'la prosperitat'),18,22
+2.17807,41.43962,('nou barris', 'la prosperitat'),17,20
+2.17807,41.43962,('nou barris', 'la prosperitat'),17,20
+2.18078,41.44316,('nou barris', 'la prosperitat'),9,13
+2.17936,41.44272,('nou barris', 'la prosperitat'),9,13
+2.17858,41.44104,('nou barris', 'la prosperitat'),8,21
+2.17858,41.44104,('nou barris', 'la prosperitat'),8,21
+2.17387,41.44224,('nou barris', 'verdun'),9,20
+2.17793,41.43924,('nou barris', 'la prosperitat'),10,19
+2.17754,41.44356,('nou barris', 'verdun'),10,14
+2.18285,41.44319,('nou barris', 'la prosperitat'),16,20
+2.1816499,41.4433784,('nou barris', 'la prosperitat'),8,14
+2.18099,41.44215,('nou barris', 'la prosperitat'),10,20
+2.18099,41.44215,('nou barris', 'la prosperitat'),10,20
+2.18165898378,41.4417816595,('nou barris', 'la prosperitat'),10,14
+2.17636585236,41.4407800573,('nou barris', 'verdun'),10,13
+2.17763,41.43995,('nou barris', 'la prosperitat'),9,13
+2.17763,41.43995,('nou barris', 'la prosperitat'),9,13
+2.17839,41.44263,('nou barris', 'la prosperitat'),8,14
+2.18040907438,41.4409820148,('nou barris', 'la prosperitat'),10,13
+2.18506,41.4431,('nou barris', 'la prosperitat'),9,20
+2.1877301,41.4408989,('sant andreu', 'sant andreu'),10,20
+2.1877301,41.4408989,('sant andreu', 'sant andreu'),10,13
+2.18732,41.44176,('sant andreu', 'sant andreu'),7,22
+2.18732,41.44176,('sant andreu', 'sant andreu'),7,22
+2.18695,41.44095,('sant andreu', 'sant andreu'),10,20
+2.18695,41.44095,('sant andreu', 'sant andreu'),10,20
+2.18726634979,41.4398149181,('sant andreu', 'sant andreu'),7,21
+2.1873999,41.43977,('sant andreu', 'sant andreu'),10,13
+2.18671,41.44244,('sant andreu', 'sant andreu'),10,14
+2.18671,41.44244,('sant andreu', 'sant andreu'),10,13
+2.18668,41.43902,('sant andreu', 'sant andreu'),10,14
+2.1911,41.44061,('sant andreu', 'sant andreu'),8,13
+2.1911,41.44061,('sant andreu', 'sant andreu'),8,14
+2.19082945641,41.4418968702,('sant andreu', 'sant andreu'),9,14
+2.19082945641,41.4418968702,('sant andreu', 'sant andreu'),9,14
+2.18839401062,41.4437265424,('sant andreu', 'sant andreu'),10,14
+2.18873733337,41.4412816063,('sant andreu', 'sant andreu'),10,20
+2.1902499,41.4420319,('sant andreu', 'sant andreu'),9,19
+2.19056,41.4419,('sant andreu', 'sant andreu'),9,13
+2.19056,41.4419,('sant andreu', 'sant andreu'),6,15
+2.198789,41.44197,('sant andreu', 'el bon pastor'),9,22
+2.19305992126,41.4396540602,('sant andreu', 'sant andreu'),10,22
+2.19305992126,41.4396540602,('sant andreu', 'sant andreu'),10,22
+2.198499,41.441918,('sant andreu', 'el bon pastor'),20,23
+2.198499,41.441918,('sant andreu', 'el bon pastor'),12,0
+2.198499,41.441918,('sant andreu', 'el bon pastor'),9,22
+2.19114,41.44003,('sant andreu', 'sant andreu'),8,20
+2.19984054565,41.4431767575,('sant andreu', 'el bon pastor'),12,0
+2.2010504509,41.4430149491,('sant andreu', 'el bon pastor'),12,16
+2.20022,41.4427499,('sant andreu', 'el bon pastor'),10,22
+2.20472,41.44324,('sant andreu', 'el bon pastor'),8,19
+2.20472,41.44324,('sant andreu', 'el bon pastor'),8,19
+2.20243,41.4440384,('sant andreu', 'el bon pastor'),8,20
+2.200860645,41.4440633583,('sant andreu', 'el bon pastor'),7,20
+2.200860645,41.4440633583,('sant andreu', 'el bon pastor'),17,21
+2.19984105372,41.4406479455,('sant andreu', 'el bon pastor'),10,13
+2.2002201,41.442749,('sant andreu', 'el bon pastor'),10,0
+2.19897917706,41.4399043541,('sant andreu', 'el bon pastor'),12,23
+2.1981599149,41.440529303,('sant andreu', 'el bon pastor'),13,16
+2.19816185,41.44014691,('sant andreu', 'el bon pastor'),13,0
+2.19816185,41.44014691,('sant andreu', 'el bon pastor'),10,22
+2.19816185,41.44014691,('sant andreu', 'el bon pastor'),13,0
+2.20535,41.4433099,('sant andreu', 'el bon pastor'),9,19
+2.16752,41.38791,('eixample', "la dreta de l'eixample"),9,0
+2.198521,41.440414,('sant andreu', 'el bon pastor'),13,16
+2.198521,41.440414,('sant andreu', 'el bon pastor'),13,16
+2.20002248317,41.4414234696,('sant andreu', 'el bon pastor'),10,13
+2.19981908798,41.4432410973,('sant andreu', 'el bon pastor'),9,13
+2.20153733434,41.4429872014,('sant andreu', 'el bon pastor'),16,20
+2.20153733434,41.4429872014,('sant andreu', 'el bon pastor'),16,20
+2.19773769379,41.4404744315,('sant andreu', 'el bon pastor'),9,13
+2.19763040543,41.4404744315,('sant andreu', 'el bon pastor'),9,21
+2.2043,41.44509,('sant andreu', 'el bon pastor'),8,17
+2.20226,41.43954,('sant andreu', 'el bon pastor'),8,18
+2.20226,41.43954,('sant andreu', 'el bon pastor'),8,18
+2.20347,41.4432199,('sant andreu', 'el bon pastor'),10,22
+2.20003,41.44217,('sant andreu', 'el bon pastor'),9,19
+2.2016101,41.4392891,('sant andreu', 'el bon pastor'),8,13
+2.20381,41.44091,('sant andreu', 'el bon pastor'),9,14
+2.20194339752,41.4414073901,('sant andreu', 'el bon pastor'),9,14
+2.20194339752,41.4414073901,('sant andreu', 'el bon pastor'),9,14
+2.20467,41.44086,('sant andreu', 'el bon pastor'),10,14
+2.20467,41.44086,('sant andreu', 'el bon pastor'),9,14
+2.2058,41.44216,('sant andreu', 'el bon pastor'),9,18
+2.20606327057,41.4422759947,('sant andreu', 'el bon pastor'),9,15
+2.20606327057,41.4422759947,('sant andreu', 'el bon pastor'),9,15
+2.20374584198,41.4397747037,('sant andreu', 'el bon pastor'),9,14
+2.20604427,41.44110081,('sant andreu', 'el bon pastor'),8,18
+2.20572,41.44111,('sant andreu', 'el bon pastor'),7,15
+2.18333,41.3833,('ciutat vella', 'sant pere, santa caterina i la ribera'),9,18
+2.21259,41.4442902,None,9,14
+2.16806,41.4303,('nou barris', 'vilapicina i la torre llobeta'),7,20
+2.16806,41.4303,('nou barris', 'vilapicina i la torre llobeta'),7,20
+2.17508,41.4084999,('eixample', 'la sagrada fam\xc3\xadlia'),13,17
+2.17508,41.4084999,('eixample', 'la sagrada fam\xc3\xadlia'),13,17
+2.19069957733,41.4119001018,('sant mart\xc3\xad', 'el clot'),10,20
+2.22390209401,41.4420628329,None,6,23
+2.2254999,41.44361,None,10,14
+2.2312997,41.441285,None,9,19
+2.13143020593,41.43451508,('horta-guinard\xc3\xb3', 'montbau'),11,14
+2.13143020593,41.43451508,('horta-guinard\xc3\xb3', 'montbau'),11,14
+2.13213199432,41.4341875531,('horta-guinard\xc3\xb3', 'montbau'),11,14
+2.13134765625,41.4427263777,('horta-guinard\xc3\xb3', 'montbau'),10,20
+2.14145050127,41.4366766956,('horta-guinard\xc3\xb3', 'montbau'),10,18
+2.1447930775,41.43746996,('horta-guinard\xc3\xb3', 'montbau'),8,21
+2.1476722,41.435833,('horta-guinard\xc3\xb3', 'montbau'),9,14
+2.14233398438,41.4427263777,('horta-guinard\xc3\xb3', 'horta'),9,14
+2.14285,41.4365499,('horta-guinard\xc3\xb3', 'montbau'),9,18
+2.148861,41.43813,('horta-guinard\xc3\xb3', 'horta'),9,14
+2.14799,41.43482,('horta-guinard\xc3\xb3', "la vall d'hebron"),9,19
+2.14741716826,41.4363409285,('horta-guinard\xc3\xb3', 'montbau'),17,20
+2.14741716826,41.4363409285,('horta-guinard\xc3\xb3', 'montbau'),17,20
+2.15221637543,41.4354101663,('horta-guinard\xc3\xb3', "la vall d'hebron"),10,20
+2.15221637543,41.4354101663,('horta-guinard\xc3\xb3', "la vall d'hebron"),10,20
+2.15243048452,41.4361171403,('horta-guinard\xc3\xb3', 'horta'),13,18
+2.15243048452,41.4361171403,('horta-guinard\xc3\xb3', 'horta'),13,16
+2.15621305233,41.4396236143,('horta-guinard\xc3\xb3', 'horta'),8,22
+2.15943,41.44102,('horta-guinard\xc3\xb3', 'horta'),8,17
+2.15943,41.44102,('horta-guinard\xc3\xb3', 'horta'),8,18
+2.15691,41.4377799,('horta-guinard\xc3\xb3', 'horta'),9,22
+2.15579,41.4373099,('horta-guinard\xc3\xb3', 'horta'),6,23
+2.15818,41.43882,('horta-guinard\xc3\xb3', 'horta'),9,20
+2.15818,41.43882,('horta-guinard\xc3\xb3', 'horta'),9,20
+2.15785,41.43615,('horta-guinard\xc3\xb3', 'horta'),10,14
+2.1577001,41.4370689,('horta-guinard\xc3\xb3', 'horta'),9,13
+2.14958,41.43718,('horta-guinard\xc3\xb3', 'horta'),11,14
+2.16893,41.38849,('eixample', "la dreta de l'eixample"),10,22
+2.15852,41.43461,('horta-guinard\xc3\xb3', 'horta'),8,18
+2.1652429,41.4380525,('nou barris', 'la guineueta'),10,19
+2.16096,41.4365,('horta-guinard\xc3\xb3', 'horta'),9,18
+2.16559,41.43857,('nou barris', 'la guineueta'),9,13
+2.16379165649,41.4418778857,('nou barris', 'canyelles'),10,20
+2.1636604,41.4393369,('nou barris', 'la guineueta'),9,19
+2.1636604,41.4393369,('nou barris', 'la guineueta'),9,19
+2.16443,41.43957,('nou barris', 'la guineueta'),9,21
+2.16000495,41.43523978,('horta-guinard\xc3\xb3', 'horta'),10,20
+2.1644,41.44197,('nou barris', 'canyelles'),7,14
+2.1644,41.44197,('nou barris', 'canyelles'),7,14
+2.16416,41.43924,('nou barris', 'la guineueta'),9,18
+2.16416,41.43924,('nou barris', 'la guineueta'),10,18
+2.17018,41.43859,('nou barris', 'la guineueta'),8,14
+2.17018,41.43859,('nou barris', 'la guineueta'),8,14
+2.17050790787,41.4365333375,('nou barris', 'la guineueta'),10,20
+2.17050790787,41.4365333375,('nou barris', 'la guineueta'),10,20
+2.167489928,41.438535433,('nou barris', 'la guineueta'),10,22
+2.1700499,41.43945,('nou barris', 'la guineueta'),13,0
+2.16861,41.43854,('nou barris', 'la guineueta'),9,20
+2.16834,41.4437,('nou barris', 'canyelles'),10,14
+2.16940397079,41.4375818567,('nou barris', 'la guineueta'),10,14
+2.16902908833,41.4364366465,('nou barris', 'la guineueta'),9,19
+2.17121524391,41.4366664413,('nou barris', 'la guineueta'),8,18
+2.17239,41.43738,('nou barris', 'la guineueta'),9,23
+2.16831,41.43734,('nou barris', 'la guineueta'),8,19
+2.17144,41.43486,('nou barris', 'el tur\xc3\xb3 de la peira'),9,22
+2.17191451843,41.4344771215,('nou barris', 'el tur\xc3\xb3 de la peira'),18,2
+2.1764899,41.43741,('nou barris', 'porta'),10,14
+2.17837,41.43824,('nou barris', 'porta'),15,21
+2.17837,41.43824,('nou barris', 'porta'),9,21
+2.1752262357,41.439477116,('nou barris', 'verdun'),10,14
+2.17175,41.43584,('nou barris', 'la guineueta'),10,14
+2.1718799,41.43422,('nou barris', 'el tur\xc3\xb3 de la peira'),9,13
+2.18106788999,41.4351705616,('nou barris', 'porta'),10,22
+2.18106788999,41.4351705616,('nou barris', 'porta'),12,23
+2.18184045115,41.4355194896,('nou barris', 'porta'),12,0
+2.17991,41.43919,('nou barris', 'la prosperitat'),9,13
+2.18191789854,41.4360598364,('nou barris', 'porta'),9,21
+2.18191789854,41.4360598364,('nou barris', 'porta'),10,22
+2.17399,41.44019,('nou barris', 'verdun'),8,1
+2.17399,41.44019,('nou barris', 'verdun'),8,1
+2.1791299,41.43908,('nou barris', 'la prosperitat'),9,13
+2.18184166977,41.4398892801,('nou barris', 'la prosperitat'),8,20
+2.18034,41.44459,('nou barris', 'la prosperitat'),11,21
+2.1817827,41.4413948,('nou barris', 'la prosperitat'),8,0
+2.1817827,41.4413948,('nou barris', 'la prosperitat'),8,23
+2.17716,41.44392,('nou barris', 'verdun'),8,22
+2.19125,41.4359611111,('sant andreu', 'sant andreu'),9,17
+2.18967342432,41.4355629914,('sant andreu', 'sant andreu'),9,13
+2.18967342432,41.4355629914,('sant andreu', 'sant andreu'),9,13
+2.18962,41.4352684,('sant andreu', 'sant andreu'),7,0
+2.18962,41.4352684,('sant andreu', 'sant andreu'),8,0
+2.18962,41.4352684,('sant andreu', 'sant andreu'),7,0
+2.18842083271,41.4347867973,('sant andreu', 'sant andreu'),8,14
+2.14988,41.37591,('eixample', "la nova esquerra de l'eixample"),12,0
+2.14988,41.37591,('eixample', "la nova esquerra de l'eixample"),9,19
+2.18701,41.43842,('sant andreu', 'sant andreu'),9,17
+2.1866,41.43992,('sant andreu', 'sant andreu'),10,13
+2.18981,41.43586,('sant andreu', 'sant andreu'),10,14
+2.18509,41.43679,('sant andreu', 'sant andreu'),17,21
+2.19283,41.43634,('sant andreu', 'sant andreu'),10,14
+2.19076,41.4376,('sant andreu', 'sant andreu'),8,17
+2.19076,41.4376,('sant andreu', 'sant andreu'),8,17
+2.19588,41.43694,('sant andreu', 'el bon pastor'),9,18
+2.19186,41.4345703,('sant andreu', 'sant andreu'),10,21
+2.19186,41.4345703,('sant andreu', 'sant andreu'),10,21
+2.1983799,41.4388099,('sant andreu', 'el bon pastor'),9,13
+2.18878,41.43921,('sant andreu', 'sant andreu'),10,14
+2.18707,41.43863,('sant andreu', 'sant andreu'),10,20
+2.18986809254,41.437619173,('sant andreu', 'sant andreu'),10,20
+2.1890299,41.43807,('sant andreu', 'sant andreu'),19,23
+2.18945,41.43715,('sant andreu', 'sant andreu'),17,20
+2.19062561073,41.4366649091,('sant andreu', 'sant andreu'),9,12
+2.19050645828,41.4378926398,('sant andreu', 'sant andreu'),9,21
+2.19627,41.4356499,('sant andreu', 'el bon pastor'),9,18
+2.18937,41.43598,('sant andreu', 'sant andreu'),9,13
+2.18937,41.43598,('sant andreu', 'sant andreu'),9,13
+2.2033821946,41.4373003454,('sant andreu', 'el bon pastor'),8,22
+2.20364,41.4373,('sant andreu', 'el bon pastor'),10,20
+2.20493,41.43729,('sant andreu', 'el bon pastor'),17,20
+2.20493,41.43729,('sant andreu', 'el bon pastor'),17,20
+2.20175,41.43717,('sant andreu', 'el bon pastor'),10,14
+2.20175,41.43717,('sant andreu', 'el bon pastor'),10,14
+2.19604,41.43856,('sant andreu', 'el bon pastor'),16,20
+2.19604,41.43856,('sant andreu', 'el bon pastor'),16,20
+2.19732,41.4353399,('sant andreu', 'el bon pastor'),10,21
+2.20113,41.43606,('sant andreu', 'el bon pastor'),9,19
+2.20113,41.43606,('sant andreu', 'el bon pastor'),9,13
+2.20694,41.43673,('sant andreu', 'el bon pastor'),15,19
+2.17638888889,41.3838888889,('ciutat vella', 'el barri g\xc3\xb2tic'),8,12
+2.17638888889,41.3838888889,('ciutat vella', 'el barri g\xc3\xb2tic'),10,23
+2.22651,41.44161,None,8,13
+2.14424,41.43406,('horta-guinard\xc3\xb3', 'montbau'),6,18
+2.14424,41.43406,('horta-guinard\xc3\xb3', 'montbau'),9,20
+2.1427,41.43065,('horta-guinard\xc3\xb3', 'montbau'),8,20
+2.13871412,41.4292528175,('horta-guinard\xc3\xb3', 'montbau'),8,17
+2.14244,41.4303,('horta-guinard\xc3\xb3', 'montbau'),7,1
+2.140465,41.43028,('horta-guinard\xc3\xb3', 'montbau'),10,14
+2.14326,41.43155,('horta-guinard\xc3\xb3', 'montbau'),9,20
+2.14326,41.43155,('horta-guinard\xc3\xb3', 'montbau'),9,20
+2.14355,41.43195,('horta-guinard\xc3\xb3', 'montbau'),9,14
+2.14688301086,41.4332998532,('horta-guinard\xc3\xb3', "la vall d'hebron"),7,23
+2.14317,41.43089,('horta-guinard\xc3\xb3', 'montbau'),10,14
+2.14112,41.43023,('horta-guinard\xc3\xb3', 'montbau'),8,18
+2.14286,41.43226,('horta-guinard\xc3\xb3', 'montbau'),10,15
+2.15208469329,41.4311530888,('horta-guinard\xc3\xb3', "la vall d'hebron"),13,16
+2.15208469329,41.4311530888,('horta-guinard\xc3\xb3', "la vall d'hebron"),13,16
+2.1499,41.4312401,('horta-guinard\xc3\xb3', "la vall d'hebron"),8,22
+2.1499,41.4312401,('horta-guinard\xc3\xb3', "la vall d'hebron"),8,22
+2.14921,41.43325,('horta-guinard\xc3\xb3', "la vall d'hebron"),8,18
+2.1476799,41.43062,('horta-guinard\xc3\xb3', "la vall d'hebron"),9,23
+2.14543,41.43003,('horta-guinard\xc3\xb3', "la vall d'hebron"),9,18
+2.15089,41.43178,('horta-guinard\xc3\xb3', "la vall d'hebron"),11,13
+2.15089,41.43178,('horta-guinard\xc3\xb3', "la vall d'hebron"),10,14
+2.15029,41.4320183,('horta-guinard\xc3\xb3', "la vall d'hebron"),9,14
+2.15029,41.4320183,('horta-guinard\xc3\xb3', "la vall d'hebron"),8,14
+2.14823,41.4341,('horta-guinard\xc3\xb3', "la vall d'hebron"),10,22
+2.1585,41.43257,('horta-guinard\xc3\xb3', 'horta'),9,23
+2.1585,41.43257,('horta-guinard\xc3\xb3', 'horta'),9,23
+2.15453916843,41.4329930699,('horta-guinard\xc3\xb3', 'horta'),21,23
+2.1512699,41.42966,('horta-guinard\xc3\xb3', 'la clota'),9,18
+2.1512699,41.42966,('horta-guinard\xc3\xb3', 'la clota'),10,14
+2.15969,41.433,('horta-guinard\xc3\xb3', 'horta'),16,20
+2.14965,41.43373,('horta-guinard\xc3\xb3', "la vall d'hebron"),9,14
+2.14965,41.43373,('horta-guinard\xc3\xb3', "la vall d'hebron"),9,14
+2.15469,41.42997,('horta-guinard\xc3\xb3', 'la clota'),8,14
+2.1486,41.43401,('horta-guinard\xc3\xb3', "la vall d'hebron"),8,14
+2.16091667105,41.4336407771,('horta-guinard\xc3\xb3', 'horta'),7,23
+2.16091667105,41.4336407771,('horta-guinard\xc3\xb3', 'horta'),7,23
+2.16031,41.4322815,('horta-guinard\xc3\xb3', 'horta'),17,21
+2.16127151306,41.42968299,('horta-guinard\xc3\xb3', 'horta'),13,0
+2.16064,41.4308,('horta-guinard\xc3\xb3', 'horta'),17,2
+2.16064,41.4308,('horta-guinard\xc3\xb3', 'horta'),17,2
+2.15973615646,41.4298892375,('horta-guinard\xc3\xb3', 'horta'),8,14
+2.15973615646,41.4298892375,('horta-guinard\xc3\xb3', 'horta'),8,14
+2.16289066444,41.4304471922,('horta-guinard\xc3\xb3', 'horta'),7,19
+2.16314822024,41.4306477856,('horta-guinard\xc3\xb3', 'horta'),10,15
+2.16314822024,41.4306477856,('horta-guinard\xc3\xb3', 'horta'),11,15
+2.1607299,41.4307213,('horta-guinard\xc3\xb3', 'horta'),9,0
+2.16039,41.43018,('horta-guinard\xc3\xb3', 'horta'),17,0
+2.16084,41.4328999,('horta-guinard\xc3\xb3', 'horta'),9,0
+2.16084,41.4328999,('horta-guinard\xc3\xb3', 'horta'),7,0
+2.1626,41.4299,('horta-guinard\xc3\xb3', 'horta'),0,16
+2.1626,41.4299,('horta-guinard\xc3\xb3', 'horta'),13,16
+2.1626,41.4299,('horta-guinard\xc3\xb3', 'horta'),13,16
+2.15937,41.43099,('horta-guinard\xc3\xb3', 'horta'),10,20
+2.16065883636,41.4300581637,('horta-guinard\xc3\xb3', 'horta'),10,20
+2.15978980064,41.4314899969,('horta-guinard\xc3\xb3', 'horta'),17,21
+2.16315,41.43106,('horta-guinard\xc3\xb3', 'horta'),16,19
+2.1583,41.43051,('horta-guinard\xc3\xb3', 'horta'),9,18
+2.1583,41.43051,('horta-guinard\xc3\xb3', 'horta'),9,18
+2.15908,41.43048,('horta-guinard\xc3\xb3', 'horta'),9,13
+2.16016931213,41.4321395617,('horta-guinard\xc3\xb3', 'horta'),10,13
+2.16016931213,41.4321395617,('horta-guinard\xc3\xb3', 'horta'),10,13
+2.16070175171,41.4295835603,('horta-guinard\xc3\xb3', 'horta'),17,20
+2.16297,41.4339299,('horta-guinard\xc3\xb3', 'horta'),9,13
+2.16297,41.4339299,('horta-guinard\xc3\xb3', 'horta'),9,13
+2.16028,41.42913,('horta-guinard\xc3\xb3', 'horta'),10,14
+2.16028,41.42913,('horta-guinard\xc3\xb3', 'horta'),10,14
+2.16338396072,41.4341524791,('horta-guinard\xc3\xb3', 'horta'),8,20
+2.16338396072,41.4341524791,('horta-guinard\xc3\xb3', 'horta'),8,21
+2.16115,41.43088,('horta-guinard\xc3\xb3', 'horta'),17,20
+2.16074,41.4311,('horta-guinard\xc3\xb3', 'horta'),16,20
+2.16074,41.4311,('horta-guinard\xc3\xb3', 'horta'),16,20
+2.16070175171,41.4328252735,('horta-guinard\xc3\xb3', 'horta'),9,21
+2.1604,41.43105,('horta-guinard\xc3\xb3', 'horta'),10,13
+2.16102,41.43244,('horta-guinard\xc3\xb3', 'horta'),9,17
+2.17013,41.43363,('nou barris', 'el tur\xc3\xb3 de la peira'),17,3
+2.16599,41.43948,('nou barris', 'la guineueta'),8,20
+2.16499,41.43838,('nou barris', 'la guineueta'),8,0
+2.1657,41.43466,('nou barris', 'can peguera'),8,18
+2.16333,41.43474,('horta-guinard\xc3\xb3', 'horta'),7,0
+2.170129,41.437566,('nou barris', 'la guineueta'),9,14
+2.16736,41.43555,('nou barris', 'can peguera'),10,13
+2.1687046,41.4310313,('nou barris', 'el tur\xc3\xb3 de la peira'),8,14
+2.16231,41.43019,('horta-guinard\xc3\xb3', 'horta'),8,0
+2.17072,41.43049,('nou barris', 'el tur\xc3\xb3 de la peira'),13,23
+2.17259,41.4358,('nou barris', 'porta'),8,23
+2.1675847,41.4352744,('nou barris', 'can peguera'),9,14
+2.16292568168,41.3794539948,('eixample', 'sant antoni'),6,21
+2.16268,41.42997,('horta-guinard\xc3\xb3', 'horta'),12,16
+2.1673701,41.4338188,('nou barris', 'can peguera'),9,14
+2.1659099,41.42955,('horta-guinard\xc3\xb3', 'horta'),7,0
+2.1729454,41.4363056,('nou barris', 'porta'),7,0
+2.1729454,41.4363056,('nou barris', 'porta'),12,15
+2.1641901,41.4339981,('nou barris', 'can peguera'),10,13
+2.16105693634,41.430865468,('horta-guinard\xc3\xb3', 'horta'),12,0
+2.16105693634,41.430865468,('horta-guinard\xc3\xb3', 'horta'),16,0
+2.1678,41.43801,('nou barris', 'la guineueta'),9,13
+2.16897,41.43512,('nou barris', 'la guineueta'),10,20
+2.16615,41.43545,('nou barris', 'can peguera'),8,16
+2.1629556,41.43543803,('horta-guinard\xc3\xb3', 'horta'),9,18
+2.17271,41.43437,('nou barris', 'porta'),9,20
+2.17932,41.43381,('nou barris', 'porta'),9,14
+2.17932,41.43381,('nou barris', 'porta'),9,14
+2.17248908645,41.4304562613,('nou barris', 'el tur\xc3\xb3 de la peira'),7,0
+2.1732,41.43044,('nou barris', 'el tur\xc3\xb3 de la peira'),16,22
+2.17262,41.43455,('nou barris', 'porta'),9,20
+2.15948691825,41.3730098631,('sants-montju\xc3\xafc', 'el poble sec'),11,15
+2.17356,41.43044,('nou barris', 'el tur\xc3\xb3 de la peira'),7,14
+2.17644,41.43051,('nou barris', 'porta'),13,17
+2.17359,41.43236,('nou barris', 'el tur\xc3\xb3 de la peira'),9,17
+2.1772,41.43082,('nou barris', 'porta'),9,0
+2.17422,41.43043,('nou barris', 'el tur\xc3\xb3 de la peira'),13,14
+2.172319,41.434719,('nou barris', 'el tur\xc3\xb3 de la peira'),9,21
+2.17989,41.435207,('nou barris', 'porta'),7,22
+2.17989,41.435207,('nou barris', 'porta'),7,23
+2.1760299,41.4301796,('nou barris', 'vilapicina i la torre llobeta'),11,23
+2.1760299,41.4301796,('nou barris', 'vilapicina i la torre llobeta'),11,0
+2.1732999,41.43187,('nou barris', 'el tur\xc3\xb3 de la peira'),12,0
+2.1782,41.43119,('nou barris', 'porta'),8,21
+2.17991631386,41.4085862292,('eixample', 'la sagrada fam\xc3\xadlia'),8,0
+2.17519000679,41.4294713807,('nou barris', 'vilapicina i la torre llobeta'),12,16
+2.17655,41.43817,('nou barris', 'porta'),8,14
+2.17312,41.4354897,('nou barris', 'porta'),20,2
+2.17333,41.4328,('nou barris', 'el tur\xc3\xb3 de la peira'),9,19
+2.17738,41.43848,('nou barris', 'porta'),15,19
+2.19955,41.4184399,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),10,14
+2.17517565954,41.4371403658,('nou barris', 'porta'),19,23
+2.16032673513,41.4242477558,('horta-guinard\xc3\xb3', "la font d'en fargues"),9,13
+2.17293419791,41.4365338198,('nou barris', 'la guineueta'),17,20
+2.17508,41.43163,('nou barris', 'porta'),8,13
+2.18181,41.4305,('nou barris', 'porta'),10,13
+2.18062,41.4321098,('nou barris', 'porta'),10,22
+2.1812299,41.43137,('nou barris', 'porta'),13,16
+2.1812299,41.43137,('nou barris', 'porta'),13,16
+2.18215942383,41.4326885296,('nou barris', 'porta'),17,22
+2.17968219574,41.430101284,('nou barris', 'vilapicina i la torre llobeta'),13,23
+2.1851,41.43316,('sant andreu', 'sant andreu'),10,22
+2.1851,41.43316,('sant andreu', 'sant andreu'),10,12
+2.18371791577,41.4333211741,('sant andreu', 'sant andreu'),8,20
+2.181551,41.4343389,('nou barris', 'porta'),8,21
+2.17044296935,41.3860281565,('eixample', "la dreta de l'eixample"),11,2
+2.17044296935,41.3860281565,('eixample', "la dreta de l'eixample"),11,2
+2.22237380632,41.4110488724,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),15,23
+2.18924,41.4325485,('sant andreu', 'sant andreu'),8,21
+2.186235,41.430064,('sant andreu', 'sant andreu'),12,0
+2.18449,41.43051,('sant andreu', 'sant andreu'),17,2
+2.18449,41.43051,('sant andreu', 'sant andreu'),8,23
+2.18448,41.4296099,('sant andreu', 'sant andreu'),10,19
+2.1873,41.43085,('sant andreu', 'sant andreu'),9,14
+2.18935,41.43289,('sant andreu', 'sant andreu'),10,23
+2.18734,41.43001,('sant andreu', 'sant andreu'),7,12
+2.18641347934,41.4292695553,('sant andreu', 'sant andreu'),6,23
+2.18641347934,41.4292695553,('sant andreu', 'sant andreu'),6,23
+2.16032737549,41.3870672377,('eixample', "l'antiga esquerra de l'eixample"),12,0
+2.16032737549,41.3870672377,('eixample', "l'antiga esquerra de l'eixample"),12,0
+2.19406555125,41.4318347752,('sant andreu', 'sant andreu'),9,13
+2.19406555125,41.4318347752,('sant andreu', 'sant andreu'),9,13
+2.19518,41.43052,('sant andreu', 'sant andreu'),10,21
+2.18943,41.43376,('sant andreu', 'sant andreu'),12,1
+2.18943,41.43376,('sant andreu', 'sant andreu'),12,1
+2.18944,41.43065,('sant andreu', 'sant andreu'),10,14
+2.1895699,41.43495,('sant andreu', 'sant andreu'),8,14
+2.20125135826,41.3880036028,('sant mart\xc3\xad', 'la vila ol\xc3\xadmpica del poblenou'),10,1
+2.20125135826,41.3880036028,('sant mart\xc3\xad', 'la vila ol\xc3\xadmpica del poblenou'),11,1
+2.18977,41.43613,('sant andreu', 'sant andreu'),10,14
+2.18977,41.43613,('sant andreu', 'sant andreu'),10,14
+2.19349,41.43143,('sant andreu', 'sant andreu'),10,17
+2.18823912271,41.4373768084,('sant andreu', 'sant andreu'),9,17
+2.18823912271,41.4373768084,('sant andreu', 'sant andreu'),9,17
+2.1898399,41.43211,('sant andreu', 'sant andreu'),9,19
+2.18945503235,41.4312486789,('sant andreu', 'sant andreu'),17,20
+2.19102257545,41.4305155533,('sant andreu', 'sant andreu'),9,15
+2.19158,41.43791,('sant andreu', 'sant andreu'),12,0
+2.19158,41.43791,('sant andreu', 'sant andreu'),13,0
+2.19524651,41.43418822,('sant andreu', 'el bon pastor'),10,1
+2.19524651,41.43418822,('sant andreu', 'el bon pastor'),10,1
+2.20494747162,41.4347275931,('sant andreu', 'el bon pastor'),10,14
+2.20254,41.43422,('sant andreu', 'el bon pastor'),9,22
+2.20254,41.43422,('sant andreu', 'el bon pastor'),9,12
+2.1954632,41.4353537,('sant andreu', 'el bon pastor'),9,13
+2.2117,41.41772,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),7,22
+2.20535,41.43494,('sant andreu', 'el bon pastor'),10,18
+2.21632,41.43153,None,8,0
+2.2188949585,41.4320611125,None,9,13
+2.23041,41.43429,None,9,19
+2.22109436989,41.4357410683,None,10,21
+2.21992492676,41.4346511797,None,9,19
+2.12909,41.42835,('horta-guinard\xc3\xb3', 'sant gen\xc3\xads dels agudells'),9,19
+2.129565,41.4284897,('horta-guinard\xc3\xb3', 'sant gen\xc3\xads dels agudells'),8,13
+2.13746,41.42687,('horta-guinard\xc3\xb3', 'sant gen\xc3\xads dels agudells'),9,14
+2.13278623668,41.4255785662,('horta-guinard\xc3\xb3', 'sant gen\xc3\xads dels agudells'),9,16
+2.1355779,41.427048,('horta-guinard\xc3\xb3', 'sant gen\xc3\xads dels agudells'),9,16
+2.13879615068,41.4265106207,('horta-guinard\xc3\xb3', 'sant gen\xc3\xads dels agudells'),8,15
+2.13767,41.42541,('horta-guinard\xc3\xb3', 'sant gen\xc3\xads dels agudells'),9,19
+2.14437,41.42808,('horta-guinard\xc3\xb3', "la vall d'hebron"),7,22
+2.14023744113,41.4247055228,('horta-guinard\xc3\xb3', 'sant gen\xc3\xads dels agudells'),10,21
+2.14023744113,41.4247055228,('horta-guinard\xc3\xb3', 'sant gen\xc3\xads dels agudells'),10,21
+2.13752,41.42474,('horta-guinard\xc3\xb3', 'sant gen\xc3\xads dels agudells'),9,18
+2.1419499,41.4291382,('horta-guinard\xc3\xb3', 'montbau'),15,20
+2.1419499,41.4291382,('horta-guinard\xc3\xb3', 'montbau'),15,20
+2.1471,41.42687,('horta-guinard\xc3\xb3', "la vall d'hebron"),8,0
+2.14461651911,41.4343364522,('horta-guinard\xc3\xb3', 'montbau'),12,16
+2.1471,41.4268684,('horta-guinard\xc3\xb3', "la vall d'hebron"),9,14
+2.14248418808,41.429567472,('horta-guinard\xc3\xb3', 'montbau'),16,20
+2.15815,41.42703,('horta-guinard\xc3\xb3', 'horta'),9,13
+2.15815,41.42703,('horta-guinard\xc3\xb3', 'horta'),9,13
+2.15861076172,41.4283878702,('horta-guinard\xc3\xb3', 'horta'),9,14
+2.15713018234,41.4252464941,('horta-guinard\xc3\xb3', 'el carmel'),17,21
+2.15438,41.42895,('horta-guinard\xc3\xb3', 'la clota'),6,22
+2.15863,41.42824,('horta-guinard\xc3\xb3', 'horta'),8,14
+2.1537799,41.42562,('horta-guinard\xc3\xb3', 'el carmel'),9,20
+2.15582,41.42915,('horta-guinard\xc3\xb3', 'la clota'),10,14
+2.15582,41.42915,('horta-guinard\xc3\xb3', 'la clota'),10,14
+2.15336,41.42587,('horta-guinard\xc3\xb3', 'el carmel'),9,20
+2.15336,41.42587,('horta-guinard\xc3\xb3', 'el carmel'),9,13
+2.15708,41.42527,('horta-guinard\xc3\xb3', 'el carmel'),9,13
+2.15667,41.42602,('horta-guinard\xc3\xb3', 'el carmel'),9,14
+2.15472,41.42525,('horta-guinard\xc3\xb3', 'el carmel'),9,17
+2.15986,41.42843,('horta-guinard\xc3\xb3', 'horta'),17,20
+2.15627187546,41.4248161017,('horta-guinard\xc3\xb3', 'el carmel'),16,20
+2.15795114894,41.4276579443,('horta-guinard\xc3\xb3', 'el carmel'),10,13
+2.15795114894,41.4276579443,('horta-guinard\xc3\xb3', 'el carmel'),10,13
+2.15859015,41.42826267,('horta-guinard\xc3\xb3', 'horta'),10,14
+2.15735,41.42645,('horta-guinard\xc3\xb3', 'el carmel'),17,20
+2.15735,41.42645,('horta-guinard\xc3\xb3', 'el carmel'),17,20
+2.15494,41.42648,('horta-guinard\xc3\xb3', 'el carmel'),10,13
+2.15361,41.4253799,('horta-guinard\xc3\xb3', 'el carmel'),9,20
+2.15948599206,41.4296335985,('horta-guinard\xc3\xb3', 'horta'),8,20
+2.15872,41.42946,('horta-guinard\xc3\xb3', 'horta'),19,0
+2.15359,41.40036,('gr\xc3\xa0cia', 'la vila de gr\xc3\xa0cia'),11,20
+2.16027,41.4285202,('horta-guinard\xc3\xb3', 'horta'),16,20
+2.1588599,41.42983,('horta-guinard\xc3\xb3', 'horta'),9,21
+2.15934,41.42899,('horta-guinard\xc3\xb3', 'horta'),10,14
+2.15955943773,41.4294310949,('horta-guinard\xc3\xb3', 'horta'),8,14
+2.15993,41.4300799,('horta-guinard\xc3\xb3', 'horta'),16,20
+2.16581,41.42709,('horta-guinard\xc3\xb3', "la font d'en fargues"),7,23
+2.16581,41.42709,('horta-guinard\xc3\xb3', "la font d'en fargues"),7,23
+2.16017,41.4261399,('horta-guinard\xc3\xb3', "la font d'en fargues"),7,22
+2.16017,41.4261399,('horta-guinard\xc3\xb3', "la font d'en fargues"),7,22
+2.15950012207,41.4294870304,('horta-guinard\xc3\xb3', 'horta'),8,14
+2.15950012207,41.4294870304,('horta-guinard\xc3\xb3', 'horta'),8,13
+2.15924,41.42891,('horta-guinard\xc3\xb3', 'horta'),9,13
+2.15697348118,41.4246603513,('horta-guinard\xc3\xb3', 'el carmel'),10,14
+2.15697348118,41.4246603513,('horta-guinard\xc3\xb3', 'el carmel'),10,14
+2.13053504718,41.3752478612,('sants-montju\xc3\xafc', 'sants - badal'),6,22
+2.1653699,41.42763,('horta-guinard\xc3\xb3', "la font d'en fargues"),13,16
+2.1596601,41.4291382,('horta-guinard\xc3\xb3', 'horta'),10,20
+2.15885,41.42868,('horta-guinard\xc3\xb3', 'horta'),11,15
+2.15926,41.42883,('horta-guinard\xc3\xb3', 'horta'),7,21
+2.15966,41.4291399,('horta-guinard\xc3\xb3', 'horta'),10,20
+2.16211,41.429,('horta-guinard\xc3\xb3', 'horta'),9,21
+2.16211,41.429,('horta-guinard\xc3\xb3', 'horta'),9,21
+2.16256970222,41.429216428,('horta-guinard\xc3\xb3', 'horta'),10,1
+2.16256970222,41.429216428,('horta-guinard\xc3\xb3', 'horta'),9,0
+2.1629999,41.42884,('horta-guinard\xc3\xb3', 'horta'),9,14
+2.1595399,41.43003,('horta-guinard\xc3\xb3', 'horta'),8,0
+2.16009,41.4291399,('horta-guinard\xc3\xb3', 'horta'),11,14
+2.172664,41.385845,('ciutat vella', 'el barri g\xc3\xb2tic'),9,14
+2.15746917,41.42739822,('horta-guinard\xc3\xb3', 'el carmel'),6,22
+2.156546,41.427434,('horta-guinard\xc3\xb3', 'el carmel'),9,20
+2.13845933067,41.3829656025,('les corts', 'les corts'),9,14
+2.16275967658,41.4286579751,('horta-guinard\xc3\xb3', 'horta'),7,16
+2.15901,41.43006,('horta-guinard\xc3\xb3', 'horta'),9,14
+2.16148,41.43014,('horta-guinard\xc3\xb3', 'horta'),9,14
+2.1659799,41.42978,('nou barris', 'vilapicina i la torre llobeta'),20,21
+2.16771954353,41.4273260136,('horta-guinard\xc3\xb3', "la font d'en fargues"),10,17
+2.17218000598,41.4282496283,('nou barris', 'vilapicina i la torre llobeta'),10,20
+2.166524,41.429368,('nou barris', 'vilapicina i la torre llobeta'),9,20
+2.16575,41.42946,('horta-guinard\xc3\xb3', 'horta'),9,18
+2.1665,41.42939,('nou barris', 'vilapicina i la torre llobeta'),9,14
+2.16935252,41.428393085,('nou barris', 'vilapicina i la torre llobeta'),8,2
+2.16559,41.4304008,('nou barris', 'vilapicina i la torre llobeta'),7,0
+2.16561,41.43001,('nou barris', 'vilapicina i la torre llobeta'),8,14
+2.16561,41.43001,('nou barris', 'vilapicina i la torre llobeta'),8,14
+2.1660499,41.39511,('eixample', "la dreta de l'eixample"),7,20
+2.1698401,41.4276199,('nou barris', 'vilapicina i la torre llobeta'),9,17
+2.1698401,41.4276199,('nou barris', 'vilapicina i la torre llobeta'),9,17
+2.17177,41.42803,('nou barris', 'vilapicina i la torre llobeta'),8,21
+2.16661,41.42978,('nou barris', 'vilapicina i la torre llobeta'),10,14
+2.16661,41.42978,('nou barris', 'vilapicina i la torre llobeta'),9,14
+2.16725,41.42941,('nou barris', 'vilapicina i la torre llobeta'),9,23
+2.18071281813,41.415844179,('sant mart\xc3\xad', "el camp de l'arpa del clot"),8,20
+2.17266,41.42976,('nou barris', 'vilapicina i la torre llobeta'),10,14
+2.17266,41.42976,('nou barris', 'vilapicina i la torre llobeta'),10,14
+2.17682705,41.4267417366,('nou barris', 'vilapicina i la torre llobeta'),7,23
+2.17682705,41.4267417366,('nou barris', 'vilapicina i la torre llobeta'),7,23
+2.1731601,41.4263992,('nou barris', 'vilapicina i la torre llobeta'),9,21
+2.17625,41.4251,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),12,23
+2.17582,41.42819,('nou barris', 'vilapicina i la torre llobeta'),20,2
+2.17377,41.42656,('nou barris', 'vilapicina i la torre llobeta'),9,13
+2.1769,41.42542,('sant andreu', 'el congr\xc3\xa9s i els indians'),10,13
+2.1738,41.4267807,('nou barris', 'vilapicina i la torre llobeta'),13,0
+2.168071,41.388077,('eixample', "la dreta de l'eixample"),7,22
+2.168071,41.388077,('eixample', "la dreta de l'eixample"),7,23
+2.17225032091,41.4292619884,('nou barris', 'vilapicina i la torre llobeta'),9,19
+2.15059518814,41.3934713588,('eixample', "l'antiga esquerra de l'eixample"),9,1
+2.15059518814,41.3934713588,('eixample', "l'antiga esquerra de l'eixample"),9,1
+2.17262,41.42656,('nou barris', 'vilapicina i la torre llobeta'),8,21
+2.17317,41.42874,('nou barris', 'vilapicina i la torre llobeta'),9,14
+2.17317,41.42874,('nou barris', 'vilapicina i la torre llobeta'),9,14
+2.14493,41.40149,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - galvany'),10,14
+2.17185,41.4267616,('nou barris', 'vilapicina i la torre llobeta'),10,14
+2.17185,41.4267616,('nou barris', 'vilapicina i la torre llobeta'),10,14
+2.17823,41.42523,('sant andreu', 'el congr\xc3\xa9s i els indians'),10,23
+2.1806075,41.4292511,('nou barris', 'vilapicina i la torre llobeta'),8,21
+2.17177040883,41.3934500257,('eixample', "la dreta de l'eixample"),8,0
+2.17177040883,41.3934500257,('eixample', "la dreta de l'eixample"),8,0
+2.18318,41.4255799,('sant andreu', 'el congr\xc3\xa9s i els indians'),20,0
+2.18318,41.4255799,('sant andreu', 'el congr\xc3\xa9s i els indians'),13,1
+2.18318,41.4255799,('sant andreu', 'el congr\xc3\xa9s i els indians'),18,1
+2.18065,41.4284899,('nou barris', 'vilapicina i la torre llobeta'),9,22
+2.17925,41.42948,('nou barris', 'vilapicina i la torre llobeta'),9,14
+2.18498,41.42792,('sant andreu', 'la sagrera'),8,19
+2.17989,41.42818,('nou barris', 'vilapicina i la torre llobeta'),17,21
+2.17921,41.43012,('nou barris', 'vilapicina i la torre llobeta'),9,14
+2.1806017,41.4290997,('nou barris', 'vilapicina i la torre llobeta'),8,14
+2.18055556,41.42333333,('sant andreu', 'el congr\xc3\xa9s i els indians'),7,10
+2.12793,41.38798,('les corts', 'les corts'),9,21
+2.18116,41.42784,('nou barris', 'vilapicina i la torre llobeta'),15,19
+2.18425,41.42902,('sant andreu', 'sant andreu'),9,21
+2.18469717743,41.429966927,('sant andreu', 'sant andreu'),11,13
+2.18469717743,41.429966927,('sant andreu', 'sant andreu'),11,13
+2.18199962433,41.4259504008,('sant andreu', 'el congr\xc3\xa9s i els indians'),17,20
+2.18199962433,41.4259504008,('sant andreu', 'el congr\xc3\xa9s i els indians'),8,18
+2.18261,41.42885,('nou barris', 'vilapicina i la torre llobeta'),11,22
+2.17892,41.42962,('nou barris', 'vilapicina i la torre llobeta'),10,13
+2.18445,41.43005,('sant andreu', 'sant andreu'),9,23
+2.17817,41.4296,('nou barris', 'vilapicina i la torre llobeta'),8,20
+2.18099,41.43033,('nou barris', 'porta'),6,20
+2.186,41.43003,('sant andreu', 'sant andreu'),16,23
+2.1805601,41.4246407,('sant andreu', 'el congr\xc3\xa9s i els indians'),18,23
+2.1825199,41.42619,('sant andreu', 'el congr\xc3\xa9s i els indians'),11,12
+2.17892,41.4296188,('nou barris', 'vilapicina i la torre llobeta'),7,18
+2.18486309052,41.4285539004,('sant andreu', 'la sagrera'),10,13
+2.18486309052,41.4285539004,('sant andreu', 'la sagrera'),9,19
+2.1824546,41.4300906,('nou barris', 'vilapicina i la torre llobeta'),11,1
+2.178718,41.429443,('nou barris', 'vilapicina i la torre llobeta'),8,14
+2.1785199,41.43014,('nou barris', 'vilapicina i la torre llobeta'),9,13
+2.1785199,41.43014,('nou barris', 'vilapicina i la torre llobeta'),9,13
+2.17887,41.43013,('nou barris', 'vilapicina i la torre llobeta'),10,13
+2.1870628909,41.4300954685,('sant andreu', 'sant andreu'),13,15
+2.18577,41.42674,('sant andreu', 'la sagrera'),12,23
+2.18931555748,41.4250384541,('sant andreu', 'la sagrera'),10,22
+2.18629,41.4300308,('sant andreu', 'sant andreu'),8,21
+2.18920940216,41.4251539801,('sant andreu', 'la sagrera'),10,2
+2.18536,41.43003,('sant andreu', 'sant andreu'),10,20
+2.18752384186,41.4303397064,('sant andreu', 'sant andreu'),9,23
+2.18700677236,41.4266806026,('sant andreu', 'la sagrera'),10,20
+2.19054,41.42865,('sant andreu', 'sant andreu'),13,16
+2.1861,41.426239,('sant andreu', 'la sagrera'),10,14
+2.18717,41.42986,('sant andreu', 'sant andreu'),9,20
+2.1911299,41.42602,('sant andreu', 'la sagrera'),10,23
+2.1844001,41.4322395,('sant andreu', 'sant andreu'),7,21
+2.18989,41.4251999,('sant andreu', 'la sagrera'),17,22
+2.203,41.39961,('sant mart\xc3\xad', 'el poblenou'),8,1
+2.203,41.39961,('sant mart\xc3\xad', 'el poblenou'),8,1
+2.18714,41.43025,('sant andreu', 'sant andreu'),9,14
+2.18857,41.42659,('sant andreu', 'la sagrera'),10,13
+2.18691,41.43002,('sant andreu', 'sant andreu'),8,15
+2.18684,41.42719,('sant andreu', 'la sagrera'),9,21
+2.18684,41.42719,('sant andreu', 'la sagrera'),9,21
+2.18548954741,41.4292590404,('sant andreu', 'sant andreu'),9,19
+2.18422431794,41.4284458315,('nou barris', 'vilapicina i la torre llobeta'),9,18
+2.18790048416,41.4297312548,('sant andreu', 'sant andreu'),8,14
+2.18251,41.42974,('nou barris', 'vilapicina i la torre llobeta'),8,23
+2.18368,41.4334599,('sant andreu', 'sant andreu'),8,1
+2.18368,41.4334599,('sant andreu', 'sant andreu'),8,1
+2.12996,41.3778,('sants-montju\xc3\xafc', 'sants'),9,23
+2.18176895435,41.4268232345,('sant andreu', 'el congr\xc3\xa9s i els indians'),9,22
+2.18741769971,41.4284522454,('sant andreu', 'la sagrera'),9,16
+2.18888719202,41.4308603909,('sant andreu', 'sant andreu'),6,0
+2.18546,41.43083,('sant andreu', 'sant andreu'),8,15
+2.19229907444,41.4244171403,('sant andreu', 'la sagrera'),10,0
+2.19033,41.42458,('sant andreu', 'la sagrera'),13,0
+2.19124,41.42939,('sant andreu', 'sant andreu'),17,20
+2.19124,41.42939,('sant andreu', 'sant andreu'),17,20
+2.19046,41.42495,('sant andreu', 'la sagrera'),13,0
+2.19046,41.42495,('sant andreu', 'la sagrera'),13,0
+2.19135,41.42926,('sant andreu', 'sant andreu'),9,19
+2.19247,41.42999,('sant andreu', 'sant andreu'),10,13
+2.19247,41.42999,('sant andreu', 'sant andreu'),10,20
+2.19265,41.43001,('sant andreu', 'sant andreu'),9,19
+2.1921899,41.4299583,('sant andreu', 'sant andreu'),9,13
+2.192178,41.425667,('sant andreu', 'la sagrera'),11,1
+2.19293117523,41.4290687324,('sant andreu', 'sant andreu'),9,19
+2.19324,41.4253799,('sant andreu', 'la sagrera'),10,22
+2.19246,41.43112,('sant andreu', 'sant andreu'),9,23
+2.20245838165,41.4281355964,('sant mart\xc3\xad', 'la verneda i la pau'),9,18
+2.20219016075,41.4260802367,('sant mart\xc3\xad', 'la verneda i la pau'),8,19
+2.20219016075,41.4260802367,('sant mart\xc3\xad', 'la verneda i la pau'),8,14
+2.1938049,41.429388,('sant andreu', 'sant andreu'),9,14
+2.20445,41.42524,('sant mart\xc3\xad', 'la verneda i la pau'),7,22
+2.20445,41.42524,('sant mart\xc3\xad', 'la verneda i la pau'),7,22
+2.20559120178,41.4268163123,('sant mart\xc3\xad', 'la verneda i la pau'),9,18
+2.21863,41.42854,None,10,23
+2.21595078815,41.4092363245,('sant mart\xc3\xad', 'diagonal mar i el front mar\xc3\xadtim del poblenou'),11,0
+2.21595078815,41.4092363245,('sant mart\xc3\xad', 'diagonal mar i el front mar\xc3\xadtim del poblenou'),10,1
+2.22689,41.42584,None,10,14
+2.2197429,41.4286046,None,16,21
+2.11886111,41.422075,('sarri\xc3\xa0-sant gervasi', 'vallvidrera, el tibidabo i les planes'),11,20
+2.135326,41.423755,('gr\xc3\xa0cia', 'vallcarca i els penitents'),8,23
+2.135326,41.423755,('gr\xc3\xa0cia', 'vallcarca i els penitents'),8,0
+2.13445,41.42068,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,20
+2.1380799,41.4207191,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,18
+2.14463,41.42251,('horta-guinard\xc3\xb3', 'la teixonera'),9,22
+2.14463,41.42251,('horta-guinard\xc3\xb3', 'la teixonera'),9,21
+2.14011490136,41.420115874,('gr\xc3\xa0cia', 'vallcarca i els penitents'),16,20
+2.14011490136,41.420115874,('gr\xc3\xa0cia', 'vallcarca i els penitents'),16,20
+2.14180940445,41.4222336872,('horta-guinard\xc3\xb3', 'la teixonera'),10,14
+2.14180940445,41.4222336872,('horta-guinard\xc3\xb3', 'la teixonera'),10,14
+2.14345,41.4280014,('horta-guinard\xc3\xb3', 'montbau'),8,17
+2.15111553669,41.4228301417,('horta-guinard\xc3\xb3', 'el carmel'),10,13
+2.15287,41.42232,('horta-guinard\xc3\xb3', 'el carmel'),10,14
+2.15805286224,41.4241805637,('horta-guinard\xc3\xb3', 'el carmel'),10,22
+2.15805286224,41.4241805637,('horta-guinard\xc3\xb3', 'el carmel'),15,22
+2.15504,41.42103,('horta-guinard\xc3\xb3', 'el carmel'),10,14
+2.15504,41.42103,('horta-guinard\xc3\xb3', 'el carmel'),10,14
+2.15443,41.42411,('horta-guinard\xc3\xb3', 'el carmel'),9,21
+2.15538024902,41.4236386582,('horta-guinard\xc3\xb3', 'el carmel'),9,14
+2.1568608284,41.4248534254,('horta-guinard\xc3\xb3', 'el carmel'),9,13
+2.15557,41.42389,('horta-guinard\xc3\xb3', 'el carmel'),7,14
+2.15557,41.42389,('horta-guinard\xc3\xb3', 'el carmel'),7,14
+2.15933,41.42572,('horta-guinard\xc3\xb3', "la font d'en fargues"),9,19
+2.15624,41.42125,('horta-guinard\xc3\xb3', 'el carmel'),10,13
+2.15624,41.42125,('horta-guinard\xc3\xb3', 'el carmel'),10,13
+2.15119,41.42025,('horta-guinard\xc3\xb3', 'el carmel'),9,13
+2.15119,41.42025,('horta-guinard\xc3\xb3', 'el carmel'),9,13
+2.15965,41.42261,('horta-guinard\xc3\xb3', "la font d'en fargues"),9,13
+2.1270001,41.3687897,None,13,17
+2.16299772263,41.4282803943,('horta-guinard\xc3\xb3', 'horta'),10,14
+2.16299772263,41.4282803943,('horta-guinard\xc3\xb3', 'horta'),10,14
+2.16133,41.42549,('horta-guinard\xc3\xb3', "la font d'en fargues"),9,18
+2.16191,41.42907,('horta-guinard\xc3\xb3', 'horta'),10,20
+2.16096,41.42888,('horta-guinard\xc3\xb3', 'horta'),9,13
+2.1608901,41.4203911,('horta-guinard\xc3\xb3', 'el carmel'),9,20
+2.1643024,41.4221007667,('horta-guinard\xc3\xb3', "la font d'en fargues"),9,18
+2.1635301,41.4290504,('horta-guinard\xc3\xb3', 'horta'),9,19
+2.1635301,41.4290504,('horta-guinard\xc3\xb3', 'horta'),9,19
+2.17130054422,41.4275743823,('nou barris', 'vilapicina i la torre llobeta'),9,21
+2.17130054422,41.4275743823,('nou barris', 'vilapicina i la torre llobeta'),9,19
+2.17291116714,41.425818787,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,13
+2.172402665,41.42326976,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,20
+2.16649,41.42777,('nou barris', 'vilapicina i la torre llobeta'),17,20
+2.17318,41.42446,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,20
+2.17582941055,41.4244994558,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),11,22
+2.17465,41.42214,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),8,23
+2.17465,41.42214,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),8,23
+2.17465,41.42214,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),8,23
+2.1763899,41.4236107,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),10,10
+2.17932701111,41.4223072151,('sant andreu', 'el congr\xc3\xa9s i els indians'),9,19
+2.17932701111,41.4223072151,('sant andreu', 'el congr\xc3\xa9s i els indians'),9,19
+2.17892,41.4225693,('sant andreu', 'el congr\xc3\xa9s i els indians'),10,14
+2.1787899,41.42185,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,22
+2.17457950115,41.4197327463,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),10,18
+2.17457950115,41.4197327463,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,17
+2.17411661203,41.4214834806,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),10,21
+2.1751588583,41.4229427714,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),8,13
+2.17469751835,41.4281315743,('nou barris', 'vilapicina i la torre llobeta'),16,20
+2.17469751835,41.4281315743,('nou barris', 'vilapicina i la torre llobeta'),16,20
+2.17594856079,41.4232151777,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),16,21
+2.17289,41.42878,('nou barris', 'vilapicina i la torre llobeta'),8,21
+2.17507839203,41.4271220025,('nou barris', 'vilapicina i la torre llobeta'),10,20
+2.17547535896,41.4290848209,('nou barris', 'vilapicina i la torre llobeta'),9,18
+2.17523,41.42807,('nou barris', 'vilapicina i la torre llobeta'),10,14
+2.17523,41.42807,('nou barris', 'vilapicina i la torre llobeta'),10,20
+2.17202,41.4299,('nou barris', 'vilapicina i la torre llobeta'),9,14
+2.1742499,41.42958,('nou barris', 'vilapicina i la torre llobeta'),9,20
+2.1763,41.42577,('nou barris', 'vilapicina i la torre llobeta'),10,13
+2.17556923628,41.4225626452,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,18
+2.1824565,41.4242504,('sant andreu', 'el congr\xc3\xa9s i els indians'),10,14
+2.18151,41.4232903,('sant andreu', 'el congr\xc3\xa9s i els indians'),9,22
+2.1803499,41.42269,('sant andreu', 'el congr\xc3\xa9s i els indians'),12,2
+2.1803499,41.42269,('sant andreu', 'el congr\xc3\xa9s i els indians'),19,2
+2.17955,41.42458,('sant andreu', 'el congr\xc3\xa9s i els indians'),9,14
+2.1828,41.4208,('sant andreu', 'navas'),6,18
+2.1850901,41.4227791,('sant andreu', 'la sagrera'),13,16
+2.17971,41.42415,('sant andreu', 'el congr\xc3\xa9s i els indians'),8,14
+2.17631,41.4235,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),10,15
+2.18115091324,41.4225525889,('sant andreu', 'el congr\xc3\xa9s i els indians'),10,14
+2.18188,41.42442,('sant andreu', 'el congr\xc3\xa9s i els indians'),9,14
+2.17967,41.42494,('sant andreu', 'el congr\xc3\xa9s i els indians'),11,21
+2.1800799,41.4248581,('sant andreu', 'el congr\xc3\xa9s i els indians'),17,21
+2.1798,41.42466,('sant andreu', 'el congr\xc3\xa9s i els indians'),9,13
+2.18084,41.42161,('sant andreu', 'el congr\xc3\xa9s i els indians'),9,21
+2.18084,41.42161,('sant andreu', 'el congr\xc3\xa9s i els indians'),9,21
+2.17704,41.42738,('nou barris', 'vilapicina i la torre llobeta'),10,13
+2.17873,41.42279,('sant andreu', 'el congr\xc3\xa9s i els indians'),20,1
+2.17972511108,41.4243173256,('sant andreu', 'el congr\xc3\xa9s i els indians'),9,21
+2.18749,41.42083,('sant andreu', 'la sagrera'),7,21
+2.18607,41.41944,('sant andreu', 'navas'),10,14
+2.19063520432,41.4229709288,('sant andreu', 'la sagrera'),9,19
+2.19063520432,41.4229709288,('sant andreu', 'la sagrera'),8,20
+2.18913,41.42395,('sant andreu', 'la sagrera'),10,14
+2.18913,41.42395,('sant andreu', 'la sagrera'),10,14
+2.1858,41.42452,('sant andreu', 'la sagrera'),10,14
+2.193611,41.421667,('sant andreu', 'la sagrera'),6,22
+2.18973,41.4226699,('sant andreu', 'la sagrera'),8,23
+2.18997,41.42478,('sant andreu', 'la sagrera'),17,21
+2.19665408134,41.4229628839,('sant mart\xc3\xad', 'la verneda i la pau'),8,21
+2.19665408134,41.4229628839,('sant mart\xc3\xad', 'la verneda i la pau'),8,21
+2.197200482,41.42187761,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),13,16
+2.197200482,41.42187761,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),13,15
+2.18983,41.42001,('sant andreu', 'la sagrera'),17,21
+2.19975,41.42274,('sant mart\xc3\xad', 'la verneda i la pau'),9,14
+2.19833333,41.4175,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),7,9
+2.19798447547,41.4166941796,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),11,4
+2.20555,41.42283,('sant mart\xc3\xad', 'la verneda i la pau'),10,14
+2.19885,41.4243499,('sant mart\xc3\xad', 'la verneda i la pau'),8,20
+2.199274,41.424279,('sant mart\xc3\xad', 'la verneda i la pau'),9,19
+2.20056,41.42179,('sant mart\xc3\xad', 'la verneda i la pau'),9,23
+2.1991299,41.41986,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),7,21
+2.1991299,41.41986,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),7,21
+2.19888,41.42207,('sant mart\xc3\xad', 'la verneda i la pau'),8,23
+2.17672,41.42218,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,13
+2.1995821,41.424698,('sant mart\xc3\xad', 'la verneda i la pau'),9,18
+2.19923013504,41.4240679361,('sant mart\xc3\xad', 'la verneda i la pau'),10,14
+2.1986939013,41.4244282991,('sant mart\xc3\xad', 'la verneda i la pau'),8,21
+2.19962,41.42471,('sant mart\xc3\xad', 'la verneda i la pau'),10,13
+2.20225,41.42727,('sant mart\xc3\xad', 'la verneda i la pau'),9,18
+2.20225,41.42727,('sant mart\xc3\xad', 'la verneda i la pau'),5,17
+2.1986901,41.4230985,('sant mart\xc3\xad', 'la verneda i la pau'),9,14
+2.1986901,41.4230985,('sant mart\xc3\xad', 'la verneda i la pau'),8,14
+2.1992102,41.4237393,('sant mart\xc3\xad', 'la verneda i la pau'),9,21
+2.19806,41.423823,('sant mart\xc3\xad', 'la verneda i la pau'),6,16
+2.197982,41.424018,('sant mart\xc3\xad', 'la verneda i la pau'),9,16
+2.20080727394,41.4256366605,('sant mart\xc3\xad', 'la verneda i la pau'),9,13
+2.19787,41.42242,('sant mart\xc3\xad', 'la verneda i la pau'),10,13
+2.20161,41.4225,('sant mart\xc3\xad', 'la verneda i la pau'),9,13
+2.20031,41.42301,('sant mart\xc3\xad', 'la verneda i la pau'),10,14
+2.20415,41.41784,('sant mart\xc3\xad', 'la verneda i la pau'),9,13
+2.20415,41.41784,('sant mart\xc3\xad', 'la verneda i la pau'),9,13
+2.21096,41.42201,('sant mart\xc3\xad', 'la verneda i la pau'),10,0
+2.1581,41.39089,('eixample', "l'antiga esquerra de l'eixample"),10,23
+2.1581,41.39089,('eixample', "l'antiga esquerra de l'eixample"),13,15
+2.20909667725,41.4226321801,('sant mart\xc3\xad', 'la verneda i la pau'),10,19
+2.20909667725,41.4226321801,('sant mart\xc3\xad', 'la verneda i la pau'),10,19
+2.20897,41.4227599,('sant mart\xc3\xad', 'la verneda i la pau'),8,18
+2.20897,41.4227599,('sant mart\xc3\xad', 'la verneda i la pau'),9,19
+2.14944444,41.40611111,('sarri\xc3\xa0-sant gervasi', 'el putxet i el farr\xc3\xb3'),6,9
+2.21171,41.42263,None,9,23
+2.21032,41.42857,None,10,20
+2.20463,41.42383,('sant mart\xc3\xad', 'la verneda i la pau'),9,14
+2.20635,41.42354,('sant mart\xc3\xad', 'la verneda i la pau'),9,19
+2.20635,41.42354,('sant mart\xc3\xad', 'la verneda i la pau'),9,19
+2.20905774887,41.4227244343,('sant mart\xc3\xad', 'la verneda i la pau'),9,21
+2.20682,41.4237404,('sant mart\xc3\xad', 'la verneda i la pau'),10,13
+2.2042,41.42402,('sant mart\xc3\xad', 'la verneda i la pau'),9,13
+2.20722,41.42083,('sant mart\xc3\xad', 'la verneda i la pau'),9,14
+2.20722,41.42083,('sant mart\xc3\xad', 'la verneda i la pau'),9,14
+2.2070401,41.4252281,('sant mart\xc3\xad', 'la verneda i la pau'),9,16
+2.2070401,41.4252281,('sant mart\xc3\xad', 'la verneda i la pau'),9,16
+2.20366,41.42496,('sant mart\xc3\xad', 'la verneda i la pau'),9,19
+2.21015,41.4238281,('sant mart\xc3\xad', 'la verneda i la pau'),10,20
+2.21164,41.42255,None,8,21
+2.2089701,41.42276,('sant mart\xc3\xad', 'la verneda i la pau'),9,14
+2.20887422562,41.4234375356,('sant mart\xc3\xad', 'la verneda i la pau'),14,21
+2.22234,41.42354,None,12,0
+2.22317,41.42242,None,10,13
+2.16235,41.40994,('gr\xc3\xa0cia', "el camp d'en grassot i gr\xc3\xa0cia nova"),6,17
+2.13166,41.416111,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),11,4
+2.13166,41.416111,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),10,2
+2.13166,41.416111,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),11,4
+2.128246,41.4160549,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),10,17
+2.128246,41.4160549,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),10,17
+2.13213,41.41616,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),12,1
+2.13213,41.41616,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),18,2
+2.11416666667,41.4172222222,('sarri\xc3\xa0-sant gervasi', 'vallvidrera, el tibidabo i les planes'),7,12
+2.13083,41.41639,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),10,18
+2.13160918426,41.4161897649,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),13,15
+2.13160918426,41.4161897649,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),13,15
+2.13160918426,41.4161897649,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),13,15
+2.13409,41.41793,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,19
+2.13138927743,41.416167174,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),10,3
+2.13138927743,41.416167174,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),10,3
+2.13269,41.4156914,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,18
+2.13269,41.4156914,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,18
+2.13489741122,41.4169578385,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),9,13
+2.13489741122,41.4169578385,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),9,13
+2.13329070862,41.4165536231,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,15
+2.13143388,41.41618699,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),10,21
+2.13842868805,41.4166150888,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,17
+2.1345,41.41758,('gr\xc3\xa0cia', 'vallcarca i els penitents'),10,22
+2.13617,41.41623,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,19
+2.13855,41.4147301,('gr\xc3\xa0cia', 'vallcarca i els penitents'),10,20
+2.14117997832,41.4157208846,('gr\xc3\xa0cia', 'vallcarca i els penitents'),8,21
+2.14117997832,41.4157208846,('gr\xc3\xa0cia', 'vallcarca i els penitents'),8,21
+2.13837,41.41438,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,20
+2.13855,41.41473,('gr\xc3\xa0cia', 'vallcarca i els penitents'),6,23
+2.15235712725,41.4175986573,('horta-guinard\xc3\xb3', 'el carmel'),8,18
+2.14991,41.41858,('gr\xc3\xa0cia', 'el coll'),9,22
+2.14991,41.41858,('gr\xc3\xa0cia', 'el coll'),16,22
+2.14835,41.4189099,('gr\xc3\xa0cia', 'el coll'),10,14
+2.14765,41.41795,('gr\xc3\xa0cia', 'el coll'),10,21
+2.14509,41.41494,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,18
+2.14979,41.41952,('gr\xc3\xa0cia', 'el coll'),9,18
+2.15803,41.41679,('horta-guinard\xc3\xb3', 'can bar\xc3\xb3'),9,21
+2.15761470794,41.415456181,('gr\xc3\xa0cia', 'la salut'),6,23
+2.16127,41.41511,('horta-guinard\xc3\xb3', 'can bar\xc3\xb3'),10,19
+2.16127,41.41511,('horta-guinard\xc3\xb3', 'can bar\xc3\xb3'),10,20
+2.16313719749,41.4150763188,('horta-guinard\xc3\xb3', 'can bar\xc3\xb3'),9,14
+2.16247046049,41.4147815166,('horta-guinard\xc3\xb3', 'can bar\xc3\xb3'),16,21
+2.1721720105,41.4175512907,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,21
+2.1721720105,41.4175512907,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,9
+2.1714699,41.41796,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,14
+2.16922,41.41545,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),9,13
+2.16922,41.41545,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),10,13
+2.1714771741,41.4179210972,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,14
+2.1714771741,41.4179210972,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,20
+2.1734661883,41.4171653059,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,19
+2.1734661883,41.4171653059,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,19
+2.17419,41.41849,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),16,0
+2.17368900776,41.417061627,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),7,22
+2.17925,41.4189999,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),19,23
+2.1768401,41.4162712,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),16,20
+2.17079871948,41.4153628384,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,14
+2.17901,41.41824,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),10,18
+2.17777370731,41.4162094553,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),15,19
+2.17442393303,41.4186184523,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),10,20
+2.17542,41.41808,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),10,19
+2.17845,41.42067,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,19
+2.17905879021,41.4190046358,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),8,14
+2.1804,41.41885,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),20,0
+2.1804,41.41885,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),20,23
+2.18138,41.41829,('sant andreu', 'navas'),21,2
+2.18231936596,41.4163558698,('sant mart\xc3\xad', "el camp de l'arpa del clot"),6,23
+2.17971,41.41901,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,19
+2.17430591583,41.4186667254,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,22
+2.1758,41.41702,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,20
+2.17634,41.40576,('eixample', 'la sagrada fam\xc3\xadlia'),10,14
+2.17634,41.40576,('eixample', 'la sagrada fam\xc3\xadlia'),9,21
+2.17446,41.41619,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),10,23
+2.1819799,41.41527,('sant mart\xc3\xad', "el camp de l'arpa del clot"),13,17
+2.18231,41.41577,('sant mart\xc3\xad', "el camp de l'arpa del clot"),16,20
+2.18231,41.41577,('sant mart\xc3\xad', "el camp de l'arpa del clot"),16,20
+2.17898,41.42152,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),10,13
+2.17458,41.41661,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),13,16
+2.17458,41.41661,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),13,16
+2.179282,41.419136,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,21
+2.18192,41.41523,('sant mart\xc3\xad', "el camp de l'arpa del clot"),10,14
+2.17489,41.41601,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),6,23
+2.18596,41.41962,('sant andreu', 'navas'),9,14
+2.18632221222,41.4191977267,('sant andreu', 'navas'),10,13
+2.18767404556,41.4198976763,('sant andreu', 'la sagrera'),9,21
+2.18895,41.41816,('sant andreu', 'navas'),10,20
+2.18895,41.41816,('sant andreu', 'navas'),10,20
+2.18895,41.41816,('sant andreu', 'navas'),10,20
+2.1925,41.40493,('sant mart\xc3\xad', 'el parc i la llacuna del poblenou'),10,22
+2.1925,41.40493,('sant mart\xc3\xad', 'el parc i la llacuna del poblenou'),10,22
+2.18916,41.41563,('sant andreu', 'navas'),7,17
+2.1846199,41.41517,('sant mart\xc3\xad', "el camp de l'arpa del clot"),18,23
+2.18673935715,41.4211640718,('sant andreu', 'la sagrera'),8,14
+2.18673935715,41.4211640718,('sant andreu', 'la sagrera'),9,18
+2.18977,41.4160899,('sant andreu', 'navas'),10,20
+2.1886,41.41786,('sant andreu', 'navas'),7,22
+2.18662,41.41972,('sant andreu', 'navas'),8,12
+2.19407,41.41434,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),6,23
+2.194116,41.415037,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),9,21
+2.19634,41.41737,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),9,14
+2.19647,41.41941,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),8,14
+2.19647,41.41941,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),7,14
+2.19394,41.41696,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),7,21
+2.19521,41.41519,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),17,23
+2.19768,41.41768,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),7,20
+2.19768,41.41768,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),8,13
+2.19519,41.41845,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),18,22
+2.20198,41.41771,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),7,23
+2.20198,41.41771,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),7,23
+2.19923973084,41.4162288911,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),9,22
+2.19923973084,41.4162288911,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),8,23
+2.20074,41.41876,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),7,18
+2.20105,41.41579,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),17,21
+2.20067968336,41.4144315292,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),17,0
+2.20098,41.41846,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),9,14
+2.19554,41.41704,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),10,14
+2.1988699,41.4179916,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),6,0
+2.20014,41.42021,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),9,19
+2.19907993134,41.4198362137,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),9,14
+2.20591,41.4198499,('sant mart\xc3\xad', 'la verneda i la pau'),10,19
+2.2052299,41.39792,('sant mart\xc3\xad', 'el poblenou'),10,13
+2.20737066889,41.4188525567,('sant mart\xc3\xad', 'la verneda i la pau'),9,3
+2.2102599,41.4156303,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),11,23
+2.2102599,41.4156303,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),11,23
+2.2104957,41.4204913,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),6,12
+2.20868,41.41679,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),9,20
+2.2070501,41.4169039,('sant mart\xc3\xad', 'proven\xc3\xa7als del poblenou'),11,20
+2.20443,41.41856,('sant mart\xc3\xad', 'la verneda i la pau'),8,1
+2.20932483673,41.4162288911,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),7,16
+2.20373,41.4192,('sant mart\xc3\xad', 'la verneda i la pau'),9,21
+2.20373,41.4192,('sant mart\xc3\xad', 'la verneda i la pau'),9,21
+2.2025214,41.4168453,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),9,23
+2.2067199,41.41552,('sant mart\xc3\xad', 'proven\xc3\xa7als del poblenou'),8,17
+2.2053001,41.4186211,('sant mart\xc3\xad', 'la verneda i la pau'),7,14
+2.2053001,41.4186211,('sant mart\xc3\xad', 'la verneda i la pau'),7,2
+2.2058815,41.4202224,('sant mart\xc3\xad', 'la verneda i la pau'),9,20
+2.2007965451,41.4167306298,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),8,18
+2.2007965451,41.4167306298,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),8,18
+2.20562,41.42038,('sant mart\xc3\xad', 'la verneda i la pau'),8,14
+2.2041028,41.4170494,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),13,15
+2.20755,41.41957,('sant mart\xc3\xad', 'la verneda i la pau'),18,22
+2.2051,41.42076,('sant mart\xc3\xad', 'la verneda i la pau'),7,23
+2.20668,41.42025,('sant mart\xc3\xad', 'la verneda i la pau'),9,20
+2.20668,41.42025,('sant mart\xc3\xad', 'la verneda i la pau'),7,10
+2.21062,41.41822,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),9,17
+2.21062,41.41822,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),9,13
+2.20058,41.41921,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),8,20
+2.20058,41.41921,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),10,13
+2.20448726471,41.4147835299,('sant mart\xc3\xad', 'proven\xc3\xa7als del poblenou'),9,13
+2.20448726471,41.4147835299,('sant mart\xc3\xad', 'proven\xc3\xa7als del poblenou'),9,20
+2.20541,41.418574,('sant mart\xc3\xad', 'la verneda i la pau'),9,19
+2.20546245575,41.4201712177,('sant mart\xc3\xad', 'la verneda i la pau'),9,21
+2.20579,41.42071,('sant mart\xc3\xad', 'la verneda i la pau'),9,13
+2.20579,41.42071,('sant mart\xc3\xad', 'la verneda i la pau'),9,13
+2.20826,41.418053,('sant mart\xc3\xad', 'proven\xc3\xa7als del poblenou'),9,14
+2.20524,41.42171,('sant mart\xc3\xad', 'la verneda i la pau'),9,21
+2.20672,41.41467,('sant mart\xc3\xad', 'proven\xc3\xa7als del poblenou'),8,13
+2.216111,41.415,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),8,20
+2.21182,41.41648,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),8,22
+2.21182,41.41648,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),8,22
+2.21252,41.41679,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),10,14
+2.21252,41.41679,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),10,14
+2.2152599,41.41825,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),0,0
+2.2112999,41.4155312,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),8,14
+2.20848,41.41705,('sant mart\xc3\xad', 'proven\xc3\xa7als del poblenou'),9,19
+2.20848,41.41705,('sant mart\xc3\xad', 'proven\xc3\xa7als del poblenou'),9,19
+2.2088199,41.41605,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),7,17
+2.2088199,41.41605,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),8,17
+2.21426010132,41.4148449973,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),9,17
+2.21641,41.41693,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),10,19
+2.217621862,41.4158376802,('sant mart\xc3\xad', 'el bes\xc3\xb2s i el maresme'),9,17
+2.2275824,41.4160753,None,10,3
+2.22629785538,41.4143783287,None,10,19
+2.1308789,41.4133492,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),10,20
+2.1308789,41.4133492,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),10,20
+2.12660321293,41.4103798939,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,22
+2.12660321293,41.4103798939,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,22
+2.12957,41.41468,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,23
+2.12957,41.41468,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,23
+2.13654,41.41064,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),13,16
+2.13447,41.41346,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),13,23
+2.13447,41.41346,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),13,23
+2.13447,41.41346,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),11,1
+2.13804244995,41.4109667191,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),7,22
+2.12959,41.41096,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,23
+2.12959,41.41096,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),7,23
+2.1326599,41.4113998,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,22
+2.1326599,41.4113998,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,21
+2.14268916901,41.4135927128,('gr\xc3\xa0cia', 'vallcarca i els penitents'),10,14
+2.18103427646,41.3850442779,('ciutat vella', 'sant pere, santa caterina i la ribera'),10,17
+2.18103427646,41.3850442779,('ciutat vella', 'sant pere, santa caterina i la ribera'),10,17
+2.1408801,41.4132614,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,21
+2.1370664,41.4100533,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,23
+2.1370664,41.4100533,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),10,22
+2.13649637792,41.4143040808,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,12
+2.13816314936,41.4108339523,('sarri\xc3\xa0-sant gervasi', 'el putxet i el farr\xc3\xb3'),10,20
+2.14057,41.4120599,('gr\xc3\xa0cia', 'vallcarca i els penitents'),8,19
+2.13946,41.41266,('sarri\xc3\xa0-sant gervasi', 'el putxet i el farr\xc3\xb3'),9,14
+2.13872,41.41119,('sarri\xc3\xa0-sant gervasi', 'el putxet i el farr\xc3\xb3'),8,0
+2.13872,41.41119,('sarri\xc3\xa0-sant gervasi', 'el putxet i el farr\xc3\xb3'),9,11
+2.14548,41.41311,('gr\xc3\xa0cia', 'vallcarca i els penitents'),8,20
+2.13966,41.41888,('gr\xc3\xa0cia', 'vallcarca i els penitents'),6,22
+2.13966,41.41888,('gr\xc3\xa0cia', 'vallcarca i els penitents'),6,23
+2.16941,41.38601,('eixample', "la dreta de l'eixample"),9,20
+2.14125150497,41.4100040374,('sarri\xc3\xa0-sant gervasi', 'el putxet i el farr\xc3\xb3'),7,22
+2.14125150497,41.4100040374,('sarri\xc3\xa0-sant gervasi', 'el putxet i el farr\xc3\xb3'),7,22
+2.13827961739,41.4145823799,('gr\xc3\xa0cia', 'vallcarca i els penitents'),7,17
+2.13827961739,41.4145823799,('gr\xc3\xa0cia', 'vallcarca i els penitents'),8,20
+2.1622499,41.38631,('eixample', "l'antiga esquerra de l'eixample"),20,0
+2.1622499,41.38631,('eixample', "l'antiga esquerra de l'eixample"),20,1
+2.1622499,41.38631,('eixample', "l'antiga esquerra de l'eixample"),8,16
+2.1418979,41.4122505,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,14
+2.14286083038,41.414638702,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,13
+2.14286083038,41.414638702,('gr\xc3\xa0cia', 'vallcarca i els penitents'),8,21
+2.13651,41.41089,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),8,21
+2.1395199,41.4120216,('sarri\xc3\xa0-sant gervasi', 'el putxet i el farr\xc3\xb3'),8,20
+2.1381199,41.41165,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),9,17
+2.1381199,41.41165,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - la bonanova'),9,17
+2.1381899,41.41367,('sarri\xc3\xa0-sant gervasi', 'el putxet i el farr\xc3\xb3'),10,20
+2.1381899,41.41367,('sarri\xc3\xa0-sant gervasi', 'el putxet i el farr\xc3\xb3'),10,20
+2.13994557667,41.4014368023,('sarri\xc3\xa0-sant gervasi', 'sant gervasi - galvany'),7,14
+2.14209,41.41081,('sarri\xc3\xa0-sant gervasi', 'el putxet i el farr\xc3\xb3'),7,16
+2.13806,41.4140299,('gr\xc3\xa0cia', 'vallcarca i els penitents'),10,14
+2.1378499,41.41366,('sarri\xc3\xa0-sant gervasi', 'el putxet i el farr\xc3\xb3'),10,20
+2.13857,41.41363,('gr\xc3\xa0cia', 'vallcarca i els penitents'),8,0
+2.13857,41.41363,('gr\xc3\xa0cia', 'vallcarca i els penitents'),7,0
+2.161880386,41.412021561,('gr\xc3\xa0cia', "el camp d'en grassot i gr\xc3\xa0cia nova"),11,14
+2.16346019562,41.3733495793,('sants-montju\xc3\xafc', 'el poble sec'),9,20
+2.16346019562,41.3733495793,('sants-montju\xc3\xafc', 'el poble sec'),9,20
+2.1530975231,41.4139616193,('gr\xc3\xa0cia', 'la salut'),8,21
+2.1530975231,41.4139616193,('gr\xc3\xa0cia', 'la salut'),8,20
+2.14547866638,41.4110178985,('gr\xc3\xa0cia', 'vallcarca i els penitents'),8,0
+2.1511,41.41147,('gr\xc3\xa0cia', 'la salut'),16,20
+2.14786,41.41077,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,14
+2.14786,41.41077,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,14
+2.14652,41.41055,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,13
+2.14652,41.41055,('gr\xc3\xa0cia', 'vallcarca i els penitents'),9,13
+2.15369,41.41247,('gr\xc3\xa0cia', 'la salut'),10,19
+2.15369,41.41247,('gr\xc3\xa0cia', 'la salut'),10,18
+2.15819,41.4123,('gr\xc3\xa0cia', 'la salut'),7,0
+2.15819,41.4123,('gr\xc3\xa0cia', 'la salut'),13,16
+2.15391476936,41.410500649,('gr\xc3\xa0cia', 'la salut'),9,13
+2.15718698528,41.4111405217,('gr\xc3\xa0cia', 'la salut'),9,21
+2.15718698528,41.4111405217,('gr\xc3\xa0cia', 'la salut'),9,21
+2.15901845749,41.4140754791,('gr\xc3\xa0cia', 'la salut'),9,18
+2.15901845749,41.4140754791,('gr\xc3\xa0cia', 'la salut'),9,19
+2.15955,41.41299,('gr\xc3\xa0cia', 'la salut'),10,22
+2.162244,41.412639,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),10,14
+2.16527778,41.41305556,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),6,16
+2.1601499,41.41201,('gr\xc3\xa0cia', 'la salut'),9,20
+2.1598,41.41063,('gr\xc3\xa0cia', "el camp d'en grassot i gr\xc3\xa0cia nova"),9,14
+2.1598,41.41063,('gr\xc3\xa0cia', "el camp d'en grassot i gr\xc3\xa0cia nova"),9,14
+2.16452,41.41102,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),10,18
+2.16073,41.41229,('gr\xc3\xa0cia', 'la salut'),10,13
+2.16073,41.41229,('gr\xc3\xa0cia', 'la salut'),10,13
+2.16537952423,41.413219689,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),9,18
+2.1653008,41.4142525,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),10,14
+2.1653008,41.4142525,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),10,14
+2.162297,41.4121016,('gr\xc3\xa0cia', "el camp d'en grassot i gr\xc3\xa0cia nova"),7,23
+2.17054,41.41255,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),6,22
+2.17054,41.41255,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),6,23
+2.17060023602,41.4122731332,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),12,17
+2.1635692,41.413644,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),12,23
+2.16399,41.40986,('gr\xc3\xa0cia', "el camp d'en grassot i gr\xc3\xa0cia nova"),8,14
+2.17095,41.41223,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),10,14
+2.16906,41.4132,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),10,14
+2.16906,41.4132,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),10,14
+2.17038989067,41.4111678803,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),9,14
+2.17038989067,41.4111678803,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),9,14
+2.172,41.41281,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),9,19
+2.1668429,41.411694,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),10,14
+2.17177638467,41.4121816065,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),10,23
+2.17088,41.41794,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,19
+2.16844,41.41563,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),7,0
+2.16889,41.41354,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),8,20
+2.19688904243,41.3850811182,('ciutat vella', 'la barceloneta'),12,6
+2.19688904243,41.3850811182,('ciutat vella', 'la barceloneta'),12,23
+2.16572398003,41.4148720357,('horta-guinard\xc3\xb3', 'can bar\xc3\xb3'),10,13
+2.16572398003,41.4148720357,('horta-guinard\xc3\xb3', 'can bar\xc3\xb3'),10,13
+2.16422080994,41.4109506262,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),10,13
+2.15105,41.39355,('eixample', "l'antiga esquerra de l'eixample"),13,23
+2.15105,41.39355,('eixample', "l'antiga esquerra de l'eixample"),13,23
+2.164103,41.4121727,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),12,18
+2.17429296076,41.4116055496,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,0
+2.17429296076,41.4116055496,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),10,18
+2.17429296076,41.4116055496,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),10,18
+2.20799,41.40085,('sant mart\xc3\xad', 'diagonal mar i el front mar\xc3\xadtim del poblenou'),8,17
+2.20799,41.40085,('sant mart\xc3\xad', 'diagonal mar i el front mar\xc3\xadtim del poblenou'),8,17
+2.17274,41.40986,('eixample', 'la sagrada fam\xc3\xadlia'),9,20
+2.17372,41.41012,('eixample', 'la sagrada fam\xc3\xadlia'),8,20
+2.1708599,41.41036,('horta-guinard\xc3\xb3', 'el baix guinard\xc3\xb3'),10,23
+2.17829704285,41.4134771662,('sant mart\xc3\xad', "el camp de l'arpa del clot"),8,20
+2.17823477969,41.4133292607,('sant mart\xc3\xad', "el camp de l'arpa del clot"),7,3
+2.17367404755,41.4106638536,('eixample', 'la sagrada fam\xc3\xadlia'),12,23
+2.17367404755,41.4106638536,('eixample', 'la sagrada fam\xc3\xadlia'),12,23
+2.17464923859,41.413219689,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,18
+2.17143539698,41.4189868453,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,13
+2.17143539698,41.4189868453,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),8,9
+2.17591,41.41054,('eixample', 'la sagrada fam\xc3\xadlia'),10,14
+2.17879352598,41.4141412299,('sant mart\xc3\xad', "el camp de l'arpa del clot"),9,11
+2.18248,41.41043,('sant mart\xc3\xad', "el camp de l'arpa del clot"),9,22
+2.18248,41.41043,('sant mart\xc3\xad', "el camp de l'arpa del clot"),9,22
+2.18117,41.4109399,('sant mart\xc3\xad', "el camp de l'arpa del clot"),19,23
+2.18117,41.4109399,('sant mart\xc3\xad', "el camp de l'arpa del clot"),19,23
+2.178,41.41067,('sant mart\xc3\xad', "el camp de l'arpa del clot"),7,20
+2.1747899,41.41095,('eixample', 'la sagrada fam\xc3\xadlia'),12,23
+2.17728232686,41.41386158,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,20
+2.17728232686,41.41386158,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,20
+2.17908,41.4148799,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),10,14
+2.17904806137,41.410162068,('sant mart\xc3\xad', "el camp de l'arpa del clot"),18,1
+2.18235,41.41119,('sant mart\xc3\xad', "el camp de l'arpa del clot"),9,19
+2.17667812164,41.4131099429,('horta-guinard\xc3\xb3', 'el guinard\xc3\xb3'),9,19
+2.18623,41.41258,('sant mart\xc3\xad', "el camp de l'arpa del clot"),3,2
+2.18973,41.41205,('sant mart\xc3\xad', 'el clot'),10,14
+2.18723,41.41116,('sant mart\xc3\xad', 'el clot'),21,3
+2.1884766,41.4109964,('sant mart\xc3\xad', 'el clot'),17,20
+2.1884766,41.4109964,('sant mart\xc3\xad', 'el clot'),17,20
+2.1844199,41.41012,('sant mart\xc3\xad', "el camp de l'arpa del clot"),18,20
+2.1844199,41.41012,('sant mart\xc3\xad', "el camp de l'arpa del clot"),11,13
+2.18813,41.41422,('sant mart\xc3\xad', 'el clot'),12,16
+2.18813,41.41422,('sant mart\xc3\xad', 'el clot'),13,16
+2.1858101,41.41045,('sant mart\xc3\xad', "el camp de l'arpa del clot"),9,20
+2.19046,41.41336,('sant mart\xc3\xad', 'el clot'),7,23
+2.19046,41.41336,('sant mart\xc3\xad', 'el clot'),7,23
+2.1842899,41.4130783,('sant mart\xc3\xad', "el camp de l'arpa del clot"),10,14
+2.1842899,41.4130783,('sant mart\xc3\xad', "el camp de l'arpa del clot"),10,14
+2.1783,41.41064,('sant mart\xc3\xad', "el camp de l'arpa del clot"),18,2
+2.17972222222,41.3913888889,('eixample', "la dreta de l'eixample"),7,9
+2.18163,41.41126,('sant mart\xc3\xad', "el camp de l'arpa del clot"),12,16
+2.18912,41.4114,('sant mart\xc3\xad', 'el clot'),10,23
+2.18454,41.41021,('sant mart\xc3\xad', "el camp de l'arpa del clot"),6,21
+2.1859,41.41123,('sant mart\xc3\xad', "el camp de l'arpa del clot"),8,23
+2.13306,41.3753699,('sants-montju\xc3\xafc', 'sants'),6,21
+2.187726,41.417287,('sant andreu', 'navas'),10,14
+2.19461673553,41.414751346,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),7,0
+2.19281852245,41.4108822312,('sant mart\xc3\xad', 'el clot'),8,22
+2.19556,41.4123,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),17,20
+2.19211,41.41077,('sant mart\xc3\xad', 'el clot'),8,0
+2.1952,41.41651,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),10,14
+2.18966670631,41.3687841035,('ciutat vella', 'la barceloneta'),9,2
+2.18966670631,41.3687841035,('ciutat vella', 'la barceloneta'),8,22
+2.1974999,41.41599,('sant mart\xc3\xad', 'sant mart\xc3\xad de proven\xc3\xa7als'),8,20
