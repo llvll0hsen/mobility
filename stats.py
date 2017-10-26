@@ -17,9 +17,11 @@ import pandas as pd
 from google_account import account
 from util import output_path_files, output_path_plots,connect_monogdb, reverse_geo_mongodb
 
-app = account['mohsen']
-gmaps = googlemaps.Client(key = app['api_key'])
+#app = account['mohsen']
+#gmaps = googlemaps.Client(key = app['api_key'])
 
+output_path_files =  os.path.join(output_path_files,"london")
+output_path_plots =  os.path.join(output_path_plots,"venues","london")
 
 def reverse_geo_osm(lat,lon):
     api_req = "http://nominatim.openstreetmap.org/reverse?format=json&lat={0}&lon={1}&zoom=18&addressdetails=1".format(lat,lon)
@@ -86,7 +88,7 @@ def neighborhood_price_dist(records):
                         #for google
                         p_tags.append(p)
             if p_tags:
-                print p_tags
+#                print p_tags
                 f.writelines("\n{0};{1};{2};{3};{4}".format(lon,lat,ne[0],ne[1],float(sum(p_tags))/len(p_tags)))
     f.close()
     client.close()
@@ -146,15 +148,15 @@ def categories_with_hour(records):
     plt.close()
 
 def create_lat_lon_file(records):
-    with open('loc.txt','wb') as f:
+    with open(os.path.join(output_path_files,'loc.txt'),'wb') as f:
         for i in records:
             lat,lon = i['geolocation']['coordinates']
             city = (i['address']['city'])
-            if city:
-                if city == 'Barcelona':
-
+#            if city:
+#                if city == 'Barcelona':
+#
                 #if (city in ['Barcellona','Barcelna']) or ('Barcelona' in city):
-                    f.write('\n{0} {1}'.format(lon,lat))
+            f.write('\n{0} {1}'.format(lon,lat))
 
 def tag_clouds(records):
     tags_list = []
@@ -176,7 +178,7 @@ def time_dist(records):
                     slots = set()
                     for tr in time_records:
                         if tr:
-                            print tr
+#                            print tr
                             temp = tr[0]
                             topen = datetime.strptime(temp['open'], "%H:%M").timetz().hour
                             tclose = datetime.strptime(temp['close'], "%H:%M").timetz().hour
@@ -185,6 +187,7 @@ def time_dist(records):
                                 slots.add(s)
                                 source_time_dist[source].update(range(topen,tclose))
     for source, time_dist in source_time_dist.iteritems():
+        print source
         fig,ax = plt.subplots()
         ax.hist(list(time_dist.elements()),15,normed=True, alpha=0.75)
         ax.set_title(source)
@@ -240,6 +243,7 @@ def with_hours(records):
     plt.close()
     print 'number/ratio of records with hours: ',count_valid,count_valid/float(n)
     client.close()
+
 def with_ratings(records):
     source_ratings = defaultdict(int)
     source_loc_with_tag = defaultdict(set)
@@ -266,7 +270,7 @@ def with_ratings(records):
     ax.bar(x,counts, align="center")
     ax.set_xticks(x)
     ax.set_xticklabels(source,rotation=45)
-    plt.savefig('ratings_ratio.pdf',bbox_inches='tight')
+    plt.savefig(os.path.join(output_path_plots,'ratings_ratio.pdf'),bbox_inches='tight')
     plt.close()
 
 def with_price_tag(records):
@@ -279,13 +283,10 @@ def with_price_tag(records):
     for r in records:
         prices = r['price']
         name = r['name']
-        check_in = {"facebook":False,"google":False,"foursquare":False}
+        check_in = {"facebook":False,"google":False,"foursquare":False,"tripadvisor":False}
         for source, p_tag in prices.iteritems():
             source_count[source]+=1.
             if p_tag:
-                if source == "google":
-                    print name
-                    print prices
                 check_in[source] = True
                 #print prices
                 source_loc_with_tag[source].add(name)
@@ -297,8 +298,8 @@ def with_price_tag(records):
         fb = check_in["facebook"]
         fs = check_in["foursquare"]
         go = check_in["google"]
-        if fb==False or fs == False or go==True:
-            pass
+#        if fb==False or fs == False or go==True:
+#            pass
 
 #    per_source_names = source_loc_with_tag.values()
 #    intersections = set.intersection(*per_source_names)
@@ -319,7 +320,8 @@ def with_price_tag(records):
         print stars
         print count
         count = np.array(count,dtype='float')
-        data[i,:] = count/sum(count)
+        for j in xrange(len(count)):
+            data[i,j] = count[j]#/sum(count)
         i+=1
      
     print data 
@@ -336,7 +338,7 @@ def with_price_tag(records):
     ax.get_yaxis().tick_left()
     ax.legend(loc='upper center',ncol=4,frameon=True,bbox_to_anchor=(0.5, 1.2),fontsize=25)#fancybox=True)
  
-    plt.savefig(os.path.join(output_path_plots,'price_tags_cat_ratio.pdf'),bbox_inches='tight')
+    plt.savefig(os.path.join(output_path_plots,'price_tags_cat.pdf'),bbox_inches='tight')
     plt.close()
 
 def source_cat_count(records):
@@ -370,7 +372,8 @@ def source_cat_count(records):
         plt.close()
         
 if __name__ == '__main__':
-    f = open('geosegmentation.venues.json','rb')
+    f = open('london.venues.json','rb')
+#    f = open('geosegmentation.venues.json','rb')
     records = json.load(f)
 #    neighborhood_price_dist(records)
 #    plot_neighborhood_price_dist()
@@ -382,4 +385,4 @@ if __name__ == '__main__':
 #    with_hours(records)
 #    time_dist(records)
 #    tag_clouds(records)
-#    price_cat_loc(records)
+    price_cat_loc(records)
