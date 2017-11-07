@@ -16,6 +16,25 @@ output_path_plots = os.path.join(output_path_plots,"mobility")
 output_path_files = os.path.join(output_path_files,"mobility")
 
 
+def anthena_neighborhood():
+    anthena_loc = dill.load(open(os.path.join(output_path_files,"anthena_loc_london_only.dill"),"rb"))
+    collection,client = connect_monogdb()
+    anthena_ne = {}
+    for anthena_id, loc in anthena_loc.iteritems():
+#        print loc
+        lon,lat =  loc
+        try:
+            ne = reverse_geo_mongodb(float(lat.strip()),float(lon.strip()),collection)
+            anthena_ne[anthena_id] = ne[0]
+        except Exception as err:
+            print err
+            print loc
+            pass
+
+    dill.dump(anthena_ne, open(os.path.join(output_path_files,"anthena_ne_london_only.dill"),"wb"))
+    client.close()
+
+
 def home_location():
     month = "august"
     f =  open(os.path.join(output_path_files, "user_anthena_{0}_00_04.txt".format(month)),"rb")
@@ -70,25 +89,47 @@ def find_home_location():
         #find top anthena:
         
     f =  open(os.path.join(output_path_files, "user_top_anthena_{0}_00_04.txt".format(month)),"wb")
-    f.writelines("user_id, top_anthena, lon,lat")
+    f.write("user_id, top_anthena, lon, lat\n")
+
     f2 =  open(os.path.join(output_path_files, "missing_anthenas.txt".format(month)),"wb")
     
     user_count = 0.
     missing_counts = 0
     for user, anthena_info in user_anthena_duration.iteritems():
+#        print user
         user_count+=1.
         top_anthena = sorted(anthena_info.items(),key=operator.itemgetter(1),reverse=True)[0]
         try:
-            print "found anthena"
+#            print "found anthena"
             lon,lat = anthena_loc[top_anthena[0]]
+            f.write("{0},{1},{2},{3}".format(user,top_anthena[0],lon,lat))
         except Exception as err:
-            print "missing anthena", top_anthena
-            f2.writelines("{0}\n".format(top_anthena[0]))
+#            print "missing anthena", top_anthena
+            f2.write("{0}\n".format(top_anthena[0]))
             missing_counts+=1
 
-        f.writelines("\n{0},{1},{2},{3}".format(user_id,top_anthena[0],lon,lat))
     f.close()
     f2.close()
+
+def home_location_london_only():
+    collection,client = connect_monogdb()
+    
+    month = "august"
+    f =  open(os.path.join(output_path_files, "user_top_anthena_{0}_00_04.txt".format(month)),"rb")
+    f_out =  open(os.path.join(output_path_files, "user_top_anthena_london_only_{0}_00_04.txt".format(month)),"wb")
+    f_out.writelines("user_id,top_anthena,lon,lat,neighborhood")
+    f.next()
+    for line in f:
+#        print line
+        user_id, top_anthena, lon, lat = line.strip().split(",")
+#        print lon,lat
+        ne = reverse_geo_mongodb(float(lat),float(lon),collection)
+        if ne:
+#            print ne
+            f_out.writelines("\n{0},{1},{2},{3},{4}".format(user_id,top_anthena,lon,lat,ne[0]))
+    f.close()
+    f_out.close()
+    client.close()
 
 
 def plot_cdf(data):
@@ -125,8 +166,11 @@ def plot_boxplot(data,title):
 
 if __name__ == "__main__":
     
-    find_home_location()
-    sys.exit()
+#    home_location_london_only()
+##    find_home_location()
+#    anthena_neighborhood()
+#
+#    sys.exit()
     time_slice = "hour=all"
     month = "august"
     
@@ -137,10 +181,10 @@ if __name__ == "__main__":
     user_gyration = defaultdict(list)
     user_totDuration = defaultdict(list)
     anthena_timespent =  defaultdict(list) 
-#    user_anthena = defaultdict(list)
+    user_anthena = defaultdict(Counter)
     
     print path
-    f_user_anthena =  open(os.path.join(output_path_files, "user_anthena_{0}_00_04.txt".format(month)),"wb")
+    f_user_anthena =  open(os.path.join(output_path_files, "user_anthena_{0}_all.txt".format(month)),"wb")
     f_user_anthena.writelines("user_id,anthena_id,duration,date,weekday,time_slice")
 
     for d in months_folders:
@@ -150,7 +194,7 @@ if __name__ == "__main__":
         weekday = datetime_date.weekday()
 
         path2 = os.path.join(path, d)
-        time_sliced_hours =["hour=00-04"] #os.listdir(path2)
+        time_sliced_hours = ["hour=all"]#os.listdir(path2) #["hour=00-04"] 
         for ts in time_sliced_hours:
             print ts
             try:
@@ -187,21 +231,28 @@ if __name__ == "__main__":
                             print duration
                             print line
                             print a
-                            sys.exit()
+#                            sys.exit()
 
                         anthena_timespent[anthena_id].append(duration)
-                        #user_anthena[user_id].append((anthena_info[i],anthena_info[i+1]))
+#                        print user_id, anthena_id
+                        user_anthena[user_id].update([anthena_id])
+#                        user_anthena[user_id].append((anthena_info[i],anthena_info[i+1]))
                         f_user_anthena.writelines("\n{0},{1},{2},{3},{4},{5}".format(user_id,anthena_id,duration,date_str,weekday,ts))
         
 
-
+    print user_anthena.items()
 #    plot_boxplot(user_gyration,"gyration")
 #    plot_boxplot(user_bbdiagonal,"bbdiagonal")
 #    plot_boxplot(user_totDuration,"totDuration")
 #    plot_boxplot(anthena_timespent,"anthenaPopularity")
-    f_user_anthena.close()
+#    f_user_anthena.close()
     
+#    dill.dump(user_totDuration, open("user_gyration.dill","wb"))
+#    dill.dump(user_gyration, open("user_gyration.dill","wb"))
+#    dill.dump(user_bbdiagonal, open("bbdiagonal.dill","wb"))
+
 #    dill.dump(user_active_days, open("test.dill","wb"))
+    dill.dump(user_anthena, open(os.path.join(output_path_files,"user_anthenas_august_all.dill"),"wb"))
 
 
 

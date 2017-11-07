@@ -90,28 +90,25 @@ def plot_bokeh_intensity_map(spatial_entity_to_coordinates, spatial_entity_to_va
 
         color_bar = ColorBar(color_mapper=color_mapper, ticker=LogTicker(),
                                      label_standoff=12, border_line_color=None, location=(0,0))
-#        TOOLS = "pan,wheel_zoom,reset,hover,save"
-        TOOLS = "hover"
+        TOOLS = "pan,wheel_zoom,reset,hover,save"
+#        TOOLS = "hover"
 
         p = figure(
             title=census_name, tools=TOOLS,
             x_axis_location=None, y_axis_location=None,plot_width=1000)
-#        p = figure(
-#            title=census_name,
-#            x_axis_location=None, y_axis_location=None,plot_width=1000)
         p.grid.grid_line_color = None
 
         p.patches('x', 'y', source=source,
                   fill_color={'field': 'rate', 'transform': color_mapper},
                   fill_alpha=0.7, line_color="white", line_width=0.5)
         
-#        hover = p.select_one(HoverTool)
-#        hover.point_policy = "follow_mouse"
-#        hover.tooltips = [
-#            ("Name", "@name"),
-##            ("Price change rate)", "@rate%"),
-#            (census_name, "@rate"),
-#            ("(Long, Lat)", "($x, $y)"),]
+        hover = p.select_one(HoverTool)
+        hover.point_policy = "follow_mouse"
+        hover.tooltips = [
+            ("Name", "@name"),
+#            ("Price change rate)", "@rate%"),
+            (census_name, "@rate"),
+            ("(Long, Lat)", "($x, $y)"),]
 
         p.add_layout(color_bar, 'right')
         export_png(p, os.path.join(output_path_plots,"census","london","{0}.png".format(census_name)))
@@ -142,6 +139,7 @@ if __name__ == "__main__":
             "Childhood Obesity Prevalance (%) 2015/16","Political control in council","Proportion of seats won by Conservatives in 2014 election",
             "Proportion of seats won by Labour in 2014 election", "Proportion of seats won by Lib Dems in 2014 election","Turnout at 2014 local elections"
             ]
+#    col_names = ["Area name","Gross Annual Pay, (2016)"]
     df = pd.read_excel(os.path.join(census_data_fpath,"london","london-borough-profiles.xlsx"),sheetname="Data")
     df = df[col_names].dropna()
     df = remove_invald_regions(df)

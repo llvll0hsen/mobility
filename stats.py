@@ -56,17 +56,17 @@ def price_cat_loc(records):
                     #for google
                     ptag = p_tag
                 n_tag += ptag
-                source_tag_loc[source][ptag].append(loc)
+                source_tag_loc[source][ptag].append((loc,name))
         if ns:
-            source_tag_loc['avg'][int(n_tag/ns)].append(loc)
+            source_tag_loc['avg'][int(n_tag/ns)].append((loc,name))
     
         for source, star_locs in source_tag_loc.iteritems():
             for star, locs in star_locs.iteritems():
-                fpath = os.path.join(output_path_files,'{0}_{1}.txt'.format(source,star)) 
+                fpath = os.path.join(output_path_files,'{0}_{1}_venue.txt'.format(source,star)) 
                 with open(fpath,'wb') as f:
-                    f.write('lon,lat')
+                    f.write('lon,lat,venue')
                     for l in locs:
-                        f.write('\n{0},{1}'.format(l[0],l[1]))
+                        f.write('\n{0},{1},{2}'.format(l[0][0],l[0][1],l[1].encode("utf-8")))
 
 def neighborhood_price_dist(records):
     collection,client = connect_monogdb()

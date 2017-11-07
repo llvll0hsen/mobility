@@ -7,12 +7,12 @@ from util import output_path_files, output_path_plots,connect_monogdb, reverse_g
 import dill
 def anthena_loc_todict():
     r = {}
-    f =  open("cellcatalog.tsv","rb")#,delimiter="\t",error_bad_lines=False,warn_bad_lines=False)
+    f =  open("cellcatalog_london.tsv","rb")#,delimiter="\t",error_bad_lines=False,warn_bad_lines=False)
     for line in f:
         a = line.split("\t")
         r[a[3]] = (a[4],a[5])
 
-    dill.dump(r,open(os.path.join(output_path_files,"mobility","anthena_loc.dill"),"wb"))
+    dill.dump(r,open(os.path.join(output_path_files,"mobility","anthena_loc_london_only.dill"),"wb"))
 
 if __name__ == "__main__":
     anthena_loc_todict()
@@ -27,7 +27,7 @@ if __name__ == "__main__":
         if not ne:
             row_ids.append(row[0])
 
-    df.drop(df.index[row_ids])
+    df = df.drop(df.index[row_ids])
     df.to_csv("cellcatalog_london.tsv",sep="\t",index=False)
     client.close()
 
