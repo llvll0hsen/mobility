@@ -8,6 +8,9 @@ import operator
 
 import pandas as pd
 import numpy as np
+import matplotlib
+
+matplotlib.use('Agg')
 import matplotlib.pylab as plt
 
 from util import output_path_files, output_path_plots,connect_monogdb, reverse_geo_mongodb,mobility_path,census_data_fpath
@@ -36,6 +39,25 @@ def ne_user_count(df):
     plt.savefig(fpath,bbox_inches='tight')
     plt.close()
 
+def split_social_groups(df_london):
+    df = pd.read_excel(os.path.join(census_data_fpath,"london","deprivation_london.xls"),sheet_name="IMD 2015")
+    col_names = ["LSOA code (2011)","LSOA name (2011)","Local Authority District code (2013)","Local Authority District name (2013)","IMD Decile (where 1 is most deprived 10% of LSOAs)","IMD Rank (where 1 is most deprived)"]
+    df = df[df["Local Authority District name (2013)"]!="City of London"]
+    df = df[col_names].dropna()
+    values = {}
+    for row in df.itertuples():
+        area_name, value = row[1],row[5]
+        values[area_name.lower()] = int(value)
+
+
+    ne_richeness = sorted(values.items(),key=operator.itemgetter(1))
+    for i, ne in enumerate(ne_richeness):
+        print i,ne
+        df_london.ix[df_london["neighborhood"]==ne[0],"deprivation_rank"] = i
+
+    df_london.to_csv(os.path.join(output_path_files, "user_top_anthena_london_only_deprivation_{0}_00_04.txt".format(month)),index=False)
+
+
 def split_rich_poor_users(df_london):
     month = "august"
     col_names = ["Area name","Gross Annual Pay, (2016)"]
@@ -45,8 +67,8 @@ def split_rich_poor_users(df_london):
     df_london.insert(loc=len(df_london.columns),column="economic_rank",value=0)
 
     values = {}
-    temp = df[col_names]
-    for row in temp.itertuples():
+#    temp = df[col_names]
+    for row in df.itertuples():
         area_name, value = row[1],row[2]
         try:
             values[area_name.lower()] = int(value)
@@ -86,6 +108,6 @@ def split_rich_poor_users(df_london):
 if __name__ == "__main__":
     f =  open(os.path.join(output_path_files, "user_top_anthena_london_only_{0}_00_04.txt".format(month)),"rb")
     df = pd.read_csv(f)
-    ne_user_count(df)
-    split_rich_poor_users(df)
-
+#    ne_user_count(df)
+#    split_rich_poor_users(df)
+    split_social_groups(df)

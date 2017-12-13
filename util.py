@@ -12,8 +12,10 @@ def connect_monogdb():
 #    mongo_db = mongo_client.bcn
 #    mongo_collection = mongo_db.barris
     mongo_db = mongo_client.london
-    mongo_collection = mongo_db.boroughs
-    return mongo_collection,mongo_client
+#    mongo_collection = mongo_db.boroughs
+    mongo_collection = mongo_db.lsa
+    return mongo_collection, mongo_client
+
 
 def reverse_geo_mongodb(lat,lon, collection):
     r = collection.find_one({"geometry":{"$geoIntersects":{"$geometry":{"type":"Point","coordinates":[lon,lat]}}}})

@@ -8,8 +8,8 @@ import os
 import requests
 import numpy as np
 import matplotlib.pylab as plt
-import googlemaps
-from wordcloud import WordCloud
+#import googlemaps
+#from wordcloud import WordCloud
 import dill
 from pymongo import MongoClient
 import pandas as pd
@@ -148,7 +148,8 @@ def categories_with_hour(records):
     plt.close()
 
 def create_lat_lon_file(records):
-    with open(os.path.join(output_path_files,'loc.txt'),'wb') as f:
+    with open(os.path.join(output_path_files,'loc_great_london.txt'),'wb') as f:
+        f.write('lon,lat')
         for i in records:
             lat,lon = i['geolocation']['coordinates']
             city = (i['address']['city'])
@@ -156,7 +157,7 @@ def create_lat_lon_file(records):
 #                if city == 'Barcelona':
 #
                 #if (city in ['Barcellona','Barcelna']) or ('Barcelona' in city):
-            f.write('\n{0} {1}'.format(lon,lat))
+            f.write('\n{0},{1}'.format(lon,lat))
 
 def tag_clouds(records):
     tags_list = []
@@ -372,7 +373,8 @@ def source_cat_count(records):
         plt.close()
         
 if __name__ == '__main__':
-    f = open('london.venues.json','rb')
+    f = open("great_london_venues.json",'rb')
+#    f = open('london.venues.json','rb')
 #    f = open('geosegmentation.venues.json','rb')
     records = json.load(f)
 #    neighborhood_price_dist(records)
@@ -381,8 +383,8 @@ if __name__ == '__main__':
 #    source_cat_count(records)
 #    with_price_tag(records)
 #    with_ratings(records)
-#    create_lat_lon_file(records)
+    create_lat_lon_file(records)
 #    with_hours(records)
 #    time_dist(records)
 #    tag_clouds(records)
-    price_cat_loc(records)
+#    price_cat_loc(records)

@@ -16,7 +16,27 @@ output_path_plots = os.path.join(output_path_plots,"mobility")
 output_path_files = os.path.join(output_path_files,"mobility")
 
 
-def anthena_neighborhood():
+def antenna_lsa():
+    anthena_loc = dill.load(open(os.path.join(output_path_files,"anthena_loc_london_only.dill"),"rb"))
+    collection,client = connect_monogdb()
+    anthena_lsa = {}
+    for anthena_id, loc in anthena_loc.iteritems():
+#        print loc
+        lon,lat =  loc
+
+        try:
+            ne = reverse_geo_mongodb(float(lat.strip()),float(lon.strip()),collection)
+            print ne
+            anthena_lsa[anthena_id] = ne[0]
+        except Exception as err:
+            print err
+            print loc
+            pass
+
+    dill.dump(anthena_lsa, open(os.path.join(output_path_files,"anthena_lsa_london_only.dill"),"wb"))
+    client.close()
+
+def antenna_neighborhood():
     anthena_loc = dill.load(open(os.path.join(output_path_files,"anthena_loc_london_only.dill"),"rb"))
     collection,client = connect_monogdb()
     anthena_ne = {}
@@ -168,9 +188,10 @@ if __name__ == "__main__":
     
 #    home_location_london_only()
 ##    find_home_location()
-#    anthena_neighborhood()
+#    antenna_neighborhood()
 #
-#    sys.exit()
+    antenna_lsa()
+    sys.exit()
     time_slice = "hour=all"
     month = "august"
     

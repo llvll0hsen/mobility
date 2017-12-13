@@ -8,6 +8,8 @@ import operator
 import random
 
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import numpy as np
 import matplotlib.pylab as plt
 from scipy.sparse import lil_matrix
@@ -18,6 +20,7 @@ from util import output_path_files, output_path_plots,connect_monogdb, reverse_g
 output_path_plots = os.path.join(output_path_plots,"mobility")
 output_path_files = os.path.join(output_path_files,"mobility")
 month ="august"
+
 
 def boxplots(data1,data2,title):
 #    print data1
@@ -40,16 +43,28 @@ def boxplots(data1,data2,title):
 def plot_cdf(data,title):
     plt.figure() 
     ax = plt.subplot()
-    for group,record in data.iteritems():
-        print group
-        hist = Counter(record)
+    if isinstance(data, dict):
+        for group,record in data.iteritems():
+#            print group
+            hist = Counter(record)
+            n = float(sum(hist.values()))
+            normalized_count = {day: freq/n for day,freq in hist.iteritems()}
+            sorted_pk = sorted(normalized_count.iteritems(), key=operator.itemgetter(0),reverse=True)
+            x = [i[0] for i in sorted_pk]
+            y = np.cumsum([i[1] for i in sorted_pk])
+            a = ax.plot(x,y ,lw=5., alpha=0.6,label=group)
+    else:
+        hist = Counter(data)
+        del hist[0]
+#        print sorted(data)
         n = float(sum(hist.values()))
         normalized_count = {day: freq/n for day,freq in hist.iteritems()}
         sorted_pk = sorted(normalized_count.iteritems(), key=operator.itemgetter(0),reverse=True)
         x = [i[0] for i in sorted_pk]
         y = np.cumsum([i[1] for i in sorted_pk])
-        a = ax.plot(x,y ,lw=5., alpha=0.6,label=group)
-    
+        print y
+        a = ax.plot(x,y ,lw=5., alpha=0.6)
+
     ax.tick_params(direction='out')
     ax.spines["top"].set_visible(False)  
     ax.spines["right"].set_visible(False) 
@@ -59,9 +74,10 @@ def plot_cdf(data,title):
     ax.set_ylabel("x>=d",fontsize=25)
     ax.axis('tight')
 #    ax.set_xscale('log')
-    ax.set_yscale('log')
+#    ax.set_yscale('log')
     ax.margins(0.05)
-    ax.legend()
+#    ax.legend()
+    print title
     plt.savefig(os.path.join(output_path_plots,"cdf_{0}.png".format(title)),bbox_inches='tight')
     plt.close()
 
@@ -89,10 +105,12 @@ def group_users():
     middle1_users = df_london[df_london["economic_rank"].isin(middle1_index)]["user_id"].unique().tolist()
     middle2_users = df_london[df_london["economic_rank"].isin(middle2_index)]["user_id"].unique().tolist()
     
-#    poor_users = random.sample(poor_users, len(rich_users))
-    print len(rich_users) 
-    print len(poor_users)
-    
+#    poor_users = random.sample(poor_users, 5)
+#    rich_users = random.sample(rich_users, 4)
+#    middle1_users = random.sample(middle1_users, 3)
+#    middle2_users = random.sample(middle2_users, 2)
+#    print len(rich_users) 
+#    print len(poor_users)
     return rich_users,poor_users,middle1_users, middle2_users
 
 def gyration_bbox_compare(rich_users,poor_users):
@@ -192,12 +210,34 @@ def users_trajectory_to_file(user_groups):
                         pass
 
 
+def compute_avg_similarity(similarity_matrix, group_sizes, group_names):
+    ngroups = len(group_names)
+    avg_sim_matrix = np.zeros((ngroups, ngroups))
+    ind1 = 0
+    similarity_matrix = np.triu(similarity_matrix,k=1)
+#    print group_sizes
+    for i in xrange(ngroups):
+        gs1 = group_sizes[i]
+        ind2 = ind1
+        for j in xrange(i,ngroups):
+            gs2 = group_sizes[j]
+#            print "({0},{1}),({2},{3})".format(ind1,ind1+gs1,ind2,ind2+gs2)
+            temp_matrix = similarity_matrix[ind1:ind1+gs1,ind2:ind2+gs2]
+            s =  np.mean(temp_matrix[np.nonzero(temp_matrix)])
+            avg_sim_matrix[i, j] = s
+            ind2+=gs2
+        ind1+=gs1
+    print avg_sim_matrix
+
 def users_trajectory_similariy(user_groups):
-    user_anthenas = dill.load(open(os.path.join(output_path_files,"user_anthenas_august_all.dill"),"rb"))
+#    user_anthenas = dill.load(open(os.path.join(output_path_files,"user_anthenas_august_all.dill"),"rb"))
+    user_anthenas = dill.load(open(os.path.join(output_path_files,"user_anthenas_august_weekend_night.dill"),"rb"))
     anthena_loc = dill.load(open(os.path.join(output_path_files,"anthena_loc_london_only.dill"),"rb"))
     anthena_ids = sorted(anthena_loc.keys())
     anthena_indices = dict(zip(anthena_ids,range(len(anthena_ids))))
     group_names = sorted(user_groups.keys())
+    group_sizes = [len(user_groups[gn]) for gn in group_names]
+
     print group_names
     user_count = sum([len(v) for v in user_groups.itervalues()])
 #    print user_count, len(anthena_ids)
@@ -211,6 +251,7 @@ def users_trajectory_similariy(user_groups):
         user_ids = user_groups[gn]
         for uid in user_ids:
             anthenas_count = user_anthenas[uid]
+            anthenas_count ={k:v for k,v in anthenas_count.iteritems() if v>5}
             for aid, count in anthenas_count.iteritems():
                 try:
                     anthena_idx = anthena_indices[aid] 
@@ -220,29 +261,105 @@ def users_trajectory_similariy(user_groups):
                     pass
             user_indices[user_idx] = uid
             user_idx+=1
-    
 
     similarities = cosine_similarity(user_matrix)
     plt.figure()
     fig, ax = plt.subplots()
-    ax.imshow(similarities, interporlation="nearest")
-    plt.savefig(os.path.join(output_path_plots,"similarity.pdf"), bbox_inches="tight")
+    ax.matshow(similarities,cmap=plt.get_cmap("Blues"))
+    i = 0
+    for gs in group_sizes:
+        ax.axhline(y=i+gs)
+        ax.axvline(x=i+gs)
+        i+=gs
+    ax.margins(0.5)
+#    plt.savefig(os.path.join(output_path_plots,"similarity_WE_min5.pdf"), bbox_inches="tight")
 #    dill.dump((user_matrix,user_indices),open(os.path.join(output_path_files,"trajectory_matrix.dill"),"wb"))
+    return similarities, group_sizes, group_names
 
-            
+def anthena_user_ratio(user_groups):
+    user_anthenas = dill.load(open(os.path.join(output_path_files,"user_anthenas_august_weekend_night.dill"),"rb"))
+    anthena_loc = dill.load(open(os.path.join(output_path_files,"anthena_loc_london_only.dill"),"rb"))
+    user_home_anthena = pd.read_csv(os.path.join(output_path_files, "user_top_anthena_london_only_economicRank_{0}_00_04.txt".format(month)),usecols=["user_id","top_anthena"])
+    user_home_anthena = user_home_anthena.set_index("user_id").to_dict()["top_anthena"]
 
-   
+    anthena_ids = sorted(anthena_loc.keys())
+    anthena_indices = dict(zip(anthena_ids,range(len(anthena_ids))))
+    group_names = sorted(user_groups.keys())
+    group_sizes = [len(user_groups[gn]) for gn in group_names]
+
+    print group_names
+    user_count = sum([len(v) for v in user_groups.itervalues()])
+#    anthena_group_count = defaultdict(lambda: defaultdict(int))
+    anthena_group_matrix = np.zeros((len(anthena_ids),len(group_names)))
+    for i, gn in enumerate(group_names):
+        user_ids = user_groups[gn]
+        for uid in user_ids:
+            home_anthena = user_home_anthena[uid]
+            anthenas_count = user_anthenas[uid]
+            #remove home anthena
+            anthenas_count.pop(home_anthena,None)
+#            anthenas_count = {k:v for k,v in anthenas_count.iteritems() if v>5}
+            for aid, count in anthenas_count.iteritems():
+                try:
+                    anthena_idx = anthena_indices[aid] 
+#                    anthena_group_count[anthena_idx][gn] +=count
+                    anthena_group_matrix[anthena_idx, i] +=count
+                except Exception as err:
+#                    print err
+                    pass
+    #normalize by group sizes
+
+    anthena_group_matrix/= group_sizes 
+
+
+#    row_sum = np.sum(anthena_group_matrix,1)
+#    anthena_group_matrix = anthena_group_matrix[row_sum!=0]
+#    anthena_group_matrix/= np.sum(anthena_group_matrix,1)[:,np.newaxis]
+#    print anthena_group_matrix.shape
+#    ind = np.argsort(-anthena_group_matrix)
+#    temp = np.where(ind==0)[1]
+#    anthena_group_matrix = anthena_group_matrix[np.argsort(temp),:]
+    
+    ginis = np.apply_along_axis(gini_coeff,1,anthena_group_matrix)
+    plot_cdf(ginis,"antennas_gini")
+    #sort columns 
+    #mat[np.arange(np.shape(mat)[0])[:,np.newaxis],np.argsort(-mat)]
+
+#    dill.dump(anthena_group_matrix,open(os.path.join(output_path_files,"anthena_group_matrix.dill"),"wb"))
+#    print "plotting"
+    plt.figure()
+    fig, ax = plt.subplots()#
+    ax.boxplot(ginis,showmeans=True)
+
+#    ax.matshow(anthena_group_matrix,cmap=plt.get_cmap("Blues"))
+#    i = 0
+#    for gs in group_sizes:
+#        ax.axhline(y=i+gs)
+#        ax.axvline(x=i+gs)
+#        i+=gs
+#    plt.savefig(os.path.join(output_path_plots,"anthena_group_matrix_WE.pdf"), bbox_inches="tight")
+    plt.savefig(os.path.join(output_path_plots,"anthena_group_matrix_gini_box.pdf"), bbox_inches="tight")
+    plt.close() 
+def gini_coeff(arr):
+    array = arr.flatten() 
+    array += 0.0000001
+    array = np.sort(array)
+    index = np.arange(1,array.shape[0]+1)
+    n = array.shape[0]
+    return ((np.sum((2 * index - n - 1) * array)) / (n * np.sum(array)))
+
 
 if __name__ == "__main__":
     users = {}
     rich_users, poor_users, middle1_users, middle2_users = group_users()
-    
     users["rich"] = rich_users
     users["poor"] = poor_users
     users["middle1"] = middle1_users
     users["middle2"] = middle2_users
-#    users_trajectory_similariy(users)
-    users_trajectory_to_file(users)
+#    similarity_matrix, group_sizes, group_names = users_trajectory_similariy(users)
+    anthena_user_ratio(users)
+#    compute_avg_similarity(similarity_matrix, group_sizes, group_names)
+#    users_trajectory_to_file(users)
 #    gyration_bbox_compare(rich_users,poor_users)
 #    user_anthena_diversity(rich_users, poor_users)
 #    users_neighbourhood_diversity(rich_users, poor_users)
