@@ -46,15 +46,27 @@ def split_social_groups(df_london):
     df = df[col_names].dropna()
     values = {}
     for row in df.itertuples():
+#        print row
         area_name, value = row[1],row[5]
+#        print area_name
         values[area_name.lower()] = int(value)
 
 
-    ne_richeness = sorted(values.items(),key=operator.itemgetter(1))
-    for i, ne in enumerate(ne_richeness):
-        print i,ne
-        df_london.ix[df_london["neighborhood"]==ne[0],"deprivation_rank"] = i
+    antenna_lsa = dill.load(open(os.path.join(output_path_files,"anthena_lsa_london_only.dill"),"rb"))
+    missing = []
+    for aid, lsa in antenna_lsa.iteritems():
+        try:
+            rank = values[lsa.lower()]
+            df_london.ix[df_london["top_anthena"]==aid,"deprivation_rank"] = rank
+            df_london.ix[df_london["top_anthena"]==aid,"lsoa"] = lsa
+        except Exception as err:
+#            print err
+            missing.append(lsa)
+            df_london.ix[df_london["top_anthena"]==aid,"deprivation_rank"] = None
+            df_london.ix[df_london["top_anthena"]==aid,"lsoa"] = lsa
 
+    print missing
+    print len(missing) 
     df_london.to_csv(os.path.join(output_path_files, "user_top_anthena_london_only_deprivation_{0}_00_04.txt".format(month)),index=False)
 
 
@@ -64,7 +76,7 @@ def split_rich_poor_users(df_london):
     df = pd.read_excel(os.path.join(census_data_fpath,"london","london-borough-profiles.xlsx"),sheetname="Data")
     df = df[col_names].dropna()
 #    df = remove_invald_regions(df)
-    df_london.insert(loc=len(df_london.columns),column="economic_rank",value=0)
+    df_london.insert(loc=len(df_london.columns),column="economic_rank",value=3)
 
     values = {}
 #    temp = df[col_names]

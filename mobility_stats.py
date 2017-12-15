@@ -29,8 +29,8 @@ def antenna_lsa():
             print ne
             anthena_lsa[anthena_id] = ne[0]
         except Exception as err:
-            print err
-            print loc
+#            print err
+#            print loc
             pass
 
     dill.dump(anthena_lsa, open(os.path.join(output_path_files,"anthena_lsa_london_only.dill"),"wb"))
@@ -190,8 +190,8 @@ if __name__ == "__main__":
 ##    find_home_location()
 #    antenna_neighborhood()
 #
-    antenna_lsa()
-    sys.exit()
+#    antenna_lsa()
+#    sys.exit()
     time_slice = "hour=all"
     month = "august"
     
@@ -202,11 +202,11 @@ if __name__ == "__main__":
     user_gyration = defaultdict(list)
     user_totDuration = defaultdict(list)
     anthena_timespent =  defaultdict(list) 
-    user_anthena = defaultdict(Counter)
+    user_anthenna = defaultdict(lambda: defaultdict(Counter))
     
     print path
-    f_user_anthena =  open(os.path.join(output_path_files, "user_anthena_{0}_all.txt".format(month)),"wb")
-    f_user_anthena.writelines("user_id,anthena_id,duration,date,weekday,time_slice")
+#    f_user_anthena =  open(os.path.join(output_path_files, "user_anthena_{0}_all.txt".format(month)),"wb")
+#    f_user_anthena.writelines("user_id,anthena_id,duration,date,weekday,time_slice")
 
     for d in months_folders:
         print d
@@ -235,9 +235,9 @@ if __name__ == "__main__":
                     user_id = a[0]
                     
                     user_active_days[user_id]+=1
-                    user_gyration[user_id].append(float(a[1]))
-                    user_bbdiagonal[user_id].append(float(a[2]))
-                    user_totDuration[user_id].append(float(a[3]))
+#                    user_gyration[user_id].append(float(a[1]))
+#                    user_bbdiagonal[user_id].append(float(a[2]))
+#                    user_totDuration[user_id].append(float(a[3]))
                     
                     anthena_info = a[5:]
                     if len(anthena_info)%2:
@@ -254,14 +254,14 @@ if __name__ == "__main__":
                             print a
 #                            sys.exit()
 
-                        anthena_timespent[anthena_id].append(duration)
+#                        anthenna_timespent[anthena_id].append(duration)
 #                        print user_id, anthena_id
-                        user_anthena[user_id].update([anthena_id])
+                        user_anthenna[user_id][d].update([anthena_id])
 #                        user_anthena[user_id].append((anthena_info[i],anthena_info[i+1]))
-                        f_user_anthena.writelines("\n{0},{1},{2},{3},{4},{5}".format(user_id,anthena_id,duration,date_str,weekday,ts))
+#                        f_user_anthena.writelines("\n{0},{1},{2},{3},{4},{5}".format(user_id,anthena_id,duration,date_str,weekday,ts))
         
 
-    print user_anthena.items()
+#    print user_anthenna.items()
 #    plot_boxplot(user_gyration,"gyration")
 #    plot_boxplot(user_bbdiagonal,"bbdiagonal")
 #    plot_boxplot(user_totDuration,"totDuration")
@@ -273,7 +273,7 @@ if __name__ == "__main__":
 #    dill.dump(user_bbdiagonal, open("bbdiagonal.dill","wb"))
 
 #    dill.dump(user_active_days, open("test.dill","wb"))
-    dill.dump(user_anthena, open(os.path.join(output_path_files,"user_anthenas_august_all.dill"),"wb"))
+    dill.dump(user_anthenna, open(os.path.join(output_path_files,"user_antennas_august_all_timesliced.dill"),"wb"))
 
 
 

@@ -91,27 +91,15 @@ def corr(a,b):
 
     print np.corrcoef(bbox, gyration)
 
-def group_users():
-    poor_index = range(4)
-    rich_index = range(27,31)
-    middle1_index = range(4,21)
-    middle2_index = range(21,27)
-    
-    df_london = pd.read_csv(os.path.join(output_path_files, "user_top_anthena_london_only_economicRank_{0}_00_04.txt".format(month)))
-    
-#    print df_london.columns
-    rich_users = df_london[df_london["economic_rank"].isin(rich_index)]["user_id"].unique().tolist()
-    poor_users = df_london[df_london["economic_rank"].isin(poor_index)]["user_id"].unique().tolist()
-    middle1_users = df_london[df_london["economic_rank"].isin(middle1_index)]["user_id"].unique().tolist()
-    middle2_users = df_london[df_london["economic_rank"].isin(middle2_index)]["user_id"].unique().tolist()
-    
-#    poor_users = random.sample(poor_users, 5)
-#    rich_users = random.sample(rich_users, 4)
-#    middle1_users = random.sample(middle1_users, 3)
-#    middle2_users = random.sample(middle2_users, 2)
-#    print len(rich_users) 
-#    print len(poor_users)
-    return rich_users,poor_users,middle1_users, middle2_users
+def get_users_group():
+    df_london = pd.read_csv(os.path.join(output_path_files, "user_top_anthena_london_only_deprivation_{0}_00_04.txt".format(month)))
+    gp = df_london.group_by("deprivation_rank")["user_id"]
+    groups = gp.groups.keys()
+    group_userids = {} 
+    for g in groups:
+        group_userids[g] = gp.get_group(g).tolist()
+        print g, len(group_userids[g])
+    return group_userids 
 
 def gyration_bbox_compare(rich_users,poor_users):
     user_gyration = dill.load(open("user_gyration.dill","rb"))
@@ -278,32 +266,33 @@ def users_trajectory_similariy(user_groups):
 
 def anthena_user_ratio(user_groups):
     user_anthenas = dill.load(open(os.path.join(output_path_files,"user_anthenas_august_weekend_night.dill"),"rb"))
-    anthena_loc = dill.load(open(os.path.join(output_path_files,"anthena_loc_london_only.dill"),"rb"))
-    user_home_anthena = pd.read_csv(os.path.join(output_path_files, "user_top_anthena_london_only_economicRank_{0}_00_04.txt".format(month)),usecols=["user_id","top_anthena"])
-    user_home_anthena = user_home_anthena.set_index("user_id").to_dict()["top_anthena"]
+    antenna_loc = dill.load(open(os.path.join(output_path_files,"anthena_loc_london_only.dill"),"rb"))
+    user_home_antenna = pd.read_csv(os.path.join(output_path_files, "user_top_anthena_london_only_deprivation_{0}_00_04.txt".format(month)),usecols=["user_id","top_anthena"])
+    user_home_antenna.dropna()
+    user_home_antenna = user_home_antenna.set_index("user_id").to_dict()["top_anthena"]
 
-    anthena_ids = sorted(anthena_loc.keys())
-    anthena_indices = dict(zip(anthena_ids,range(len(anthena_ids))))
+    antenna_ids = sorted(antenna_loc.keys())
+    antenna_indices = dict(zip(antenna_ids,range(len(antenna_ids))))
     group_names = sorted(user_groups.keys())
     group_sizes = [len(user_groups[gn]) for gn in group_names]
 
     print group_names
     user_count = sum([len(v) for v in user_groups.itervalues()])
 #    anthena_group_count = defaultdict(lambda: defaultdict(int))
-    anthena_group_matrix = np.zeros((len(anthena_ids),len(group_names)))
+    antenna_group_matrix = np.zeros((len(antenna_ids),len(group_names)))
     for i, gn in enumerate(group_names):
         user_ids = user_groups[gn]
         for uid in user_ids:
-            home_anthena = user_home_anthena[uid]
-            anthenas_count = user_anthenas[uid]
+            home_antenna = user_home_antenna[uid]
+            antennas_count = user_antennas[uid]
             #remove home anthena
-            anthenas_count.pop(home_anthena,None)
+            antennas_count.pop(home_anthena,None)
 #            anthenas_count = {k:v for k,v in anthenas_count.iteritems() if v>5}
-            for aid, count in anthenas_count.iteritems():
+            for aid, count in antennas_count.iteritems():
                 try:
-                    anthena_idx = anthena_indices[aid] 
+                    antenna_idx = antenna_indices[aid] 
 #                    anthena_group_count[anthena_idx][gn] +=count
-                    anthena_group_matrix[anthena_idx, i] +=count
+                    antenna_group_matrix[antenna_idx, i] +=count
                 except Exception as err:
 #                    print err
                     pass
@@ -320,7 +309,7 @@ def anthena_user_ratio(user_groups):
 #    temp = np.where(ind==0)[1]
 #    anthena_group_matrix = anthena_group_matrix[np.argsort(temp),:]
     
-    ginis = np.apply_along_axis(gini_coeff,1,anthena_group_matrix)
+    ginis = np.apply_along_axis(gini_coeff,1,antenna_group_matrix)
     plot_cdf(ginis,"antennas_gini")
     #sort columns 
     #mat[np.arange(np.shape(mat)[0])[:,np.newaxis],np.argsort(-mat)]
@@ -338,7 +327,7 @@ def anthena_user_ratio(user_groups):
 #        ax.axvline(x=i+gs)
 #        i+=gs
 #    plt.savefig(os.path.join(output_path_plots,"anthena_group_matrix_WE.pdf"), bbox_inches="tight")
-    plt.savefig(os.path.join(output_path_plots,"anthena_group_matrix_gini_box.pdf"), bbox_inches="tight")
+    plt.savefig(os.path.join(output_path_plots,"antenna_group_matrix_gini_box.pdf"), bbox_inches="tight")
     plt.close() 
 def gini_coeff(arr):
     array = arr.flatten() 
@@ -351,11 +340,7 @@ def gini_coeff(arr):
 
 if __name__ == "__main__":
     users = {}
-    rich_users, poor_users, middle1_users, middle2_users = group_users()
-    users["rich"] = rich_users
-    users["poor"] = poor_users
-    users["middle1"] = middle1_users
-    users["middle2"] = middle2_users
+    users = group_users()
 #    similarity_matrix, group_sizes, group_names = users_trajectory_similariy(users)
     anthena_user_ratio(users)
 #    compute_avg_similarity(similarity_matrix, group_sizes, group_names)

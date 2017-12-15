@@ -18,10 +18,13 @@ def connect_monogdb():
 
 
 def reverse_geo_mongodb(lat,lon, collection):
+#    print lat,lon
     r = collection.find_one({"geometry":{"$geoIntersects":{"$geometry":{"type":"Point","coordinates":[lon,lat]}}}})
     if r:
-        d = r["properties"]["name"].encode("utf-8").lower()
-        b = r["properties"]["name"].encode("utf-8").lower()
+        d = r["properties"]["lsoa01cd"]
+        b = r["properties"]["lsoa01nm"].encode("utf-8").lower()
+#        d = r["properties"]["name"].encode("utf-8").lower()
+#        b = r["properties"]["name"].encode("utf-8").lower()
 #        d = r["properties"]["N_Distri"].encode("utf-8").lower()
 #        b = r["properties"]["N_Barri"].encode("utf-8").lower()
         result = (d,b)
