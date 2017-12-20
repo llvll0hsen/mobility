@@ -1,5 +1,5 @@
 import os
-
+import dill
 from pymongo import MongoClient
 
 output_path = os.path.join(os.getcwd(),'output')
@@ -7,6 +7,10 @@ output_path_files = os.path.join(os.getcwd(),'output','files')
 output_path_plots = os.path.join(os.getcwd(),'output','plots')
 census_data_fpath = os.path.join(os.getcwd(),'data','census')
 mobility_path = "/home/bmja/Documents/mining-mobility"
+
+def get_antennas_lsoa():
+    return dill.load(open(os.path.join(output_path_files,"mobility","antenna_lsoa_london_only.dill"),"rb"))
+
 def connect_monogdb():
     mongo_client = MongoClient("localhost")
 #    mongo_db = mongo_client.bcn

@@ -16,24 +16,24 @@ output_path_plots = os.path.join(output_path_plots,"mobility")
 output_path_files = os.path.join(output_path_files,"mobility")
 
 
-def antenna_lsa():
-    anthena_loc = dill.load(open(os.path.join(output_path_files,"anthena_loc_london_only.dill"),"rb"))
+def antenna_lsoa():
+    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc_london_only.dill"),"rb"))
     collection,client = connect_monogdb()
-    anthena_lsa = {}
-    for anthena_id, loc in anthena_loc.iteritems():
+    anthena_lsoa = {}
+    for antenna_id, loc in antenna_loc.iteritems():
 #        print loc
         lon,lat =  loc
 
         try:
             ne = reverse_geo_mongodb(float(lat.strip()),float(lon.strip()),collection)
             print ne
-            anthena_lsa[anthena_id] = ne[0]
+            antenna_lsoa[antenna_id] = ne[0]
         except Exception as err:
 #            print err
 #            print loc
             pass
 
-    dill.dump(anthena_lsa, open(os.path.join(output_path_files,"anthena_lsa_london_only.dill"),"wb"))
+    dill.dump(antenna_lsoa, open(os.path.join(output_path_files,"antenna_lsoa_london_only.dill"),"wb"))
     client.close()
 
 def antenna_neighborhood():
@@ -194,7 +194,7 @@ if __name__ == "__main__":
 #    sys.exit()
     time_slice = "hour=all"
     month = "august"
-    
+    mobility_path = "data/mining_mobility" 
     path = os.path.join(mobility_path, month)
     months_folders = os.listdir(path)
     user_active_days = defaultdict(int)
@@ -202,20 +202,21 @@ if __name__ == "__main__":
     user_gyration = defaultdict(list)
     user_totDuration = defaultdict(list)
     anthena_timespent =  defaultdict(list) 
-    user_anthenna = defaultdict(lambda: defaultdict(Counter))
+#    user_anthenna = defaultdict(lambda: defaultdict(Counter))
     
     print path
 #    f_user_anthena =  open(os.path.join(output_path_files, "user_anthena_{0}_all.txt".format(month)),"wb")
 #    f_user_anthena.writelines("user_id,anthena_id,duration,date,weekday,time_slice")
 
     for d in months_folders:
+        user_anthenna = defaultdict(lambda: defaultdict(Counter))
         print d
         datetime_date = parse(d.split("=")[1]) 
         date_str = datetime_date.strftime("%d-%m-%y")
         weekday = datetime_date.weekday()
 
         path2 = os.path.join(path, d)
-        time_sliced_hours = ["hour=all"]#os.listdir(path2) #["hour=00-04"] 
+        time_sliced_hours = os.listdir(path2) #["hour=all"] #["hour=00-04"] 
         for ts in time_sliced_hours:
             print ts
             try:
@@ -256,10 +257,12 @@ if __name__ == "__main__":
 
 #                        anthenna_timespent[anthena_id].append(duration)
 #                        print user_id, anthena_id
-                        user_anthenna[user_id][d].update([anthena_id])
+                        user_anthenna[ts][user_id].update([anthena_id])
+#                        user_anthenna[user_id][ts].update([anthena_id])
 #                        user_anthena[user_id].append((anthena_info[i],anthena_info[i+1]))
 #                        f_user_anthena.writelines("\n{0},{1},{2},{3},{4},{5}".format(user_id,anthena_id,duration,date_str,weekday,ts))
         
+        dill.dump(user_anthenna, open(os.path.join(output_path_files,"time_sliced","time_user_antennas_{0}.dill".format(d)),"wb"))
 
 #    print user_anthenna.items()
 #    plot_boxplot(user_gyration,"gyration")
@@ -273,7 +276,7 @@ if __name__ == "__main__":
 #    dill.dump(user_bbdiagonal, open("bbdiagonal.dill","wb"))
 
 #    dill.dump(user_active_days, open("test.dill","wb"))
-    dill.dump(user_anthenna, open(os.path.join(output_path_files,"user_antennas_august_all_timesliced.dill"),"wb"))
+#    dill.dump(user_anthenna, open(os.path.join(output_path_files,"user_antennas_august_all_timesliced.dill"),"wb"))
 
 
 

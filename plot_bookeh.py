@@ -7,6 +7,7 @@ from bokeh.models import (
             ColumnDataSource,
             HoverTool,
             LogColorMapper,
+            LinearColorMapper,
             ColorBar,
             LogTicker)
 from bokeh.palettes import Blues9 as palette
@@ -70,9 +71,9 @@ def plot_bokeh_intensity_map(spatial_entity_to_coordinates, spatial_entity_to_va
                 intensity_value = spatial_entity_to_values[name]
 #                intensity_value = np.median(spatial_entity_to_values[name])
             except Exception as err:
-                print "err"
-                print name
-                intensity_value = 0.0
+#                print "err"
+#                print name
+                continue
 
             entity_xs.append(xs)
             entity_ys.append(ys)
@@ -80,7 +81,8 @@ def plot_bokeh_intensity_map(spatial_entity_to_coordinates, spatial_entity_to_va
             entity_rates.append(intensity_value)
 
         palette.reverse()
-        color_mapper = LogColorMapper(palette=palette)
+#        color_mapper = LogColorMapper(palette=palette, low=0,high=1)
+        color_mapper = LinearColorMapper(palette=palette, low=0,high=1)
 
         source = ColumnDataSource(data=dict(
             x=entity_xs,
@@ -111,8 +113,10 @@ def plot_bokeh_intensity_map(spatial_entity_to_coordinates, spatial_entity_to_va
             ("(Long, Lat)", "($x, $y)"),]
 
         p.add_layout(color_bar, 'right')
-        export_png(p, os.path.join(output_path_plots,"census","london","{0}.png".format(census_name)))
-        fname = os.path.join(output_path_plots,"interactive_maps","london","{0}.html".format(census_name))
+#        export_png(p, os.path.join(output_path_plots,"census","london","{0}.png".format(census_name)))
+#        fname = os.path.join(output_path_plots,"interactive_maps","london","{0}.html".format(census_name))
+#        export_png(p, os.path.join(output_path_plots,"mobility","antennas","{0}.png".format(census_name)))
+        fname = os.path.join(output_path_plots,"mobility","antennas","{0}.html".format(census_name))
         save(obj=p,title=census_name ,filename=fname)
 #	show(p)
 

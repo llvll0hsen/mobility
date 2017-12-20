@@ -371,19 +371,65 @@ def source_cat_count(records):
         fpath = os.path.join(output_path_plots,'{0}_cat_dist.pdf'.format(provider))
         plt.savefig(fpath,bbox_inches='tight')
         plt.close()
-        
+
+def coordinates_info(record1,record2):
+    
+    lsoa_prices = defaultdict(list)
+    lsoa_time = defaultdict(list)
+    collection,client = connect_monogdb()
+    f = open(os.path.join(output_path_files,"coord_price_time.txt"),"wb")
+    f.writelines("lon;lat;lsoa;avg_price;time")
+    neighborhoods = set()
+    neighborhoods_price = defaultdict(lambda: defaultdict(int))
+    records = [record1,record2]
+    for item in records:
+        for r in item:
+            lon,lat = r['geolocation']['coordinates']
+            prices = r['price']
+            opening_hours = r['opening_hours']
+            
+            ne = reverse_geo_mongodb(lat,lon,collection)
+            if ne:
+                p_tags = []
+                for p in prices.values():
+                    if p is not None:
+                        try:
+                            p_tags.append(len(p))
+                        except Exception as err:
+                            #for google
+                            p_tags.append(p)
+                
+                if p_tags:
+                    avg_price = np.mean(p_tags) 
+                else:
+                    avg_price =  None
+
+                if opening_hours:
+                    times = []
+                    for source, time_records in opening_hours.iteritems():
+                        if time_records[0]:
+                            temp = time_records[0][0]
+                            topen = datetime.strptime(temp['open'], "%H:%M").timetz().hour
+                            tclose = datetime.strptime(temp['close'], "%H:%M").timetz().hour
+                            times.append((topen, tclose))
+
+                lsoa_prices[ne[0]] = (avg_price,times) 
+    dill.dump(lsoa_prices, open(os.path.join(output_path_files,"lsoa_price_time.dill"),"wb"))     
 if __name__ == '__main__':
     f = open("great_london_venues.json",'rb')
-#    f = open('london.venues.json','rb')
+    f2 = open('london.venues.json','rb')
 #    f = open('geosegmentation.venues.json','rb')
     records = json.load(f)
+    records2 = json.load(f2)
+    coordinates_info(records, records2)
+
 #    neighborhood_price_dist(records)
 #    plot_neighborhood_price_dist()
 #    categories_with_hour(records)
 #    source_cat_count(records)
 #    with_price_tag(records)
 #    with_ratings(records)
-    create_lat_lon_file(records)
+#    create_lat_lon_file(records)
 #    with_hours(records)
 #    time_dist(records)
 #    tag_clouds(records)
