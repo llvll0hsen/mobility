@@ -80,9 +80,10 @@ def plot_bokeh_intensity_map(spatial_entity_to_coordinates, spatial_entity_to_va
             entity_names.append(name)
             entity_rates.append(intensity_value)
 
-        palette.reverse()
+#        palette.reverse()
+        vals = spatial_entity_to_values.values()
 #        color_mapper = LogColorMapper(palette=palette, low=0,high=1)
-        color_mapper = LinearColorMapper(palette=palette, low=0,high=1)
+        color_mapper = LinearColorMapper(palette=palette, low=min(vals),high=max(vals))
 
         source = ColumnDataSource(data=dict(
             x=entity_xs,
@@ -90,7 +91,9 @@ def plot_bokeh_intensity_map(spatial_entity_to_coordinates, spatial_entity_to_va
             name=entity_names,
             rate=entity_rates,))
 
-        color_bar = ColorBar(color_mapper=color_mapper, ticker=LogTicker(),
+#        color_bar = ColorBar(color_mapper=color_mapper, ticker=LogTicker(),
+#                                     label_standoff=12, border_line_color=None, location=(0,0))
+        color_bar = ColorBar(color_mapper=color_mapper, 
                                      label_standoff=12, border_line_color=None, location=(0,0))
         TOOLS = "pan,wheel_zoom,reset,hover,save"
 #        TOOLS = "hover"

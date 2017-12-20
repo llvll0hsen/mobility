@@ -58,10 +58,11 @@ def heatmap_gini_overall(antennas_gini, antennas_indices,antenna_lsoa_mapping,va
     lsoa_values = {lsoa_id:np.mean(values) for lsoa_id,values in lsoa_antennas_values.iteritems()}
     plot_bokeh_intensity_map(lsoa_to_coordinates, lsoa_values, fname)
 
-def heatmap_gini_extreems(antennas_gini, antennas_indices,antenna_lsoa_mapping,fname):
+def heatmap_gini_extreems(antennas_gini, antennas_indices,antenna_lsoa_mapping,valid_aids,fname):
     lsoa_to_coordinates = load_lsoa_polygons()
     lsoa_antennas_values = defaultdict(list)
-    for aid, aidx in antennas_indices.iteritems():
+    for aidx in valid_aids:
+        aid = antennas_indices[aidx]
         try:
             lsoa_id = antenna_lsoa_mapping[aid]
             lsoa_antennas_values[lsoa_id].append(antennas_gini[aidx])

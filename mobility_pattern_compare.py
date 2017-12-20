@@ -321,8 +321,8 @@ def daily_mixing(user_groups):
         weekday_ginis.append(aidx_ginis.values())
         fname = "day_{0}".format(weekday_labels[weekday])
         print "heatmap"
-        heatmap_gini_overall(aidx_ginis,antenna_indices_r,antennas_lsoa,idx_nozero,fname)
-#        heatmap_gini_extreems(aidx_ginis,antenna_indices,antennas_lsoa,fname)
+#        heatmap_gini_overall(aidx_ginis,antenna_indices_r,antennas_lsoa,idx_nozero,fname)
+        heatmap_gini_extreems(aidx_ginis,antenna_indices_r,antennas_lsoa,idx_nozero,fname)
     
     print "boxplot"
     fig, ax = plt.subplots()
@@ -401,8 +401,8 @@ def ts_mixing(user_groups):
 
         
 
-        heatmap_gini_overall(aidx_ginis,antenna_indices_r,antennas_lsoa,idx_nozero,fname)
-        #heatmap_gini_extreems(ginis,antenna_indices,antennas_lsoa,fname)
+        #heatmap_gini_overall(aidx_ginis,antenna_indices_r,antennas_lsoa,idx_nozero,fname)
+        heatmap_gini_extreems(aidx_ginis,antenna_indices_r,antennas_lsoa,idx_nozero,fname)
         
         
 #    dill.dump(ts_top_antennas,open(os.path.join(output_path_files,"top100antennas_ts.dill"),"wb"))
@@ -508,8 +508,8 @@ def gini_coeff(arr):
 if __name__ == "__main__":
     users = {}
     users = get_users_group()
-#    ts_mixing(users)
-    daily_mixing(users)
+    ts_mixing(users)
+#    daily_mixing(users)
 #    similarity_matrix, group_sizes, group_names = users_trajectory_similariy(users)
 #    anthena_user_ratio(users)
 #    compute_avg_similarity(similarity_matrix, group_sizes, group_names)
