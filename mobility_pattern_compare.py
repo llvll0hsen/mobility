@@ -496,7 +496,7 @@ def anthena_user_ratio(user_groups):
 #    plt.savefig(os.path.join(output_path_plots,"anthena_group_matrix_WE.pdf"), bbox_inches="tight")
 #    plt.savefig(os.path.join(output_path_plots,"antenna_group_matrix_gini_box.pdf"), bbox_inches="tight")
 #    plt.close() 
-def gini_coeff(arr):
+ def gini_coeff(arr):
     array = arr.flatten() 
     array += 0.0000001
     array = np.sort(array)
