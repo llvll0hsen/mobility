@@ -187,20 +187,24 @@ def plot_boxplot(data,title):
 if __name__ == "__main__":
     
 #    home_location_london_only()
-##    find_home_location()
+##   find_home_location()
 #    antenna_neighborhood()
 #
 #    antenna_lsa()
 #    sys.exit()
-    time_slice = "hour=all"
+    user_groups = dill.load(open(os.path.join(output_path_files,"user_groups.dill"),"rb"))
+    print user_groups.keys()[:5]
+#    time_slice = "hour=all"
     month = "august"
     mobility_path = "data/mining_mobility" 
     path = os.path.join(mobility_path, month)
     months_folders = os.listdir(path)
     user_active_days = defaultdict(int)
     user_bbdiagonal = defaultdict(list)
-    user_gyration = defaultdict(list)
+    group_gyration = defaultdict(lambda:defaultdict(list))
     user_totDuration = defaultdict(list)
+    group_antenna_duration = defaultdict(lambda:defaultdict(list))
+
     anthena_timespent =  defaultdict(list) 
 #    user_anthenna = defaultdict(lambda: defaultdict(Counter))
     
@@ -209,7 +213,7 @@ if __name__ == "__main__":
 #    f_user_anthena.writelines("user_id,anthena_id,duration,date,weekday,time_slice")
 
     for d in months_folders:
-        user_anthenna = defaultdict(lambda: defaultdict(Counter))
+        user_antenna = defaultdict(lambda: defaultdict(Counter))
         print d
         datetime_date = parse(d.split("=")[1]) 
         date_str = datetime_date.strftime("%d-%m-%y")
@@ -234,9 +238,12 @@ if __name__ == "__main__":
                     a = line.split("\t")
                     a = filter(None,a) #remove empty strings from the list
                     user_id = a[0]
-                    
-                    user_active_days[user_id]+=1
-#                    user_gyration[user_id].append(float(a[1]))
+                    user_active_days[user_id] += 1
+                    try:
+                        group_id  = user_groups[user_id]
+                        group_gyration[group_id][ts].append(float(a[1]))
+                    except Exception as err:
+                        group_id = -1
 #                    user_bbdiagonal[user_id].append(float(a[2]))
 #                    user_totDuration[user_id].append(float(a[3]))
                     
@@ -245,10 +252,11 @@ if __name__ == "__main__":
                         #there is an extra column that needs to be removed
                         anthena_info = anthena_info[:-1]
                     for i in xrange(0,len(anthena_info),2):
-                        anthena_id = anthena_info[i]
+                        antenna_id = anthena_info[i]
                         duration = anthena_info[i+1]
                         try:
                             duration = float(duration)
+                            group_antenna_duration[group_id][antenna_id].append(duration) 
                         except Exception as err:
                             print duration
                             print line
@@ -257,12 +265,14 @@ if __name__ == "__main__":
 
 #                        anthenna_timespent[anthena_id].append(duration)
 #                        print user_id, anthena_id
-                        user_anthenna[ts][user_id].update([anthena_id])
+                        user_antenna[ts][user_id].update([antenna_id])
 #                        user_anthenna[user_id][ts].update([anthena_id])
 #                        user_anthena[user_id].append((anthena_info[i],anthena_info[i+1]))
 #                        f_user_anthena.writelines("\n{0},{1},{2},{3},{4},{5}".format(user_id,anthena_id,duration,date_str,weekday,ts))
         
-        dill.dump(user_anthenna, open(os.path.join(output_path_files,"time_sliced","time_user_antennas_{0}.dill".format(d)),"wb"))
+        dill.dump(user_antenna, open(os.path.join(output_path_files,"time_sliced","time_user_antennas_{0}.dill".format(d)),"wb"))
+        dill.dump(group_gyration, open(os.path.join(output_path_files,"time_sliced","group_gyration_{0}.dill".format(d)),"wb"))
+        dill.dump(group_antenna_duration, open(os.path.join(output_path_files,"time_sliced","group_antennas_duration_{0}.dill".format(d)),"wb"))
 
 #    print user_anthenna.items()
 #    plot_boxplot(user_gyration,"gyration")

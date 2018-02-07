@@ -374,7 +374,7 @@ def source_cat_count(records):
 
 def coordinates_info(record1,record2):
     
-    lsoa_prices = defaultdict(list)
+    lsoa_prices  = defaultdict(list)
     lsoa_time = defaultdict(list)
     collection,client = connect_monogdb()
     f = open(os.path.join(output_path_files,"coord_price_time.txt"),"wb")
@@ -383,7 +383,7 @@ def coordinates_info(record1,record2):
     neighborhoods_price = defaultdict(lambda: defaultdict(int))
     records = [record1,record2]
     for item in records:
-        for r in item:
+        for r in item: 
             lon,lat = r['geolocation']['coordinates']
             prices = r['price']
             opening_hours = r['opening_hours']
