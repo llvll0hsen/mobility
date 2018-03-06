@@ -64,6 +64,7 @@ def plot_bokeh_intensity_map(spatial_entity_to_coordinates, spatial_entity_to_va
         entity_ys = []
         entity_names = []
         entity_rates = []
+        j = 0
         for name, coords in spatial_entity_to_coordinates.items():
             xs = [i for i in coords[0]]
             ys = [i for i in coords[1]] 
@@ -73,13 +74,14 @@ def plot_bokeh_intensity_map(spatial_entity_to_coordinates, spatial_entity_to_va
             except Exception as err:
 #                print "err"
 #                print name
+                j+=1
                 continue
-
+         
             entity_xs.append(xs)
             entity_ys.append(ys)
             entity_names.append(name)
             entity_rates.append(intensity_value)
-
+        print "missing lsoa: ",j
 #        palette.reverse()
         vals = spatial_entity_to_values.values()
 #        color_mapper = LogColorMapper(palette=palette, low=0,high=1)

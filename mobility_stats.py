@@ -16,25 +16,41 @@ output_path_plots = os.path.join(output_path_plots,"mobility")
 output_path_files = os.path.join(output_path_files,"mobility")
 
 
-def antenna_lsoa():
+def get_antenna_lsoa():
     antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc_london_only.dill"),"rb"))
     collection,client = connect_monogdb()
-    anthena_lsoa = {}
+    antenna_lsoa = {}
+    missing_antennas = []
     for antenna_id, loc in antenna_loc.iteritems():
 #        print loc
+#        print loc,antenna_id
         lon,lat =  loc
-
+#        print loc
         try:
             ne = reverse_geo_mongodb(float(lat.strip()),float(lon.strip()),collection)
             print ne
             antenna_lsoa[antenna_id] = ne[0]
         except Exception as err:
-#            print err
+            print err
 #            print loc
             pass
-
+    
     dill.dump(antenna_lsoa, open(os.path.join(output_path_files,"antenna_lsoa_london_only.dill"),"wb"))
     client.close()
+def find_missing_aids():
+    aid_lsoa = dill.load(open(os.path.join(output_path_files,"antenna_lsoa_london_only.dill"),"rb"))
+    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc_london_only.dill"),"rb"))
+    missing_aids = list(set(antenna_loc.keys()) - set(aid_lsoa.keys()))
+    
+    print antenna_loc[missing_aids[0]]
+    print antenna_loc[missing_aids[1]]
+    print antenna_loc[missing_aids[2]]
+    print len(missing_aids)
+    print "antennas london lsoa", len(set(aid_lsoa.values()))
+    print "percentage of missing aids: {0}".format(float(len(missing_aids))/len(antenna_loc))
+    
+    print missing_aids
+    dill.dump(list(missing_aids),open(os.path.join(output_path_files,"missing_aids_lsoa.dill"),"wb"))
 
 def antenna_neighborhood():
     anthena_loc = dill.load(open(os.path.join(output_path_files,"anthena_loc_london_only.dill"),"rb"))
@@ -68,7 +84,7 @@ def home_location():
 def find_home_location():
     user_anthena_duration = defaultdict(lambda :defaultdict(float))
 
-    anthena_loc = dill.load(open(os.path.join(output_path_files,"anthena_loc.dill"),"rb"))
+    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc.dill"),"rb"))
     month = "august"
     path = os.path.join(mobility_path, month)
     months_folders = os.listdir(path)
@@ -98,20 +114,20 @@ def find_home_location():
                     a = filter(None,a) #remove empty strings from the list
                     user_id = a[0]
                     
-                    anthena_info = a[5:]
-                    if len(anthena_info)%2:
+                    antenna_info = a[5:]
+                    if len(antenna_info)%2:
                         #there is an extra column that needs to be removed
-                        anthena_info = anthena_info[:-1]
-                    for i in xrange(0,len(anthena_info),2):
-                        anthena_id = anthena_info[i]
-                        duration = float(anthena_info[i+1])
-                        user_anthena_duration[user_id][anthena_id]+=duration
+                        antenna_info = antenna_info[:-1]
+                    for i in xrange(0,len(antenna_info),2):
+                        antenna_id = antenna_info[i]
+                        duration = float(antenna_info[i+1])
+                        user_antenna_duration[user_id][antenna_id]+=duration
         #find top anthena:
         
-    f =  open(os.path.join(output_path_files, "user_top_anthena_{0}_00_04.txt".format(month)),"wb")
+    f =  open(os.path.join(output_path_files, "user_top_antenna_{0}_00_04.txt".format(month)),"wb")
     f.write("user_id, top_anthena, lon, lat\n")
 
-    f2 =  open(os.path.join(output_path_files, "missing_anthenas.txt".format(month)),"wb")
+    f2 =  open(os.path.join(output_path_files, "missing_antennas.txt".format(month)),"wb")
     
     user_count = 0.
     missing_counts = 0
@@ -189,9 +205,11 @@ if __name__ == "__main__":
 #    home_location_london_only()
 ##   find_home_location()
 #    antenna_neighborhood()
-#
-#    antenna_lsa()
-#    sys.exit()
+
+#    get_antenna_lsoa()
+
+    find_missing_aids()
+    sys.exit()
     user_groups = dill.load(open(os.path.join(output_path_files,"user_groups.dill"),"rb"))
     print user_groups.keys()[:5]
 #    time_slice = "hour=all"

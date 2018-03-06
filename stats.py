@@ -7,6 +7,8 @@ import os
 
 import requests
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pylab as plt
 #import googlemaps
 #from wordcloud import WordCloud
@@ -62,7 +64,7 @@ def price_cat_loc(records):
     
         for source, star_locs in source_tag_loc.iteritems():
             for star, locs in star_locs.iteritems():
-                fpath = os.path.join(output_path_files,'{0}_{1}_venue.txt'.format(source,star)) 
+                fpath = os.path.join(output_path_files,'{0}_{1}_venue_all.txt'.format(source,star)) 
                 with open(fpath,'wb') as f:
                     f.write('lon,lat,venue')
                     for l in locs:
@@ -148,7 +150,7 @@ def categories_with_hour(records):
     plt.close()
 
 def create_lat_lon_file(records):
-    with open(os.path.join(output_path_files,'loc_great_london.txt'),'wb') as f:
+    with open(os.path.join(output_path_files,'loc_all_london.txt'),'wb') as f:
         f.write('lon,lat')
         for i in records:
             lat,lon = i['geolocation']['coordinates']
@@ -202,8 +204,9 @@ def time_dist(records):
 
 def with_hours(records):
     collection,client = connect_monogdb()
-    f = open(os.path.join(output_path_files,"hours_geo_new.txt"),"wb")
-    f.writelines("\nlon;lat;district;topen;tclose")
+    f = open(os.path.join(output_path_files,"hours_geo_new_all.txt"),"wb")
+#    f.writelines("\nlon;lat;district;topen;tclose")
+    f.writelines("\nlon;lat;topen;tclose")
 
     count_valid = 0
     source_valid = defaultdict(int)
@@ -218,7 +221,7 @@ def with_hours(records):
 #                    print r
 #                    print '\n'
                     lon,lat = r['geolocation']['coordinates']
-                    district = reverse_geo_mongodb(lat,lon,collection)
+#                    district = reverse_geo_mongodb(lat,lon,collection)
 
 
                     count_valid+=1
@@ -226,7 +229,8 @@ def with_hours(records):
                     topen = datetime.strptime(temp['open'], "%H:%M").timetz().hour
                     tclose = datetime.strptime(temp['close'], "%H:%M").timetz().hour
                     
-                    f.writelines("\n{0};{1};{2};{3};{4}".format(lon,lat,district,topen,tclose))
+#                    f.writelines("\n{0};{1};{2};{3};{4}".format(lon,lat,district,topen,tclose))
+                    f.writelines("\n{0};{1};{2};{3}".format(lon,lat,topen,tclose))
 #                    source_time_dist[source].update(range(topen,tclose))
                     source_valid[source]+=1
     f.close()
@@ -239,7 +243,7 @@ def with_hours(records):
     ax.bar(x,counts, align="center")
     ax.set_xticks(x)
     ax.set_xticklabels(sources,rotation=45)
-    plt.savefig(os.path.join(output_path_plots,'openings_ratio.pdf'),bbox_inches='tight')
+    plt.savefig(os.path.join(output_path_plots,'openings_ratio_all.pdf'),bbox_inches='tight')
 
     plt.close()
     print 'number/ratio of records with hours: ',count_valid,count_valid/float(n)
@@ -372,56 +376,65 @@ def source_cat_count(records):
         plt.savefig(fpath,bbox_inches='tight')
         plt.close()
 
-def coordinates_info(record1,record2):
-    
+def coordinates_info(record):
     lsoa_prices  = defaultdict(list)
     lsoa_time = defaultdict(list)
     collection,client = connect_monogdb()
     f = open(os.path.join(output_path_files,"coord_price_time.txt"),"wb")
-    f.writelines("lon;lat;lsoa;avg_price;time")
+    f.writelines("lon;lat;avg_price;time")
     neighborhoods = set()
     neighborhoods_price = defaultdict(lambda: defaultdict(int))
-    records = [record1,record2]
-    for item in records:
-        for r in item: 
-            lon,lat = r['geolocation']['coordinates']
-            prices = r['price']
-            opening_hours = r['opening_hours']
-            
-            ne = reverse_geo_mongodb(lat,lon,collection)
-            if ne:
-                p_tags = []
-                for p in prices.values():
-                    if p is not None:
-                        try:
-                            p_tags.append(len(p))
-                        except Exception as err:
-                            #for google
-                            p_tags.append(p)
-                
-                if p_tags:
-                    avg_price = np.mean(p_tags) 
-                else:
-                    avg_price =  None
+    time_range = {1:(0,4),2:(4,8),3:(8,12),4:(12,16),5:(16,20),6:(20,25)}
 
-                if opening_hours:
-                    times = []
-                    for source, time_records in opening_hours.iteritems():
-                        if time_records[0]:
-                            temp = time_records[0][0]
-                            topen = datetime.strptime(temp['open'], "%H:%M").timetz().hour
-                            tclose = datetime.strptime(temp['close'], "%H:%M").timetz().hour
-                            times.append((topen, tclose))
+    for r in records:
+        lon,lat = r['geolocation']['coordinates']
+        prices = r['price']
+        opening_hours = r['opening_hours']
+        
+#        ne = reverse_geo_mongodb(lat,lon,collection)
+#        if ne:
+        p_tags = []
+        for p in prices.values():
+            if p is not None:
+                try:
+                    p_tags.append(len(p))
+                except Exception as err:
+                    #for google
+                    p_tags.append(p)
+        
+        if p_tags:
+            avg_price = np.mean(p_tags) 
+        else:
+            avg_price =  None
 
-                lsoa_prices[ne[0]] = (avg_price,times) 
-    dill.dump(lsoa_prices, open(os.path.join(output_path_files,"lsoa_price_time.dill"),"wb"))     
+        if opening_hours:
+            times = []
+            for source, time_records in opening_hours.iteritems():
+                if time_records[0]:
+                    temp = time_records[0][0]
+                    topen = datetime.strptime(temp['open'], "%H.%M").timetz().hour
+                    tclose = datetime.strptime(temp['close'], "%H.%M").timetz().hour
+                    times.append((topen, tclose))
+
+#        lsoa_prices[ne[0]] = (avg_price,times) 
+#    dill.dump(lsoa_prices, open(os.path.join(output_path_files,"lsoa_price_time.dill"),"wb"))     
 if __name__ == '__main__':
-    f = open("great_london_venues.json",'rb')
-    f2 = open('london.venues.json','rb')
+#    f = open("great_london_venues.json",'rb')
+#    f2 = open('london.venues.json','rb')
+    f = open('london_comp.json','rb')
 #    f = open('geosegmentation.venues.json','rb')
+   
     records = json.load(f)
-    records2 = json.load(f2)
-    coordinates_info(records, records2)
+    print len(records)
+#    records2 = json.load(f2)
+#    records.extend(records2)
+#    json.dump(records, open("london_comp.json","wb"))
+#    print records[0]
+#    print records[0]
+#    print records[2]
+#    print records2[1]
+#    coordinates_info(records, records2)
+#    sys.exit()
 
 #    neighborhood_price_dist(records)
 #    plot_neighborhood_price_dist()
@@ -430,7 +443,7 @@ if __name__ == '__main__':
 #    with_price_tag(records)
 #    with_ratings(records)
 #    create_lat_lon_file(records)
-#    with_hours(records)
+    with_hours(records)
 #    time_dist(records)
 #    tag_clouds(records)
 #    price_cat_loc(records)

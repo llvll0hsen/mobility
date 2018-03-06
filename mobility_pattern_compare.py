@@ -381,6 +381,7 @@ def daily_mixing(user_groups):
     antenna_indices_r = dict(zip(range(len(antenna_ids)),antenna_ids))
     group_names = sorted(user_groups.keys())#[:2]
     group_sizes = [len(user_groups[gn]) for gn in group_names]
+    group_sizes_gn = {gn:len(user_groups[gn]) for gn in group_names}
 
     print group_names
     user_count = sum([len(v) for v in user_groups.itervalues()])
@@ -392,27 +393,31 @@ def daily_mixing(user_groups):
     ts_aggr = defaultdict(float)
 
     antenna_group_matrix = np.zeros((len(weekday_labels),len(antenna_ids),len(group_names)))
+
     for fn in file_names:
         dstr = fn.split(".")[0].split("_")[-1]
 
         datetime_date = parse(dstr.split("=")[1]) 
         weekday = datetime_date.weekday()
          
-        user_antennas = dill.load(open(os.path.join(output_path_files,"time_sliced",fn),"rb"))
-        for i, gn in enumerate(group_names):
-            user_ids = user_groups[gn]
-            for uid in user_ids:
-                home_antenna = user_home_antenna[uid]
-                for time_slice, user_ant in user_antennas.iteritems():
-                    antennas_count = user_ant[uid]
-                    #remove home anthena
-                    antennas_count.pop(home_antenna,None)
-                    for aid, count in antennas_count.iteritems():
-                        try:
-                            antenna_idx = antenna_indices[aid] 
-                            antenna_group_matrix[weekday,antenna_idx, i] += count
-                        except Exception as err:
-                            pass
+#        user_antennas = dill.load(open(os.path.join(output_path_files,"time_sliced",fn),"rb"))
+#        for i, gn in enumerate(group_names):
+#            user_ids = user_groups[gn]
+#            for uid in user_ids:
+#                home_antenna = user_home_antenna[uid]
+#                for time_slice, user_ant in user_antennas.iteritems():
+#                    antennas_count = user_ant[uid]
+#                    #remove home anthena
+#                    antennas_count.pop(home_antenna,None)
+#                    for aid, count in antennas_count.iteritems():
+#                        try:
+#                            antenna_idx = antenna_indices[aid] 
+#                            antenna_group_matrix[weekday,antenna_idx, i] += count
+#                        except Exception as err:
+#                            pass
+    antenna_group_matrix = dill.load(open(os.path.join(output_path_files,"weekly_matrix.dill"),"rb"))
+#    dill.dump(antenna_group_matrix,open(os.path.join(output_path_files,"weekly_matrix.dill"),"wb"))
+#    dill.dump(group_sizes_gn,open(os.path.join(output_path_files,"group_sizes_dict.dill"),"wb"))
     weekday_ginis =  [] 
     weekday_top_antennas = {}
     all_ginis = {}
@@ -446,9 +451,13 @@ def ts_mixing(user_groups):
     print "total number of antennas: ", len(antenna_loc)
     antennas_lsoa = get_antennas_lsoa()
     user_home_antenna = pd.read_csv(os.path.join(output_path_files, "user_top_anthena_london_only_deprivation_{0}_00_04.txt".format(month)),usecols=["user_id","top_anthena"])
+#    user_home_antenna = pd.read_csv(os.path.join(output_path_files, "user_top_anthena_london_only_deprivation_{0}_00_04.txt".format(month)))
     print "total number of users: ", len(user_home_antenna)
-    user_home_antenna.dropna()
+    user_home_antenna = user_home_antenna.dropna()
     user_home_antenna = user_home_antenna.set_index("user_id").to_dict()["top_anthena"]
+    a = user_home_antenna.keys()
+#    print a[0]
+#    #print user_home_antenna[a[0]]
 #    sys.exit() 
     antenna_ids = sorted(antenna_loc.keys())
     antenna_indices = dict(zip(antenna_ids,range(len(antenna_ids))))
@@ -472,34 +481,37 @@ def ts_mixing(user_groups):
     time_labels = ["00-04","04-08","08-12","12-16","16-20","20-24"]#[2:]
     antenna_group_matrix = np.zeros((len(time_spans),len(antenna_ids),len(group_names))) #7 time slice
 #    antenna_group_matrix = np.zeros((2,len(antenna_ids),len(group_names))) #7 time slice
-    for fn in file_names:
-        dstr = fn.split(".")[0].split("_")[-1]
-
-        datetime_date = parse(dstr.split("=")[1]) 
-        weekday = datetime_date.weekday()
-         
-        user_antennas = dill.load(open(os.path.join(output_path_files,"time_sliced",fn),"rb"))
-        for i, gn in enumerate(group_names):
-            user_ids = user_groups[gn]
-            for uid in user_ids:
-                home_antenna = user_home_antenna[uid]
-                for ti, ts in enumerate(time_spans):
-                    user_ant = user_antennas[ts]
-                    antennas_count = user_ant[uid]
-                    #remove home antenna
-                    antennas_count.pop(home_antenna,None)
-                    for aid, count in antennas_count.iteritems():
-                        try:
-                            antenna_idx = antenna_indices[aid] 
-                            antenna_group_matrix[ti,antenna_idx, i] += count
-                        except Exception as err:
-                            pass
+#    for fn in file_names:
+#        dstr = fn.split(".")[0].split("_")[-1]
+#
+#        datetime_date = parse(dstr.split("=")[1]) 
+#        weekday = datetime_date.weekday()
+#         
+#        user_antennas = dill.load(open(os.path.join(output_path_files,"time_sliced",fn),"rb"))
+#        for i, gn in enumerate(group_names):
+#            user_ids = user_groups[gn]
+#            for uid in user_ids:
+#                home_antenna = user_home_antenna[uid]
+#                for ti, ts in enumerate(time_spans):
+#                    user_ant = user_antennas[ts]
+#                    antennas_count = user_ant[uid]
+#                    #remove home antenna
+#                    antennas_count.pop(home_antenna,None)
+#                    for aid, count in antennas_count.iteritems():
+#                        try:
+#                            antenna_idx = antenna_indices[aid] 
+#                            antenna_group_matrix[ti,antenna_idx, i] += count
+#                        except Exception as err:
+#                            pass
+#    dill.dump(antenna_group_matrix,open(os.path.join(output_path_files,"daily_matrix.dill"),"wb"))
+    antenna_group_matrix = dill.load(open(os.path.join(output_path_files,"daily_matrix.dill"),"rb"))
                             
     all_ginis = {}
     ts_ginis = []
 #    print antenna_group_matrix[0,:,:]
     for ts in xrange(len(time_spans)):
         antenna_group_matrix[ts,:,:]/= group_sizes
+#    group_pairwise_corr(antenna_group_matrix[ts,:,:],ts)
         #find not visited antennas
         
         sums = antenna_group_matrix[ts,:,:].sum(1)
@@ -519,7 +531,6 @@ def ts_mixing(user_groups):
 #        heatmap_gini_extreems(aidx_ginis,antenna_indices_r,antennas_lsoa,idx_nozero,fname)
         
         
-#    group_pairwise_corr(antenna_group_matrix,time_labels)
     #skewness(all_ginis, antenna_group_matrix, time_labels)
 #    dill.dump(ts_top_antennas,open(os.path.join(output_path_files,"top100antennas_ts.dill"),"wb"))
     fname = "ts_rank"
@@ -650,8 +661,8 @@ if __name__ == "__main__":
     users = {}
     users = get_users_group()
 #    get_user_groups_dict(users)
-#    ts_mixing(users)
-    daily_mixing(users)
+    ts_mixing(users)
+#    daily_mixing(users)
 #    gyration_bbox_compare()
 #    get_group_home_antennas(users)
 #    group_antenna_duration()
