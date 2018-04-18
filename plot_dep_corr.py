@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pylab as plt
 import dill
 
-from util import output_path_files, output_path_plots,connect_monogdb, reverse_geo_mongodb,mobility_path,census_data_fpath,get_depr_factor
+from util import output_path_files, output_path_plots,mobility_path,census_data_fpath,get_depr_factor
 
 output_path_plots = os.path.join(output_path_plots,"mobility")
 output_path_files = os.path.join(output_path_files,"mobility")
@@ -16,7 +16,9 @@ output_path_files = os.path.join(output_path_files,"mobility")
 
 if __name__ == "__main__":
     files = os.listdir(os.path.join(output_path_files,"dpr_corr"))
-    factors = ["IMD","Children and Young People Sub-domain Decile (where 1 is most deprived 10% of LSOAs)","Adult Skills Sub-domain Decile (where 1 is most deprived 10% of LSOAs)","Geographical Barriers Sub-domain Decile (where 1 is most deprived 10% of LSOAs)","Wider Barriers Sub-domain Decile (where 1 is most deprived 10% of LSOAs)","Indoors Sub-domain Decile (where 1 is most deprived 10% of LSOAs)","Outdoors Sub-domain Decile (where 1 is most deprived 10% of LSOAs)"]
+    factors = ["IMD Decile (where 1 is most deprived 10% of LSOAs)", "Income Decile (where 1 is most deprived 10% of LSOAs)","Employment Decile (where 1 is most deprived 10% of LSOAs)","Education, Skills and Training Decile (where 1 is most deprived 10% of LSOAs)","Health Deprivation and Disability Decile (where 1 is most deprived 10% of LSOAs)",
+            "Crime Decile (where 1 is most deprived 10% of LSOAs)","Barriers to Housing and Services Decile (where 1 is most deprived 10% of LSOAs)",
+            "Living Environment Decile (where 1 is most deprived 10% of LSOAs)"]
     d = defaultdict(dict)
 
     for fname in files:

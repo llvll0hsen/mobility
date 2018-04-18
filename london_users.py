@@ -13,7 +13,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pylab as plt
 
-from util import output_path_files, output_path_plots,connect_monogdb, reverse_geo_mongodb,mobility_path,census_data_fpath
+from util import output_path_files, output_path_plots,connect_mongodb, reverse_geo_mongodb,mobility_path,census_data_fpath
 
 output_path_plots = os.path.join(output_path_plots,"mobility")
 output_path_files = os.path.join(output_path_files,"mobility")
@@ -40,7 +40,9 @@ def ne_user_count(df):
     plt.close()
 
 def antenna_deprivation():
-    antenna_lsoa = dill.load(open(os.path.join(output_path_files,"antenna_lsoa_london_only.dill"),"rb"))
+    antenna_lsoa = dill.load(open(os.path.join(output_path_files,"antenna_lsoa_london_only_new.dill"),"rb"))
+    print "120-500221" in antenna_lsoa
+    print len(antenna_lsoa)
     df = pd.read_excel(os.path.join(census_data_fpath,"london","deprivation_london.xls"),sheet_name="IMD 2015")
     col_names = ["LSOA code (2011)","LSOA name (2011)","Local Authority District code (2013)","Local Authority District name (2013)","IMD Decile (where 1 is most deprived 10% of LSOAs)","IMD Rank (where 1 is most deprived)"]
 #    df = df[df["Local Authority District name (2013)"]!="City of London"]
@@ -51,22 +53,19 @@ def antenna_deprivation():
         area_name, value = row[1],row[5]
 #        print area_name
         values[area_name.lower()] = int(value)
-    dill.dump(values, open(os.path.join(output_path_files,"lsoa_deprivation.dill"),"wb"))
-    sys.exit()
+#    dill.dump(values, open(os.path.join(output_path_files,"lsoa_deprivation.dill"),"wb"))
+#    sys.exit()
     aid_dep_rank = {}
 #    print sorted(values.keys())
     for aid, lsoa in antenna_lsoa.iteritems():
-        try:
-            aid_dep_rank[aid] = values[lsoa.lower()] 
-        except Exception as err:
-            print(lsoa)
+        aid_dep_rank[aid] = values[lsoa.lower()] 
     print len(aid_dep_rank)
     dill.dump(aid_dep_rank,open(os.path.join(output_path_files,"antenna_depr.dill"),"wb"))
 
 def split_social_groups(df_london):
     df = pd.read_excel(os.path.join(census_data_fpath,"london","deprivation_london.xls"),sheet_name="IMD 2015")
     col_names = ["LSOA code (2011)","LSOA name (2011)","Local Authority District code (2013)","Local Authority District name (2013)","IMD Decile (where 1 is most deprived 10% of LSOAs)","IMD Rank (where 1 is most deprived)"]
-    df = df[df["Local Authority District name (2013)"]!="City of London"]
+#    df = df[df["Local Authority District name (2013)"]!="City of London"]
     df = df[col_names].dropna()
     values = {}
 
@@ -77,22 +76,22 @@ def split_social_groups(df_london):
         values[area_name.lower()] = int(value)
 
 
-    antenna_lsa = dill.load(open(os.path.join(output_path_files,"anthena_lsoa_london_only.dill"),"rb"))
+    antenna_lsa = dill.load(open(os.path.join(output_path_files,"antenna_lsoa_london_only_new.dill"),"rb"))
     missing = []
     for aid, lsa in antenna_lsa.iteritems():
         try:
             rank = values[lsa.lower()]
-            df_london.ix[df_london["top_anthena"]==aid,"deprivation_rank"] = rank
-            df_london.ix[df_london["top_anthena"]==aid,"lsoa"] = lsa
+            df_london.ix[df_london["top_antenna"]==aid,"deprivation_rank"] = rank
+            df_london.ix[df_london["top_antenna"]==aid,"lsoa"] = lsa
         except Exception as err:
 #            print err
             missing.append(lsa)
-            df_london.ix[df_london["top_anthena"]==aid,"deprivation_rank"] = None
-            df_london.ix[df_london["top_anthena"]==aid,"lsoa"] = lsa
+            df_london.ix[df_london["top_antenna"]==aid,"deprivation_rank"] = None
+            df_london.ix[df_london["top_antenna"]==aid,"lsoa"] = lsa
 
     print missing
     print len(missing) 
-    df_london.to_csv(os.path.join(output_path_files, "user_top_anthena_london_only_deprivation_{0}_00_04.txt".format(month)),index=False)
+    df_london.to_csv(os.path.join(output_path_files, "user_top_antenna_london_only_deprivation_{0}_00_04.txt".format(month)),index=False)
 
 
 def split_rich_poor_users(df_london):
@@ -143,8 +142,8 @@ def split_rich_poor_users(df_london):
     plt.close()
 
 if __name__ == "__main__":
-#    f =  open(os.path.join(output_path_files, "user_top_anthena_london_only_{0}_00_04.txt".format(month)),"rb")
-#    df = pd.read_csv(f)
+    f =  open(os.path.join(output_path_files, "user_top_antenna_london_only_{0}_00_04.txt".format(month)),"rb")
+    df = pd.read_csv(f)
 #    ne_user_count(df)
 #    split_rich_poor_users(df)
 #    split_social_groups(df)

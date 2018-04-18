@@ -10,15 +10,14 @@ import pandas as pd
 import numpy as np
 import matplotlib.pylab as plt
 
-from util import output_path_files, output_path_plots,connect_monogdb, reverse_geo_mongodb,mobility_path
+from util import output_path_files, output_path_plots,connect_mongodb, reverse_geo_mongodb,mobility_path
 
 output_path_plots = os.path.join(output_path_plots,"mobility")
 output_path_files = os.path.join(output_path_files,"mobility")
 
-
 def get_antenna_lsoa():
-    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc_london_only.dill"),"rb"))
-    collection,client = connect_monogdb()
+    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc_london_only_new.dill"),"rb"))
+    collection,client = connect_mongodb()
     antenna_lsoa = {}
     missing_antennas = []
     for antenna_id, loc in antenna_loc.iteritems():
@@ -38,10 +37,11 @@ def get_antenna_lsoa():
     dill.dump(antenna_lsoa, open(os.path.join(output_path_files,"antenna_lsoa_london_only.dill"),"wb"))
     client.close()
 def find_missing_aids():
-    aid_lsoa = dill.load(open(os.path.join(output_path_files,"antenna_lsoa_london_only.dill"),"rb"))
-    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc_london_only.dill"),"rb"))
+    aid_lsoa = dill.load(open(os.path.join(output_path_files,"antenna_lsoa_london_only_new.dill"),"rb"))
+    print len(list(set(aid_lsoa.values())))
+    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc_london_only_new.dill"),"rb"))
     missing_aids = list(set(antenna_loc.keys()) - set(aid_lsoa.keys()))
-    
+    print len(missing_aids) 
     print antenna_loc[missing_aids[0]]
     print antenna_loc[missing_aids[1]]
     print antenna_loc[missing_aids[2]]
@@ -73,7 +73,7 @@ def antenna_neighborhood():
 
 def home_location():
     month = "august"
-    f =  open(os.path.join(output_path_files, "user_anthena_{0}_00_04.txt".format(month)),"rb")
+    f =  open(os.path.join(output_path_files, "user_antenna_{0}_00_04.txt".format(month)),"rb")
     df = pd.read_csv(f,delimiter=",")
     df = df[(df.time_slice=="hour=00-04") & (~df.weekday.isin([5,6]))]
 
@@ -82,9 +82,9 @@ def home_location():
     temp.to_csv(os.path.join(output_path_files, "home_locations_{0}.txt".format(month)),sep=",",index=False)
 
 def find_home_location():
-    user_anthena_duration = defaultdict(lambda :defaultdict(float))
+    user_antenna_duration = defaultdict(lambda :defaultdict(float))
 
-    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc.dill"),"rb"))
+    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc_new.dill"),"rb"))
     month = "august"
     path = os.path.join(mobility_path, month)
     months_folders = os.listdir(path)
@@ -125,47 +125,46 @@ def find_home_location():
         #find top anthena:
         
     f =  open(os.path.join(output_path_files, "user_top_antenna_{0}_00_04.txt".format(month)),"wb")
-    f.write("user_id, top_anthena, lon, lat\n")
+    f.write("user_id, top_antenna, lon, lat\n")
 
     f2 =  open(os.path.join(output_path_files, "missing_antennas.txt".format(month)),"wb")
     
     user_count = 0.
     missing_counts = 0
-    for user, anthena_info in user_anthena_duration.iteritems():
+    for user, antenna_info in user_antenna_duration.iteritems():
 #        print user
         user_count+=1.
-        top_anthena = sorted(anthena_info.items(),key=operator.itemgetter(1),reverse=True)[0]
+        top_antenna = sorted(antenna_info.items(),key=operator.itemgetter(1),reverse=True)[0]
         try:
 #            print "found anthena"
-            lon,lat = anthena_loc[top_anthena[0]]
-            f.write("{0},{1},{2},{3}".format(user,top_anthena[0],lon,lat))
+            lon,lat = antenna_loc[top_antenna[0]]
+            f.write("{0},{1},{2},{3}".format(user,top_antenna[0],lon,lat))
         except Exception as err:
 #            print "missing anthena", top_anthena
-            f2.write("{0}\n".format(top_anthena[0]))
+            f2.write("{0}\n".format(top_antenna[0]))
             missing_counts+=1
 
     f.close()
     f2.close()
 
 def home_location_london_only():
-    collection,client = connect_monogdb()
     
     month = "august"
-    f =  open(os.path.join(output_path_files, "user_top_anthena_{0}_00_04.txt".format(month)),"rb")
-    f_out =  open(os.path.join(output_path_files, "user_top_anthena_london_only_{0}_00_04.txt".format(month)),"wb")
-    f_out.writelines("user_id,top_anthena,lon,lat,neighborhood")
+    f =  open(os.path.join(output_path_files, "user_top_antenna_{0}_00_04.txt".format(month)),"rb")
+    f_out =  open(os.path.join(output_path_files, "user_top_antenna_london_only_{0}_00_04.txt".format(month)),"wb")
+    f_out.writelines("user_id,top_antenna,lon,lat,neighborhood")
     f.next()
+    r = dill.load(open(os.path.join(output_path_files,"antenna_loc_london_only_new.dill"),"rb"))
+    r2 = dill.load(open(os.path.join(output_path_files,"antenna_lsoa_london_only_new.dill"),"rb"))
     for line in f:
 #        print line
-        user_id, top_anthena, lon, lat = line.strip().split(",")
+        user_id, top_antenna, lon, lat = line.strip().split(",")
 #        print lon,lat
-        ne = reverse_geo_mongodb(float(lat),float(lon),collection)
-        if ne:
+        if top_antenna in r:
 #            print ne
-            f_out.writelines("\n{0},{1},{2},{3},{4}".format(user_id,top_anthena,lon,lat,ne[0]))
+            f_out.writelines("\n{0},{1},{2},{3},{4}".format(user_id,top_antenna,lon,lat,r2[top_antenna]))
     f.close()
     f_out.close()
-    client.close()
 
 
 def plot_cdf(data):
@@ -202,16 +201,17 @@ def plot_boxplot(data,title):
 
 if __name__ == "__main__":
     
-#    home_location_london_only()
-##   find_home_location()
+#    find_home_location()
 #    antenna_neighborhood()
+#    home_location_london_only()
 
 #    get_antenna_lsoa()
 
-    find_missing_aids()
-    sys.exit()
-    user_groups = dill.load(open(os.path.join(output_path_files,"user_groups.dill"),"rb"))
-    print user_groups.keys()[:5]
+#    find_missing_aids()
+#    sys.exit()
+    user_groups = dill.load(open(os.path.join(output_path_files,"user_groups_dict.dill"),"rb"))
+    antenna_lsoa = dill.load(open(os.path.join(output_path_files,"antenna_lsoa_london_only_new.dill"),"rb"))
+#    print user_groups.keys()[:5]
 #    time_slice = "hour=all"
     month = "august"
     mobility_path = "data/mining_mobility" 
@@ -225,8 +225,8 @@ if __name__ == "__main__":
 
     anthena_timespent =  defaultdict(list) 
 #    user_anthenna = defaultdict(lambda: defaultdict(Counter))
-    
-    print path
+    antenna_set = set()
+#    print path
 #    f_user_anthena =  open(os.path.join(output_path_files, "user_anthena_{0}_all.txt".format(month)),"wb")
 #    f_user_anthena.writelines("user_id,anthena_id,duration,date,weekday,time_slice")
 
@@ -271,14 +271,16 @@ if __name__ == "__main__":
                         anthena_info = anthena_info[:-1]
                     for i in xrange(0,len(anthena_info),2):
                         antenna_id = anthena_info[i]
-                        duration = anthena_info[i+1]
-                        try:
-                            duration = float(duration)
-                            group_antenna_duration[group_id][antenna_id].append(duration) 
-                        except Exception as err:
-                            print duration
-                            print line
-                            print a
+                        if antenna_id in antenna_lsoa:
+                            antenna_set.add(antenna_id)
+                            duration = anthena_info[i+1]
+                            try:
+                                duration = float(duration)
+                                group_antenna_duration[group_id][antenna_id].append(duration) 
+                            except Exception as err:
+                                print duration
+                                print line
+                                print a
 #                            sys.exit()
 
 #                        anthenna_timespent[anthena_id].append(duration)
@@ -288,9 +290,10 @@ if __name__ == "__main__":
 #                        user_anthena[user_id].append((anthena_info[i],anthena_info[i+1]))
 #                        f_user_anthena.writelines("\n{0},{1},{2},{3},{4},{5}".format(user_id,anthena_id,duration,date_str,weekday,ts))
         
-        dill.dump(user_antenna, open(os.path.join(output_path_files,"time_sliced","time_user_antennas_{0}.dill".format(d)),"wb"))
-        dill.dump(group_gyration, open(os.path.join(output_path_files,"time_sliced","group_gyration_{0}.dill".format(d)),"wb"))
-        dill.dump(group_antenna_duration, open(os.path.join(output_path_files,"time_sliced","group_antennas_duration_{0}.dill".format(d)),"wb"))
+        dill.dump(user_antenna, open(os.path.join(output_path_files,"time_sliced","time_user_antennas_{0}_london_only.dill".format(d)),"wb"))
+        dill.dump(group_gyration, open(os.path.join(output_path_files,"time_sliced","group_gyration_{0}_london_only.dill".format(d)),"wb"))
+        dill.dump(group_antenna_duration, open(os.path.join(output_path_files,"time_sliced","group_antennas_duration_london_only_{0}.dill".format(d)),"wb"))
+    dill.dump(antenna_set, open(os.path.join(output_path_files,"antenna_set.dill"),"wb"))
 
 #    print user_anthenna.items()
 #    plot_boxplot(user_gyration,"gyration")

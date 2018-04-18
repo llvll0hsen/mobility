@@ -19,14 +19,15 @@ from matplotlib import cm
 
 from vincenty import vincenty
 
-from util import output_path_files, output_path_plots,connect_monogdb, reverse_geo_mongodb,mobility_path,census_data_fpath, get_antennas_lsoa
+from util import output_path_files, output_path_plots,connect_mongodb, reverse_geo_mongodb,mobility_path,census_data_fpath, get_antennas_lsoa
 from antenna_analysis import heatmap_gini_overall, heatmap_gini_extreems, temporal_rank_changes,temporal_rank_changes_by_group,group_pairwise_corr,skewness,heatmap_std
+import reg
 
 output_path_plots = os.path.join(output_path_plots,"mobility")
 output_path_files = os.path.join(output_path_files,"mobility")
 month ="august"
 
-
+old_settings = np.seterr(all='raise', over='raise',divide='raise')
 def boxplots(data1,data2,title):
 #    print data1
 #    print data2
@@ -97,7 +98,7 @@ def corr(a,b):
     print np.corrcoef(bbox, gyration)
 
 def get_users_group():
-    df_london = pd.read_csv(os.path.join(output_path_files, "user_top_anthena_london_only_deprivation_{0}_00_04.txt".format(month)))
+    df_london = pd.read_csv(os.path.join(output_path_files, "user_top_antenna_london_only_deprivation_{0}_00_04.txt".format(month)))
     gp = df_london.groupby("deprivation_rank")["user_id"]
     groups = gp.groups.keys()
     group_userids = {} 
@@ -105,11 +106,13 @@ def get_users_group():
         group_userids[g] = gp.get_group(g).tolist()
 #        print "obbtsm8GeIhI3J+JE9r9kDs1fgwU8mMOPm5CtfNipBw=" in group_userids[g]
         print g, len(group_userids[g])
+    
     return group_userids 
 
 def gyration_bbox_compare():
     file_names  = os.listdir(os.path.join(output_path_files,"time_sliced"))#[:1] #["hour=all"] #["hour=00-04"] 
     file_names  = [i for i in file_names if "group_gyration" in i] 
+    file_names  = [i for i in file_names if "london_only" in i] 
     weekday_labels = {0:"Mon", 1:"Tue", 2:"Wed", 3:"Thu", 4:"Fri", 5:"Sat", 6:"Sun"}
     weekdays = range(7)
     weekdays_name = [weekday_labels[i] for i in weekdays]
@@ -144,8 +147,8 @@ def gyration_bbox_compare():
                 mus.append(np.mean(data))
                 stds.append(np.std(data))
             
-#            ax.errorbar(x, mus, yerr=stds,label=str(gn))
-            ax.plot(x, mus,label=str(gn))
+            ax.errorbar(x, mus, yerr=stds,label=str(gn))
+#            ax.plot(x, mus,label=str(gn))
             ax.set_xticks(x)
             ax.set_xticklabels(time_spans, rotation=90)
             ax.legend(loc="upper left")
@@ -201,7 +204,6 @@ def group_antenna_duration():
 
     for fn in file_names:
         dstr = fn.split(".")[0].split("_")[-1]
-
         datetime_date = parse(dstr.split("=")[1]) 
         weekday = datetime_date.weekday()
         print "weekday",weekday 
@@ -237,7 +239,7 @@ def group_antenna_duration():
                 #group_top_antennas[g].append((lon,lat))
 #            f.close()
 
-def user_anthena_diversity(rich_users, poor_users):
+def user_antenna_diversity(rich_users, poor_users):
     f_user_anthena =  open(os.path.join(output_path_files, "user_anthena_{0}_all.txt".format(month)),"rb")
     user_anthenas = defaultdict(set)
     for row in f_user_anthena:
@@ -371,11 +373,11 @@ def users_trajectory_similariy(user_groups):
 
 def daily_mixing(user_groups):
     print "daily_mixing"
-    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc_london_only.dill"),"rb"))
+    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc_london_only_new.dill"),"rb"))
     antennas_lsoa = get_antennas_lsoa()
-    user_home_antenna = pd.read_csv(os.path.join(output_path_files, "user_top_anthena_london_only_deprivation_{0}_00_04.txt".format(month)),usecols=["user_id","top_anthena"])
+    user_home_antenna = pd.read_csv(os.path.join(output_path_files, "user_top_antenna_london_only_deprivation_{0}_00_04.txt".format(month)),usecols=["user_id","top_antenna"])
     user_home_antenna.dropna()
-    user_home_antenna = user_home_antenna.set_index("user_id").to_dict()["top_anthena"]
+    user_home_antenna = user_home_antenna.set_index("user_id").to_dict()["top_antenna"]
     antenna_ids = sorted(antenna_loc.keys())
     antenna_indices = dict(zip(antenna_ids,range(len(antenna_ids))))
     antenna_indices_r = dict(zip(range(len(antenna_ids)),antenna_ids))
@@ -392,14 +394,14 @@ def daily_mixing(user_groups):
     week_aggr = defaultdict(float)
     ts_aggr = defaultdict(float)
 
-    antenna_group_matrix = np.zeros((len(weekday_labels),len(antenna_ids),len(group_names)))
-
-    for fn in file_names:
-        dstr = fn.split(".")[0].split("_")[-1]
-
-        datetime_date = parse(dstr.split("=")[1]) 
-        weekday = datetime_date.weekday()
-         
+#    antenna_group_matrix = np.zeros((len(weekday_labels),len(antenna_ids),len(group_names)))
+#
+#    for fn in file_names:
+#        dstr = fn.split(".")[0].split("_")[-1]
+#
+#        datetime_date = parse(dstr.split("=")[1]) 
+#        weekday = datetime_date.weekday()
+#         
 #        user_antennas = dill.load(open(os.path.join(output_path_files,"time_sliced",fn),"rb"))
 #        for i, gn in enumerate(group_names):
 #            user_ids = user_groups[gn]
@@ -417,12 +419,11 @@ def daily_mixing(user_groups):
 #                            pass
     antenna_group_matrix = dill.load(open(os.path.join(output_path_files,"weekly_matrix.dill"),"rb"))
 #    dill.dump(antenna_group_matrix,open(os.path.join(output_path_files,"weekly_matrix.dill"),"wb"))
-#    dill.dump(group_sizes_gn,open(os.path.join(output_path_files,"group_sizes_dict.dill"),"wb"))
     weekday_ginis =  [] 
     weekday_top_antennas = {}
     all_ginis = {}
     for weekday in xrange(len(weekday_labels)):
-        antenna_group_matrix[weekday,:,:]/= group_sizes 
+#        antenna_group_matrix[weekday,:,:]/= group_sizes 
         sums = antenna_group_matrix[weekday,:,:].sum(1)
         idx_nozero = np.where(sums!=0)[0]
 #        aidx_ginis = {i:gini_coeff(antenna_group_matrix[weekday,i,:]) for i in idx_nozero}
@@ -432,6 +433,7 @@ def daily_mixing(user_groups):
 #        heatmap_gini_overall(aidx_ginis,antenna_indices_r,antennas_lsoa,idx_nozero,fname)
 #        heatmap_gini_extreems(aidx_ginis,antenna_indices_r,antennas_lsoa,idx_nozero,fname)
 #        all_ginis[weekday] = aidx_ginis
+#        reg.apply_reg(antenna_group_matrix[weekday,:,:],antenna_indices_r,antennas_lsoa,idx_nozero,fname)
         heatmap_std(antenna_group_matrix[weekday,:,:],antenna_indices_r,antennas_lsoa,idx_nozero,fname)
     
 #    print "boxplot"
@@ -447,14 +449,14 @@ def daily_mixing(user_groups):
 #    plt.close() 
 
 def ts_mixing(user_groups):
-    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc_london_only.dill"),"rb"))
+    antenna_loc = dill.load(open(os.path.join(output_path_files,"antenna_loc_london_only_new.dill"),"rb"))
     print "total number of antennas: ", len(antenna_loc)
     antennas_lsoa = get_antennas_lsoa()
-    user_home_antenna = pd.read_csv(os.path.join(output_path_files, "user_top_anthena_london_only_deprivation_{0}_00_04.txt".format(month)),usecols=["user_id","top_anthena"])
+    user_home_antenna = pd.read_csv(os.path.join(output_path_files, "user_top_antenna_london_only_deprivation_{0}_00_04.txt".format(month)),usecols=["user_id","top_antenna"])
 #    user_home_antenna = pd.read_csv(os.path.join(output_path_files, "user_top_anthena_london_only_deprivation_{0}_00_04.txt".format(month)))
     print "total number of users: ", len(user_home_antenna)
     user_home_antenna = user_home_antenna.dropna()
-    user_home_antenna = user_home_antenna.set_index("user_id").to_dict()["top_anthena"]
+    user_home_antenna = user_home_antenna.set_index("user_id").to_dict()["top_antenna"]
     a = user_home_antenna.keys()
 #    print a[0]
 #    #print user_home_antenna[a[0]]
@@ -479,8 +481,7 @@ def ts_mixing(user_groups):
     ts_aggr = defaultdict(float)
     time_spans = ["hour=00-04","hour=04-08","hour=08-12","hour=12-16","hour=16-20","hour=20-24"]#[2:]
     time_labels = ["00-04","04-08","08-12","12-16","16-20","20-24"]#[2:]
-    antenna_group_matrix = np.zeros((len(time_spans),len(antenna_ids),len(group_names))) #7 time slice
-#    antenna_group_matrix = np.zeros((2,len(antenna_ids),len(group_names))) #7 time slice
+#    antenna_group_matrix = np.zeros((len(time_spans),len(antenna_ids),len(group_names))) #7 time slice
 #    for fn in file_names:
 #        dstr = fn.split(".")[0].split("_")[-1]
 #
@@ -505,12 +506,13 @@ def ts_mixing(user_groups):
 #                            pass
 #    dill.dump(antenna_group_matrix,open(os.path.join(output_path_files,"daily_matrix.dill"),"wb"))
     antenna_group_matrix = dill.load(open(os.path.join(output_path_files,"daily_matrix.dill"),"rb"))
-                            
+#    print antenna_group_matrix[0,:5,:5]
+#    print group_sizes 
     all_ginis = {}
     ts_ginis = []
 #    print antenna_group_matrix[0,:,:]
     for ts in xrange(len(time_spans)):
-        antenna_group_matrix[ts,:,:]/= group_sizes
+#        antenna_group_matrix[ts,:,:]/= group_sizes
 #    group_pairwise_corr(antenna_group_matrix[ts,:,:],ts)
         #find not visited antennas
         
@@ -524,7 +526,7 @@ def ts_mixing(user_groups):
 #        #m = np.mean(ginis)
         fname = "ts_nohome_{0}".format(time_labels[ts])
 
-        
+#        reg.apply_reg(antenna_group_matrix[ts,:,:],antenna_indices_r,antennas_lsoa,idx_nozero,fname)
 #        all_ginis[ts] = aidx_ginis
         heatmap_std(antenna_group_matrix[ts,:,:],antenna_indices_r,antennas_lsoa,idx_nozero,fname)
         #heatmap_gini_overall(aidx_ginis,antenna_indices_r,antennas_lsoa,idx_nozero,fname)
@@ -544,10 +546,9 @@ def ts_mixing(user_groups):
 #    plt.close() 
 
 def get_group_home_antennas(user_groups):
-    user_home_antenna = pd.read_csv(os.path.join(output_path_files, "user_top_anthena_london_only_deprivation_{0}_00_04.txt".format(month)),usecols=["user_id","top_anthena"])
+    user_home_antenna = pd.read_csv(os.path.join(output_path_files, "user_top_antenna_london_only_deprivation_{0}_00_04.txt".format(month)),usecols=["user_id","top_antenna"])
     user_home_antenna.dropna()
-    user_home_antenna = user_home_antenna.set_index("user_id").to_dict()["top_anthena"]
-    
+    user_home_antenna = user_home_antenna.set_index("user_id").to_dict()["top_antenna"]
     group_aids = defaultdict(set)
     for group_id, userids in user_groups.iteritems():
         for uid in userids:
@@ -643,11 +644,11 @@ def anthena_user_ratio(user_groups):
 def get_user_groups_dict(group_users):
     a = {}
     for g,u in group_users.iteritems():
-        print "obbtsm8GeIhI3J+JE9r9kDs1fgwU8mMOPm5CtfNipBw=" in u
+#        print "obbtsm8GeIhI3J+JE9r9kDs1fgwU8mMOPm5CtfNipBw=" in u
         for i in u:
             a[i] = g
     print len(a)
-    dill.dump(a, open(os.path.join(output_path_files,"user_groups.dill"),"wb"))
+    dill.dump(a, open(os.path.join(output_path_files,"user_groups_dict.dill"),"wb"))
 
 def gini_coeff(arr):
     array = arr.flatten() 
@@ -660,9 +661,10 @@ def gini_coeff(arr):
 if __name__ == "__main__":
     users = {}
     users = get_users_group()
+#    dill.dump(users, open(os.path.join(output_path_files,"group_users_dict.dill"),"wb"))
 #    get_user_groups_dict(users)
     ts_mixing(users)
-#    daily_mixing(users)
+    daily_mixing(users)
 #    gyration_bbox_compare()
 #    get_group_home_antennas(users)
 #    group_antenna_duration()

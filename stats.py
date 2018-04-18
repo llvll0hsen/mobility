@@ -4,6 +4,7 @@ from operator import itemgetter
 import sys
 from datetime import datetime
 import os
+import operator 
 
 import requests
 import numpy as np
@@ -17,11 +18,12 @@ from pymongo import MongoClient
 import pandas as pd
 
 from google_account import account
-from util import output_path_files, output_path_plots,connect_monogdb, reverse_geo_mongodb
+from util import output_path_files, output_path_plots,connect_mongodb, reverse_geo_mongodb
 
 #app = account['mohsen']
 #gmaps = googlemaps.Client(key = app['api_key'])
 
+output_path_files_main =  output_path_files
 output_path_files =  os.path.join(output_path_files,"london")
 output_path_plots =  os.path.join(output_path_plots,"venues","london")
 
@@ -386,8 +388,8 @@ def coordinates_info(record):
     neighborhoods_price = defaultdict(lambda: defaultdict(int))
     time_range = {1:(0,4),2:(4,8),3:(8,12),4:(12,16),5:(16,20),6:(20,25)}
 
-    for r in records:
-        lon,lat = r['geolocation']['coordinates']
+    for r in records: 
+        lon,lat = r['geoloca tion']['coordinates']
         prices = r['price']
         opening_hours = r['opening_hours']
         
@@ -416,16 +418,108 @@ def coordinates_info(record):
                     tclose = datetime.strptime(temp['close'], "%H.%M").timetz().hour
                     times.append((topen, tclose))
 
-#        lsoa_prices[ne[0]] = (avg_price,times) 
-#    dill.dump(lsoa_prices, open(os.path.join(output_path_files,"lsoa_price_time.dill"),"wb"))     
+def num_venues(records):
+    source_ven_count = defaultdict(int)
+    for r in records:
+        for source in r['providers']:
+#            print source
+            source_ven_count[source[0]]+=1
+    print source_ven_count
+
+def price_dist(records):
+    fig,ax = plt.subplots()
+    price_dist = defaultdict(int)
+    for r in records:
+        p = []
+        for source, price in r['price'].iteritems():
+            if source == 'google':
+                p.append(price)
+            elif source =='tripadvisor':
+                try:
+                    temp = [len(i.strip()) for i in price['price_range'].split('-')]
+                    p.append(np.max(temp))
+                except:
+                    pass
+#                    print r['price']
+#                    print r['name']
+#                    print '--'
+            else:
+                p.append(len(price))
+        if p:
+            price_dist[np.mean(p)] += 1
+        else:
+            price_dist['none'] += 1
+
+    none_count = price_dist['none']
+    del price_dist['none']
+    h = Counter(price_dist).elements()
+    h = list(h)
+    print h[:10]
+    ax.hist(h,bins=5)
+    ax.tick_params(direction='out')
+    ax.spines["top"].set_visible(False)  
+    ax.spines["right"].set_visible(False) 
+    ax.get_xaxis().tick_bottom()  
+    ax.get_yaxis().tick_left()
+#    ax.legend(loc='upper center',ncol=4,frameon=True,bbox_to_anchor=(0.5, 1.2),fontsize=25)#fancybox=True)
+    print output_path_plots 
+    plt.savefig(os.path.join(output_path_plots,'price_dist.pdf'),bbox_inches='tight')
+    plt.close()
+
+    print price_dist
+
+def venue_lsoa_dist():
+    lsoas_venues = dill.load(open(os.path.join(output_path_files_main,"lsoa_vanues.dill"),"rb"))
+    lsoas = dill.load(open("lsoa_list.dill","rb")) 
+    missing_lsoas = set(lsoas) - set(lsoas_venues.keys())
+    print "missing lsoas:", len(missing_lsoas), len(missing_lsoas)/float(len(lsoas))
+    #print len(lsoas_venues)
+    temp = {k:len(v) for k,v in lsoas_venues.iteritems()}
+    sorted_pk = sorted(temp.iteritems(), key=operator.itemgetter(1),reverse=True)
+    #print sorted_pk[:10]
+    lsoas_venues_count = [len(i) for i in lsoas_venues.itervalues()]
+#    lsoas_venues_count.extend([]*missing_lsoas)
+    hist = Counter(lsoas_venues_count)
+    n = sum(hist.values())
+    hist= {degree: freq/float(n) for degree,freq in hist.iteritems()}
+    sorted_pk = sorted(hist.iteritems(), key=operator.itemgetter(0),reverse=True)
+    x = [i[0] for i in sorted_pk]
+    y = np.cumsum([i[1] for i in sorted_pk])
+#    print zip(x,y)
+    fig,ax = plt.subplots()
+    a = ax.plot(x,y ,alpha=0.6)
+    ax.set_xlabel("Number of venues (n)",fontsize=25)
+    ax.set_ylabel("P(x) > n",fontsize=25)
+    ax.tick_params(direction='out')
+    ax.spines["top"].set_visible(False)  
+    ax.spines["right"].set_visible(False) 
+    ax.get_xaxis().tick_bottom()  
+    ax.get_yaxis().tick_left()
+    plt.savefig(os.path.join(output_path_plots,"venues_lsoa.png"),bbox_inches='tight')
+
+    fig,ax = plt.subplots()
+    r = ax.boxplot(lsoas_venues_count)#, showfliers=False)
+    #print r
+    top_points = r["fliers"][0].get_data()[1]
+#    bottom_points = r["fliers"][2].get_data()[1]
+#    print len(top_points)
+#    print sorted(set(top_points))
+
+#    print bottom_points
+    plt.savefig(os.path.join(output_path_plots,"venues_lsoa_boxplot.png"),bbox_inches='tight')
+
 if __name__ == '__main__':
 #    f = open("great_london_venues.json",'rb')
 #    f2 = open('london.venues.json','rb')
     f = open('london_comp.json','rb')
 #    f = open('geosegmentation.venues.json','rb')
-   
+     
     records = json.load(f)
-    print len(records)
+#    num_venues(records)
+    print records[0]
+#    venue_lsoa_dist()
+ #    price_dist(records)
+#    print len(records)
 #    records2 = json.load(f2)
 #    records.extend(records2)
 #    json.dump(records, open("london_comp.json","wb"))
@@ -443,7 +537,7 @@ if __name__ == '__main__':
 #    with_price_tag(records)
 #    with_ratings(records)
 #    create_lat_lon_file(records)
-    with_hours(records)
+#    with_hours(records)
 #    time_dist(records)
 #    tag_clouds(records)
 #    price_cat_loc(records)
