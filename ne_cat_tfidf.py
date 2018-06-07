@@ -3,9 +3,9 @@ import json
 from collections import defaultdict
 
 import numpy as np
-from pymongo import MongoClient
+
     
-from util import output_path_files,reverse_geo_mongodb
+from util import output_path_files
 
 def ne_dist_cats(record,write_to_file=False):
     collection,client = connect_monogdb()

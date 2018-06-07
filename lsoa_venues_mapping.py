@@ -7,6 +7,17 @@ import dill
 
 from util import connect_mongodb,reverse_geo_mongodb,output_path_files
 
+def r_mapping():
+    a = dill.load(open(os.path.join(output_path_files,"lsoa_vanues.dill"),"rb"))
+    l = {}
+    for lsoa, venue_ids in a.iteritems():
+        for c in venue_ids:
+            l[c] = lsoa
+
+
+    dill.dump(l, open(os.path.join(output_path_files,"vanue_lsoa.dill"),"wb"))
+
+
 def mapping():
     f = open('london_comp.json','rb')
     records = json.load(f)
@@ -33,14 +44,15 @@ def mapping():
     print len(missing_venues),len(set(missing_venues))
 if __name__ == '__main__':
 #    mapping()
+    r_mapping()
 #    sys.exit()
-    lsoa_venues = dill.load(open(os.path.join(output_path_files,"lsoa_vanues.dill"),"rb"))
-    missing_venues = dill.load(open(os.path.join(output_path_files,"missing_lsoa_vanues.dill"),"rb"))
-    print len(missing_venues),len(lsoa_venues)
-    keys = lsoa_venues.keys()
-#    print lsoa_venues
-    print keys[:10]
-    print "E01002438" in lsoa_venues
-    print lsoa_venues["E01002504"]
-    print lsoa_venues["E01002438"]
+#    lsoa_venues = dill.load(open(os.path.join(output_path_files,"lsoa_vanues.dill"),"rb"))
+#    missing_venues = dill.load(open(os.path.join(output_path_files,"missing_lsoa_vanues.dill"),"rb"))
+#    print len(missing_venues),len(lsoa_venues)
+#    keys = lsoa_venues.keys()
+##    print lsoa_venues
+#    print keys[:10]
+#    print "E01002438" in lsoa_venues
+#    print lsoa_venues["E01002504"]
+#    print lsoa_venues["E01002438"]
 #    print lsoa_venues["E01002438"]

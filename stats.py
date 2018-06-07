@@ -17,7 +17,7 @@ import dill
 from pymongo import MongoClient
 import pandas as pd
 
-from google_account import account
+#from google_account import account
 from util import output_path_files, output_path_plots,connect_mongodb, reverse_geo_mongodb
 
 #app = account['mohsen']
@@ -179,6 +179,7 @@ def time_dist(records):
         opening_hours = r['opening_hours']
         if opening_hours:
             for source, time_records in opening_hours.iteritems():
+                
                 if time_records[0]:
                     slots = set()
                     for tr in time_records:
@@ -205,23 +206,30 @@ def time_dist(records):
         plt.close()
 
 def with_hours(records):
-    collection,client = connect_monogdb()
-    f = open(os.path.join(output_path_files,"hours_geo_new_all.txt"),"wb")
+#    collection,client = connect_monogdb()
+#    f = open(os.path.join(output_path_files,"hours_geo_new_all.txt"),"wb")
 #    f.writelines("\nlon;lat;district;topen;tclose")
-    f.writelines("\nlon;lat;topen;tclose")
+#    f.writelines("\nlon;lat;topen;tclose")
+
+    venue_lsoa = dill.load(open(os.path.join(output_path_files_main,"vanue_lsoa.dill"),"rb"))
+    lsoas = dill.load(open("lsoa_list.dill","rb")) 
 
     count_valid = 0
     source_valid = defaultdict(int)
     
     n = len(records)
 
+    lsoa_pcount = defaultdict(int) 
     for r in records:
         opening_hours = r['opening_hours']
         if opening_hours:
             for source, time_records in opening_hours.iteritems():
                 if time_records[0]:
-#                    print r
-#                    print '\n'
+                    oid = r['_id']['$oid']
+                    try:
+                        lsoa_pcount[venue_lsoa[oid]] +=1
+                    except:
+                        pass
                     lon,lat = r['geolocation']['coordinates']
 #                    district = reverse_geo_mongodb(lat,lon,collection)
 
@@ -232,10 +240,12 @@ def with_hours(records):
                     tclose = datetime.strptime(temp['close'], "%H:%M").timetz().hour
                     
 #                    f.writelines("\n{0};{1};{2};{3};{4}".format(lon,lat,district,topen,tclose))
-                    f.writelines("\n{0};{1};{2};{3}".format(lon,lat,topen,tclose))
+#                    f.writelines("\n{0};{1};{2};{3}".format(lon,lat,topen,tclose))
 #                    source_time_dist[source].update(range(topen,tclose))
                     source_valid[source]+=1
-    f.close()
+    print len(lsoa_pcount), len(lsoa_pcount)/float(len(lsoas))
+    sys.exit()
+#    f.close()
     temp = sorted(source_valid.items(), key = itemgetter(1))
     sources, counts = zip(*temp)
     counts = np.array(counts, dtype='float')
@@ -249,12 +259,19 @@ def with_hours(records):
 
     plt.close()
     print 'number/ratio of records with hours: ',count_valid,count_valid/float(n)
-    client.close()
-
+#    client.close()
+#
 def with_ratings(records):
+    venue_lsoa = dill.load(open(os.path.join(output_path_files_main,"vanue_lsoa.dill"),"rb"))
+    lsoas = dill.load(open("lsoa_list.dill","rb")) 
+    
     source_ratings = defaultdict(int)
     source_loc_with_tag = defaultdict(set)
     source_count = defaultdict(float)
+    lsoa_pcount = defaultdict(int) 
+    m = 0
+    ratings_per_source = defaultdict(float)
+
     for r in records:
         prices = r['ratings']
         name = r['name']
@@ -262,13 +279,22 @@ def with_ratings(records):
             source_count[source]+=1.
             rating = rating_dict['rating']
             if rating:
+                m+=1
+                oid = r['_id']['$oid']
                 source_loc_with_tag[source].add(name)
                 source_ratings[source]+=1
+                try:
+                    lsoa_pcount[venue_lsoa[oid]] +=1
+                except:
+                    pass
+    
     per_source_names = source_loc_with_tag.values()
     intersections = set.intersection(*per_source_names)
     source_ratings['overlapped'] = len(intersections)
-    
-    source_ratings2 = {k:source_ratings[k]/v for k,v in source_count.iteritems()}
+    print len(lsoa_pcount), len(lsoa_pcount)/float(len(lsoas))
+    print m, m/float(len(records))
+
+    source_ratings2 = {k:source_ratings[k]/float(len(records)) for k,v in source_count.iteritems()}
     temp  = sorted(source_ratings2.items(),key=itemgetter(1))
     source, counts = zip(*temp)
     #print counts
@@ -277,8 +303,48 @@ def with_ratings(records):
     ax.bar(x,counts, align="center")
     ax.set_xticks(x)
     ax.set_xticklabels(source,rotation=45)
-    plt.savefig(os.path.join(output_path_plots,'ratings_ratio.pdf'),bbox_inches='tight')
+    plt.savefig(os.path.join(output_path_plots,'ratings_ratio2.pdf'),bbox_inches='tight')
     plt.close()
+
+def rating_dist(records):
+    ratings_per_source = defaultdict(lambda:defaultdict(int))
+
+
+    for r in records:
+        prices = r['ratings']
+        name = r['name']
+        for source,rating_dict in prices.iteritems():
+            rating = rating_dict['rating']
+            if rating:
+                try:
+                    ratings_per_source[source][rating]+=1
+                except:
+                    #tripadvisor special case
+                    if "Value" in rating:
+#                        print source,rating
+                        val = str(rating["Value"]).split()[0]
+                        ratings_per_source[source][val]+=1
+
+
+    for source, rating_dist in ratings_per_source.iteritems():
+        fig,ax = plt.subplots()
+        p12 = sum([v for k,v in rating_dist.iteritems() if 1<=float(k)<2])
+        p23 = sum([v for k,v in rating_dist.iteritems() if 2<=float(k)<3])
+        p34 = sum([v for k,v in rating_dist.iteritems() if 3<=float(k)<4])
+        p45 = sum([v for k,v in rating_dist.iteritems() if 4<=float(k)<=5])
+        labels = ["[1-2)","[2-3)","[3-4)","[4-5]"]
+        p = [p12,p23,p34,p45]
+
+        #sorted_rank = sorted(rating_dist.items(), key=itemgetter(0))
+        #rank,count = zip(*sorted_rank)
+        x = range(len(p))
+        ax.bar(x,p,align='center')
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels)
+        ax.set_title(source)
+        plt.savefig(os.path.join(output_path_plots,'ratings_dist_{0}.pdf'.format(source)),bbox_inches='tight')
+        plt.close()
+        
 
 def with_price_tag(records):
     colors = ['red','blue','green','black'] 
@@ -427,9 +493,17 @@ def num_venues(records):
     print source_ven_count
 
 def price_dist(records):
+    venue_lsoa = dill.load(open(os.path.join(output_path_files_main,"vanue_lsoa.dill"),"rb"))
+    lsoas = dill.load(open("lsoa_list.dill","rb")) 
+    n = len(records)
+
     fig,ax = plt.subplots()
     price_dist = defaultdict(int)
+    m = 0
+    lsoa_pcount = defaultdict(int) 
     for r in records:
+        oid = r['_id']['$oid']
+         
         p = []
         for source, price in r['price'].iteritems():
             if source == 'google':
@@ -446,16 +520,41 @@ def price_dist(records):
             else:
                 p.append(len(price))
         if p:
+            m+=1
+            try:
+                lsoa_pcount[venue_lsoa[oid]] +=1
+            except:
+                pass
             price_dist[np.mean(p)] += 1
         else:
             price_dist['none'] += 1
+    
+    print len(lsoa_pcount), len(lsoa_pcount)/float(len(lsoas))
 
-    none_count = price_dist['none']
-    del price_dist['none']
-    h = Counter(price_dist).elements()
-    h = list(h)
-    print h[:10]
-    ax.hist(h,bins=5)
+    sys.exit()
+
+#    print price_dist['none']
+#    print m
+#    print n, m/float(n)
+#    sys.exit()
+    p12 = sum([v for k,v in price_dist.iteritems() if 0<k<2])
+    p23 = sum([v for k,v in price_dist.iteritems() if 2<=k<3])
+    p34 = sum([v for k,v in price_dist.iteritems() if 3<=k<=4])
+    p = [p12, p23, p34]
+    labels = ["[$-$$)","[$$-$$$)","[$$$-$$$$]"]
+    x = range(len(p))
+    ax.bar(x,p,width=0.5,align="center")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+
+
+#
+#    none_count = price_dist['none']
+#    del price_dist['none']
+#    h = Counter(price_dist).elements()
+#    h = list(h)
+#    print h[:10]
+#    ax.hist(h)
     ax.tick_params(direction='out')
     ax.spines["top"].set_visible(False)  
     ax.spines["right"].set_visible(False) 
@@ -516,12 +615,12 @@ if __name__ == '__main__':
      
     records = json.load(f)
 #    num_venues(records)
-    print records[0]
+#    print records[0]
 #    venue_lsoa_dist()
- #    price_dist(records)
+#    price_dist(records)
 #    print len(records)
 #    records2 = json.load(f2)
-#    records.extend(records2)
+#    records.extend(records4)
 #    json.dump(records, open("london_comp.json","wb"))
 #    print records[0]
 #    print records[0]
@@ -536,6 +635,7 @@ if __name__ == '__main__':
 #    source_cat_count(records)
 #    with_price_tag(records)
 #    with_ratings(records)
+    rating_dist(records)
 #    create_lat_lon_file(records)
 #    with_hours(records)
 #    time_dist(records)

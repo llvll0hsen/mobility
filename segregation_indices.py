@@ -10,7 +10,7 @@ from util import output_path_files
 tracts_dist = dill.load(open(os.path.join(output_path_files,"mobility","antennas_dist.dill"),"rb"))
 
 def get_diss_index(M):
-    '''
+    ''' 
     Dissimilarity index
     M: matrix with rows are spatial units e.g., antenna, postal unit and columns are social groups
     each cell represent number of user from a specific group in that location
@@ -28,10 +28,11 @@ def get_diss_index(M):
     return r
 
 def get_exposure_index(M):
-    '''
+    '' '
     Exposure Index
     '''
     group_sizes = np.sum(M,0,dtype=np.float32)
+    T = sum(group_sizes)
     tract_sizes = np.sum(M,1,dtype=np.float32)
     n = len(group_sizes)
     
@@ -39,70 +40,104 @@ def get_exposure_index(M):
     for i,j in itertools.combinations(range(n),2):
         bi = 0.
         bj = 0.
-        for k in range(len(tract_sizes)):
-#            print  M[k,j],tract_sizes[k]
-#            print  (M[k,j]/tract_sizes[k])
-            bi +=  (M[k,i]/group_sizes[i])* (M[k,j]/tract_sizes[k])
-            bj +=  (M[k,j]/group_sizes[j])* (M[k,i]/tract_sizes[k])
-
-        B[i,j] = round(bi,2) 
-        B[j,i] = round(bj,2)
+        pxy = sum((M[:,i]/group_sizes[i])*(M[:,j]/tract_sizes))
+        pyx = sum((M[:,j]/group_sizes[j])*(M[:,i]/tract_sizes))
+        
+        B[i,j] = round(pxy,2) 
+        B[j,i] = round(pyx,2)
     return B
+
 def get_isolation_index(M):
     group_sizes = np.sum(M,0,dtype=np.float32)
     tract_sizes = np.sum(M,1,dtype=np.float32)
     n = len(group_sizes)
-    
+         
     B = np.zeros(n)
     for i in xrange(n):
-        b = 0
-        for k in range(len(tract_sizes)):
-            b +=  (M[k,i]/group_sizes[i])* (M[k,i]/tract_sizes[k])
-        b /= (1- (group_sizes[i]/sum(group_sizes.values()))) 
-        B[i] = round(b,2) 
+        pxx = sum((M[:,i]/group_sizes[i])*(M[:,i]/tract_sizes))
+        p = group_sizes[i]/T #minority proportion of the whole city
+        B[i] = round((pxx - p)/(1-p),2)
     return B
 
 def get_spatial_proximity(M,tract_ids,aid_indices,area=500):
     group_sizes = np.sum(M[tract_ids,:],0,dtype=np.float32)
     n = M.shape[1]
-    Pu = np.zeros(n,dtype=float)
+    #Pxx = np.zeros(n,dtype=float)
+    p = np.zeros((n,n),dtype=float)
     
-    for ui in xrange(n):
-        p = 0.
-        for i,j in itertools.combinations_with_replacement(tract_ids,2):
-            try:
-                d = tracts_dist[aid_indices[i]][aid_indices[j]]
-            except Exception as e:
-                d = tracts_dist[aid_indices[j]][aid_indices[i]]
-            p+= (M[i,ui]*M[j,ui]*np.exp(-1*d)) / (group_sizes[ui]**2) 
-        Pu[ui] = p
-#    print Pu 
+
+    indices = list(itertools.combinations(range(n),2))
+    diag_ind = zip(*np.diag_indices(n))
+    indices.extend(diag_ind)
+
     Ptt = np.zeros((n,n),dtype=float)
-    for ui,uj in itertools.combinations(range(n),2):
-        p = 1e-5
+    for ui,uj in indices: 
+        pxx = 0.
+        pyy = 0.
         for i,j in itertools.combinations_with_replacement(tract_ids,2):
             try:
                 d = tracts_dist[aid_indices[i]][aid_indices[j]]
             except Exception as e:
                 d = tracts_dist[aid_indices[j]][aid_indices[i]]
-            p+= ((M[i,ui]*M[i,uj])*(M[j,ui]*M[j,uj])*(np.exp(-1*d))) / ((group_sizes[ui]+group_sizes[uj])**2.) 
-        Ptt[ui,uj] = p
-    
-    print '---------'
-    print Ptt
-    print '---------'
+            
+            p[ui,uj] += M[i,ui]*M[j,uj]*np.exp(-1*d)
+            ptt[ui,uj] += (M[i,ui]+M[i,uj])*(M[j,ui]+M[j,uj])*np.exp(-1*d)
+        p[ui,uj] /= (group_sizes[ui] * group_sizes[uj])
+        ptt[ui,uj] /= (group_sizes[ui] + group_sizes[uj])
+        
+        
+#    p+= (M[i,ui]*M[j,ui]*np.exp(-1*d)) / (group_sizes[ui]**2) 
+        #Pu[ui] = p
+#    print Pu 
+#    p[diag_ind] /= (group_sizes*2)  
+#
+#    for ui,uj in itertools.combinations(range(n),2):
+#        p = 1e-5
+#        for i,j in itertools.combinations_with_replacement(tract_ids,2):
+#            try:
+#                d = tracts_dist[aid_indices[i]][aid_indices[j]]
+#            except Exception as e:
+#                d = tracts_dist[aid_indices[j]][aid_indices[i]]
+#            p+= ((M[i,ui]*M[i,uj])*(M[j,ui]*M[j,uj])*(np.exp(-1*d))) / ((group_sizes[ui]+group_sizes[uj])**2.) 
+#        Ptt[ui,uj] = p
+#    
+#    print '---------'
+#    print Ptt
+#    print '---------'
     P = np.zeros((n,n)) 
     for ui,uj in itertools.combinations(range(n),2):
-#        print ui,uj 
+##        print ui,uj 
         n1 = group_sizes[ui]
         n2 = group_sizes[uj]
-        P[ui,uj] = ((n1*Pu[ui])*(n2*Pu[uj])) / ((n1+n2)*Ptt[ui,uj])
+        P[ui,uj] = ((n1*p[ui,ui])*(n2*P[uj,uj])) / ((n1+n2)*Ptt[ui,uj])
     return P
 
-def centralization(M,tract_ids,aid_indices):
-    aid_dist = {aid:tract_dists_to_c[aid_indices[aid]] for aid in tract_ids}
-    aid_dist = OrderedDict(sorted(aid_dist.items(), key=lambda t: t[1]))
+
+def delta(M,tract_ids):
+    '''
+    Concentration refers to relative amount of physical space occupied by a 
+    minority group in the urban environment.
+    '''
+
+    n = M.shape[0]
+    m = M.shape[1]
     
+    tract_areas = np.random.rand(n)
+    A = 0.2
+    tract_areas =/A
+    group_sizes = np.sum(M,0,dtype=np.float32)
+    
+    DEL = np.zeros(m)
+
+    for i in xrange(m):
+        for j in xrange(n):
+            DEL[i] = sum( (M[:,i]/group_sizes[i]) - tract_areas)
+
+    return 0.5*DEL
+
+
+
+
 if __name__ == '__main__':
     data = np.zeros((6,3))
     data[0,0] = 100

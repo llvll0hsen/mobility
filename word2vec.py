@@ -18,6 +18,7 @@ def clean_noise(tags):
     return tags.strip()
 
 def format_tags(tags):
+    tags = filter(lambda x:x is not None, tags) 
     tags_string = ','.join(tags)
     tags_string = tags_string.lower()
     tags_string = cond_lemmatize(tags_string)
@@ -47,6 +48,7 @@ def cluster(model, tag_dataframe):
     count_model_nonincluded = 0
     venue_vectors = []
     for idx,row in tag_dataframe.iterrows():
+        print '1',idx
         tags = row['annotation'].split()
         word_vectors = np.empty(shape=(len(tags), 300))
         idx_word_vectors = 0
@@ -67,9 +69,10 @@ def cluster(model, tag_dataframe):
                         # print token
                         continue
                 if idx_token_vectors > 0:
+                    print '2'
                     word_vectors[idx_word_vectors] = np.average(token_vectors[:idx_token_vectors], axis=0)
                     idx_word_vectors += 1
-        
+        print '3'
         if idx_word_vectors != 0 or idx_token_vectors != 0:
             count_model_included += 1
             venue_vectors.append(np.average(word_vectors[:idx_word_vectors], axis=0))
@@ -90,13 +93,13 @@ def cluster(model, tag_dataframe):
 
 if __name__ == "__main__":
 
-    print "train model"
-#    model = gensim.models.KeyedVectors.load_word2vec_format(os.path.join("data","GoogleNews-vectors-negative300.bin"), binary=True)
-#    model.save(os.path.join(output_path_files,"word2vec.model")) 
+#   print "train model"
+    model = gensim.models.KeyedVectors.load_word2vec_format(os.path.join("data","GoogleNews-vectors-negative300.bin"), binary=True)
+    model.save(os.path.join(output_path_files,"word2vec.model")) 
 
-    model  = gensim.models.KeyedVectors.load(os.path.join(output_path_files,"word2vec.model")) 
+#    model  = gensim.models.KeyedVectors.load(os.path.join(output_path_files,"word2vec.model")) 
 
-    f = open('london.venues.json','rb')
+    f = open('london_comp.json','rb')
     records = json.load(f)
     df = pd.DataFrame(records)
     column_to_analyze = ['categories','tags']
