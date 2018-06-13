@@ -28,7 +28,9 @@ def find_missing_lsoas():
     https://data.london.gov.uk/dataset/indices-of-deprivation-2015
     """
 
-    df = pd.read_excel(os.path.join(census_data_fpath,"london","deprivation_london.xls"),sheet_name="Sub domains")
+    #df = pd.read_excel(os.path.join(census_data_fpath,"london","deprivation_london.xls"),encoding='iso-8859-1', sheet_name="Sub domains")
+    df = pd.read_csv(os.path.join(census_data_fpath, "london", "deprivation_london_sd.csv"),delimiter=";")
+    #print df.columns.values
     lsoas_all = df["LSOA code (2011)"].tolist()
     lsoas = dill.load(open(os.path.join(output_path_files,"mobility","antenna_lsoa_london_only.dill"),"rb"))
     print len(set(lsoas.values()))
@@ -59,7 +61,7 @@ def mapping(antenna_loc):
     dill.dump(r_lsoa, open(os.path.join(output_path_files,"mobility","antenna_lsoa_london_only.dill"),"wb"))
     
 if __name__ == '__main__':
-    antenna_loc = antenna_loc_todict()
+#    antenna_loc = antenna_loc_todict()
 #    antenna_loc = dill.load(open(os.path.join(output_path_files,"mobility","antenna_loc.dill"),"rb"))
-    mapping(antenna_loc)
+#    mapping(antenna_loc)
     find_missing_lsoas()
