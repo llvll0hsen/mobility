@@ -74,5 +74,8 @@ def get_depr_subdomain(factor_name):
     dpr_dict = df.to_dict()[factor_name]
     
     return dpr_dict
+
+
+
 if __name__ == '__main__':
     get_lsoa_list()

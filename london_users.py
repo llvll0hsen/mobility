@@ -18,45 +18,44 @@ from util import output_path_files, output_path_plots,connect_mongodb, reverse_g
 output_path_plots = os.path.join(output_path_plots,"mobility")
 output_path_files = os.path.join(output_path_files,"mobility")
 month ="august"
-def ne_user_count(df):
-    ne_size = df.groupby("neighborhood").size().to_dict()
-    ne_size = sorted(ne_size.items(),key=operator.itemgetter(1))
-    dill.dump(ne_size, open(os.path.join(output_path_files,"ne_population.dill"),"wb"))
+def map_user_group():
+    '''
+    map users to a deprivation group
+    {user: group id}
+    '''
+    fpath = os.path.join(output_path_files, "user_top_antenna_london_only_deprivation_{0}_00_04.txt".format(month))
+    df = pd.read_csv(fpath,usecols=["user_id","deprivation_rank"])
+    print df.head()
+    user_dep =  df.set_index('user_id').to_dict()['deprivation_rank']
+    
+    
+    dill.dump(user_dep, open(os.path.join(output_path_files,"user_groups_dict.dill"),"wb"))
+    #return group_userids 
 
-
-    fig,ax = plt.subplots()
-    loc, count = zip(*ne_size)
-    x = range(len(loc))
-    ax.bar(x,count, align="center")
-    ax.set_xticks(x)
-    ax.set_xticklabels(loc,rotation=90)
-    ax.tick_params(direction='out')
-    ax.spines["top"].set_visible(False)  
-    ax.spines["right"].set_visible(False) 
-    ax.get_xaxis().tick_bottom()  
-    ax.get_yaxis().tick_left()
-    fpath = os.path.join(output_path_plots,'user_ne_dist.pdf')
-    plt.savefig(fpath,bbox_inches='tight')
-    plt.close()
+def map_group_users():
+    '''
+    split users to deprivation groups
+    {group_id: list of users}
+    '''
+    df_london = pd.read_csv(os.path.join(output_path_files, "user_top_antenna_london_only_deprivation_{0}_00_04.txt".format(month)))
+    gp = df_london.groupby("deprivation_rank")["user_id"]
+    groups = gp.groups.keys()
+    group_userids = {} 
+    for g in groups:
+        group_userids[g] = gp.get_group(g).tolist()
+    dill.dump(group_userids, open(os.path.join(output_path_files,"group_users_dict.dill"),"wb"))
+    
 
 def antenna_deprivation():
     antenna_lsoa = dill.load(open(os.path.join(output_path_files,"antenna_lsoa_london_only_new.dill"),"rb"))
-    print "120-500221" in antenna_lsoa
-    print len(antenna_lsoa)
     df = pd.read_excel(os.path.join(census_data_fpath,"london","deprivation_london.xls"),sheet_name="IMD 2015")
     col_names = ["LSOA code (2011)","LSOA name (2011)","Local Authority District code (2013)","Local Authority District name (2013)","IMD Decile (where 1 is most deprived 10% of LSOAs)","IMD Rank (where 1 is most deprived)"]
-#    df = df[df["Local Authority District name (2013)"]!="City of London"]
     df = df[col_names].dropna()
     values = {}
     for row in df.itertuples():
-#        print row
         area_name, value = row[1],row[5]
-#        print area_name
         values[area_name.lower()] = int(value)
-#    dill.dump(values, open(os.path.join(output_path_files,"lsoa_deprivation.dill"),"wb"))
-#    sys.exit()
     aid_dep_rank = {}
-#    print sorted(values.keys())
     for aid, lsoa in antenna_lsoa.iteritems():
         aid_dep_rank[aid] = values[lsoa.lower()] 
     print len(aid_dep_rank)
@@ -65,87 +64,32 @@ def antenna_deprivation():
 def split_social_groups(df_london):
     df = pd.read_excel(os.path.join(census_data_fpath,"london","deprivation_london.xls"),sheet_name="IMD 2015")
     col_names = ["LSOA code (2011)","LSOA name (2011)","Local Authority District code (2013)","Local Authority District name (2013)","IMD Decile (where 1 is most deprived 10% of LSOAs)","IMD Rank (where 1 is most deprived)"]
-#    df = df[df["Local Authority District name (2013)"]!="City of London"]
     df = df[col_names].dropna()
     values = {}
 
     for row in df.itertuples():
-#        print row
         area_name, value = row[1],row[5]
-#        print area_name
         values[area_name.lower()] = int(value)
 
 
-    antenna_lsa = dill.load(open(os.path.join(output_path_files,"antenna_lsoa_london_only_new.dill"),"rb"))
-    missing = []
+    antenna_lsa = dill.load(open(os.path.join(output_path_files,"antenna_lsoa_london_only.dill"),"rb"))
     for aid, lsa in antenna_lsa.iteritems():
         try:
             rank = values[lsa.lower()]
             df_london.ix[df_london["top_antenna"]==aid,"deprivation_rank"] = rank
             df_london.ix[df_london["top_antenna"]==aid,"lsoa"] = lsa
         except Exception as err:
-#            print err
-            missing.append(lsa)
             df_london.ix[df_london["top_antenna"]==aid,"deprivation_rank"] = None
             df_london.ix[df_london["top_antenna"]==aid,"lsoa"] = lsa
 
-    print missing
-    print len(missing) 
     df_london.to_csv(os.path.join(output_path_files, "user_top_antenna_london_only_deprivation_{0}_00_04.txt".format(month)),index=False)
-
-
-def split_rich_poor_users(df_london):
-    month = "august"
-    col_names = ["Area name","Gross Annual Pay, (2016)"]
-    df = pd.read_excel(os.path.join(census_data_fpath,"london","london-borough-profiles.xlsx"),sheetname="Data")
-    df = df[col_names].dropna()
-#    df = remove_invald_regions(df)
-    df_london.insert(loc=len(df_london.columns),column="economic_rank",value=3)
-
-    values = {}
-#    temp = df[col_names]
-    for row in df.itertuples():
-        area_name, value = row[1],row[2]
-        try:
-            values[area_name.lower()] = int(value)
-        except Exception as err:#
-            pass
-            
-#            values[area_name.lower()] = None
-    del values["united kingdom"]
-    del values["england"]
-    del values["national comparator"]
-    del values["london"]
-
-
-    ne_richeness = sorted(values.items(),key=operator.itemgetter(1))
-#    ne_richeness = [i for i in ne_richeness if i[1] ]
-    for i, ne in enumerate(ne_richeness):
-        print i,ne
-        df_london.ix[df_london["neighborhood"]==ne[0],"economic_rank"] = i
-
-    df_london.to_csv(os.path.join(output_path_files, "user_top_anthena_london_only_economicRank_{0}_00_04.txt".format(month)),index=False)
-
-    fig,ax = plt.subplots()
-    loc, count = zip(*ne_richeness)
-    x = range(len(loc))
-    ax.plot(x,count)
-    ax.set_xticks(x)
-    ax.set_xticklabels(loc,rotation=90)
-    ax.tick_params(direction='out')
-    ax.spines["top"].set_visible(False)  
-    ax.spines["right"].set_visible(False) 
-    ax.get_xaxis().tick_bottom()  
-    ax.get_yaxis().tick_left()
-    fpath = os.path.join(output_path_plots,'dist_salary.pdf')
-    plt.savefig(fpath,bbox_inches='tight')
-    plt.close()
+    print df_london.head()
 
 if __name__ == "__main__":
     f =  open(os.path.join(output_path_files, "user_top_antenna_london_only_{0}_00_04.txt".format(month)),"rb")
     df = pd.read_csv(f)
-#    ne_user_count(df)
-#    split_rich_poor_users(df)
 #    split_social_groups(df)
-    antenna_deprivation()
+#    antenna_deprivation()
+    map_group_users()
+    map_user_group()
     
