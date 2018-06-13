@@ -7,7 +7,8 @@ output_path = os.path.join(os.getcwd(),'output')
 output_path_files  = os.path.join(os.getcwd(),'output','files')
 output_path_plots = os.path.join(os.getcwd(),'output','plots')
 census_data_fpath = os.path.join(os.getcwd(),'data','census')
-mobility_path = os.path.join(os.getcwd(),'data','mining_mobility')
+mobility_path = os.path.join(os.getcwd(),'data','ukdata')
+decompress_path = os.path.join(os.getcwd(), 'data', 'ukdata_days_decompressed')
 
 def get_antennas_lsoa():
     return dill.load(open(os.path.join(output_path_files,"mobility","antenna_lsoa_london_only_new.dill"),"rb"))
