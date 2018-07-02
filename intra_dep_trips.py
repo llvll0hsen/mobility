@@ -56,7 +56,8 @@ def create_matrices():
     antenna_ids = sorted(antenna_loc.keys())
     antenna_indices = dict(zip(antenna_ids,range(len(antenna_ids))))
     antenna_indices_r = dict(zip(range(len(antenna_ids)),antenna_ids))
-    
+
+    # user_groups is a dictionary where the key is a group_id and the value is a list of users of the group
     user_groups = dill.load(open(os.path.join(output_path_files,"group_users_dict.dill"),"rb"))
     group_names = sorted(user_groups.keys())#[:2]
     group_sizes = [len(user_groups[gn]) for gn in group_names]
@@ -90,6 +91,7 @@ def create_matrices():
             print dstr
         weekday = datetime_date.weekday()
         user_antennas = dill.load(open(os.path.join(output_path_files,"time_sliced",fn),"rb"))
+        # user_antennas is a dictionary indexed by hour-slot & user id, where the values are the list of visited antennas
         for i, gn in enumerate(group_names):
             user_ids = user_groups[gn]
             for uid in user_ids:
